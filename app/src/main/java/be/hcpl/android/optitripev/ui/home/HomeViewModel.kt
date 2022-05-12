@@ -25,21 +25,19 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     val result = MutableLiveData<String>()
 
-    // TODO store values in preferences and recover on resume
-    // TODO parse values from text, add errors where needed
+    // TODO store usser input values in preferences and recover on resume
+    // TODO parse values from text, show errors where needed
 
     fun calculate() {
-        // TODO perform calculation, lookup minimal total trip time from calculations
-
-        // TODO calculate total trip time for all speeds
+        // calculate total trip time for all speeds
         val totalTimeBySpeed = speedByConsumption.mapValues {
             // using:
             // driving time = total distance / speed
             val drivingTime = (totalDistance.value?.toDouble()?:1000.0) / it.key
             // total energy = speedByConsumption * total trip distance
             val totalEnergy = it.value * (totalDistance.value?.toDouble()?:1000.0)
-            // required extra energy = abs ( total energy - usable energy ) // FIXME take initial SOC into account here!?
-            val extraEnergy = abs( totalEnergy - (usableEnergy.value?.toDouble()?:13.0))
+            // required extra energy = abs ( total energy - ( usable energy * initialSoc ) // also takes initial soc into account
+            val extraEnergy = abs( totalEnergy - ( (usableEnergy.value?.toDouble()?:13.0)) * ((initialSoc.value?.toDouble()?:100.0)/100))
             // total charge time = abs ( required extra energy / charge power )
             val totalChargeTime = abs(extraEnergy / (chargePower.value?.toDouble()?:13.0))
             // time per charge = ( chargeTarget / 100 ) * ( usableEnergy / chargePower )
