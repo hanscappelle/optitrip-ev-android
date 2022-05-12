@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">OptiTripEV</string>
+    <string name="title_home">Input</string>
+    <string name="title_dashboard">Result</string>
+    <string name="title_notifications">Config</string>
+    <string name="header_input">Info Input</string>
+    <string name="hint_total_distance">Total trip distance in km</string>
+    <string name="hint_charge_power">Charge power in kW</string>
+    <string name="hint_charge_target">Charge target in SOC %</string>
+    <string name="hint_charge_delay">Overhead time at charger in min</string>
+    <string name="hint_usable_energy">Usable energy in Kwh</string>
+    <string name="hint_initial_soc">Initial SOC as a %</string>
+    <string name="hint_first_charge_station">Distance to 1st charger in km</string>
+    <string name="info_input">On first use double check that you have the correct consumption numbers for your EV selected. Next complete below input fields with all the details you have for this trip. Once satisfied hit the calculate button to get the optimal speed to travel.</string>
+    <string name="action_calculate">Calculate Speed</string>
+</resources>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/padding_default"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+    <TextView
+        android:id="@+id/header_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/header_input"
+        android:textSize="@dimen/text_size_extra_large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/info_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/info_input"
+        android:layout_marginBottom="@dimen/padding_double"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_input" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/total_distance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_total_distance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/info_input">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_total_distance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/charge_power"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_charge_power"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/total_distance">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_charge_power"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/charge_target"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_charge_target"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/charge_power">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_charge_target"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/charge_delay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_charge_delay"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/charge_target">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_charge_delay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/usable_energy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_usable_energy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/charge_delay">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_usable_energy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/initial_soc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_initial_soc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/usable_energy">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_initial_soc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/first_charge_station"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_first_charge_station"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/initial_soc">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/input_first_charge_station"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="1" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/calculate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/action_calculate"
+        android:layout_marginTop="@dimen/padding_double"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/first_charge_station"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
