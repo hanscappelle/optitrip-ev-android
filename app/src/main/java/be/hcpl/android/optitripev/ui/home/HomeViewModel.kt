@@ -25,39 +25,46 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     val result = MutableLiveData<String>()
 
-    // TODO store usser input values in preferences and recover on resume
+    // TODO store user input values in preferences and recover on resume
     // TODO parse values from text, show errors where needed
 
     fun calculate() {
-        // TODO get user entered values with fallback to some defaults here
-
+        // get user entered values with fallback to some defaults here
+        val totalDistanceValue = totalDistance.value?.toDouble() ?: 1000.0
+        val usableEnergyValue = usableEnergy.value?.toDouble() ?: 13.0
+        val initialSocValue = initialSoc.value?.toDouble() ?: 100.0
+        val chargePowerValue = chargePower.value?.toDouble() ?: 13.0
+        val chargeTargetValue = chargeTarget.value?.toDouble() ?: 100.0
         // entered charge delay time is in minutes, calculate that to hours
-        val chargeDelay = (chargeDelay.value?.toDouble()?:0.0) * 0.0166667
+        val chargeDelayValue = (chargeDelay.value?.toDouble() ?: 0.0) * 0.0166667
 
         // calculate total trip time for all speeds
         val totalTimeBySpeed = speedByConsumption.mapValues {
             // using:
             // driving time = total distance / speed
-            val drivingTime = (totalDistance.value?.toDouble()?:1000.0) / it.key
+            val drivingTime = totalDistanceValue / it.key
             // total energy = speedByConsumption * total trip distance
-            val totalEnergy = it.value * (totalDistance.value?.toDouble()?:1000.0)
+            val totalEnergy = it.value * totalDistanceValue
             // required extra energy = abs ( total energy - ( usable energy * initialSoc ) // also takes initial soc into account
-            val extraEnergy = abs( totalEnergy - ( (usableEnergy.value?.toDouble()?:13.0)) * ((initialSoc.value?.toDouble()?:100.0)/100))
+            val extraEnergy = abs(totalEnergy - usableEnergyValue * (initialSocValue / 100))
             // total charge time = abs ( required extra energy / charge power )
-            val totalChargeTime = abs(extraEnergy / (chargePower.value?.toDouble()?:13.0))
+            val totalChargeTime = abs(extraEnergy / chargePowerValue)
             // time per charge = ( chargeTarget / 100 ) * ( usableEnergy / chargePower )
-            val timePerCharge = ( (chargeTarget.value?.toDouble()?:100.0) / 100 ) * ( (usableEnergy.value?.toDouble()?:13.0) / (chargePower.value?.toDouble()?:13.0) )
+            val timePerCharge = (chargeTargetValue / 100) * (usableEnergyValue / chargePowerValue)
             // # charges = ceil ( required extra energy / ( charge power * time per charge ) )
-            val numberOfCharges = ceil(extraEnergy / ( (chargePower.value?.toDouble()?:13.0) * timePerCharge ))
+            val numberOfCharges = ceil(extraEnergy / (chargePowerValue * timePerCharge))
 
             // formula:
             // driving time + total charge time + ( # charges * charge delay )
-            drivingTime + totalChargeTime + ( numberOfCharges * chargeDelay)
+            drivingTime + totalChargeTime + (numberOfCharges * chargeDelayValue)
         }
 
         // and from that new collection get the lowest value to display
-        val optimalSpeed = totalTimeBySpeed.minByOrNull { it.value }?: 0.0
-        result.value = String.format(context.getString(R.string.result_optimal_speed), (optimalSpeed as Map.Entry<*,*>).key)
+        val optimalSpeed = totalTimeBySpeed.minByOrNull { it.value } ?: 0.0
+        result.value = String.format(
+            context.getString(R.string.result_optimal_speed),
+            (optimalSpeed as Map.Entry<*, *>).key
+        )
     }
 
     // TODO move this table to a configurable view so users can have their own
