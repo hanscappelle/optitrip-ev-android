@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.dashboard.DashboardFragment">
 
     <TextView
@@ -11,33 +13,111 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/header_info_output"
-        android:textSize="@dimen/text_size_extra_large"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="@dimen/text_size_extra_large" />
 
     <TextView
         android:id="@+id/info_output"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/info_output"
         android:layout_marginBottom="@dimen/padding_default"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header_info_output" />
+        android:text="@string/info_output" />
 
-    <!-- TODO create show results here -->
     <TextView
-        android:id="@+id/todo_config"
+        android:id="@+id/result_best_speed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TODO calculate and show results here."
-        android:layout_marginBottom="@dimen/padding_default"
-        android:textColor="#f00"
-        android:padding="@dimen/padding_double"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:background="#ccc"
+        android:textSize="@dimen/text_size_large"
+        android:text="@string/result_best_speed" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/result_final_speed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_large"
+        android:text="@string/result_final_speed" />
+
+    <TextView
+        android:id="@+id/result_number_of_charges"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ccc"
+        android:textSize="@dimen/text_size_large"
+        android:text="@string/result_number_of_charges" />
+
+    <TextView
+        android:id="@+id/result_total_trip_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_large"
+        android:text="@string/result_total_trip_time" />
+
+    <TextView
+        android:id="@+id/result_charge_equiv_speed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ccc"
+        android:textSize="@dimen/text_size_large"
+        android:text="@string/result_charge_equiv_speed" />
+
+    <TextView
+        android:id="@+id/result_total_charge_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_large"
+        android:text="@string/result_total_charge_time" />
+
+    <TextView
+        android:id="@+id/result_driving_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ccc"
+        android:textSize="@dimen/text_size_large"
+        android:text="@string/result_total_driving_time" />
+
+    <TextView
+        android:id="@+id/result_distance_charge_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_large"
+        android:text="@string/result_distance_charge_1" />
+
+    <TextView
+        android:id="@+id/result_distance_charge_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ccc"
+        android:textSize="@dimen/text_size_large"
+        android:text="@string/result_distance_charge_2" />
+
+    <TextView
+        android:id="@+id/result_distance_charge_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_large"
+        android:text="@string/result_distance_charge_3" />
+
+    <TextView
+        android:id="@+id/result_time_per_charge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ccc"
+        android:textSize="@dimen/text_size_large"
+        android:text="@string/result_time_per_charge" />
+
+    <TextView
+        android:id="@+id/result_total_time_per_charge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_large"
+        android:text="@string/result_total_time_per_charge" />
+
+    <TextView
+        android:id="@+id/result_total_trip_energy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ccc"
+        android:textSize="@dimen/text_size_large"
+        android:text="@string/result_total_trip_energy" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>
