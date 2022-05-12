@@ -8,6 +8,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import be.hcpl.android.optitripev.R
+import kotlin.math.abs
+import kotlin.math.ceil
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -27,9 +29,58 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     // TODO parse values from text, add errors where needed
 
     fun calculate() {
-        // TODO perform calculation
+        // TODO perform calculation, lookup minimal total trip time from calculations
 
-        val optimalSpeed = 95
-        result.value = String.format(context.getString(R.string.result_optimal_speed), optimalSpeed)
+        // TODO calculate total trip time for all speeds
+        val totalTimeBySpeed = speedByConsumption.mapValues {
+            // using:
+            // driving time = total distance / speed
+            val drivingTime = (totalDistance.value?.toDouble()?:1000.0) / it.key
+            // total energy = speedByConsumption * total trip distance
+            val totalEnergy = it.value * (totalDistance.value?.toDouble()?:1000.0)
+            // required extra energy = abs ( total energy - usable energy ) // FIXME take initial SOC into account here!?
+            val extraEnergy = abs( totalEnergy - (usableEnergy.value?.toDouble()?:13.0))
+            // total charge time = abs ( required extra energy / charge power )
+            val totalChargeTime = abs(extraEnergy / (chargePower.value?.toDouble()?:13.0))
+            // time per charge = ( chargeTarget / 100 ) * ( usableEnergy / chargePower )
+            val timePerCharge = ( (chargeTarget.value?.toDouble()?:100.0) / 100 ) * ( (usableEnergy.value?.toDouble()?:13.0) / (chargePower.value?.toDouble()?:13.0) )
+            // # charges = ceil ( required extra energy / ( charge power * time per charge ) )
+            val numberOfCharges = ceil(extraEnergy / ( (chargePower.value?.toDouble()?:13.0) * timePerCharge ))
+
+            // formula:
+            // driving time + total charge time + ( # charges * charge delay )
+            drivingTime + totalChargeTime // TODO take charge delay into account here + ( numberOfCharges * chargeDelay.value?.toDouble()?:0.03)
+        }
+
+        // and from that new collection get the lowest value to display
+        val optimalSpeed = totalTimeBySpeed.minByOrNull { it.value }?: 0.0
+        result.value = String.format(context.getString(R.string.result_optimal_speed), (optimalSpeed as Map.Entry<*,*>).key)
     }
+
+    // TODO move this table to a configurable view so users can have their own
+    val speedByConsumption = mapOf(
+        30 to 0.027,
+        35 to 0.029,
+        40 to 0.032,
+        45 to 0.034,
+        50 to 0.037,
+        55 to 0.041,
+        60 to 0.045,
+        65 to 0.049,
+        70 to 0.053,
+        75 to 0.058,
+        80 to 0.063,
+        85 to 0.068,
+        90 to 0.075,
+        95 to 0.081,
+        100 to 0.089,
+        105 to 0.097,
+        110 to 0.105,
+        115 to 0.115,
+        120 to 0.125,
+        125 to 0.136,
+        130 to 0.148,
+        135 to 0.162,
+        140 to 0.176,
+    )
 }
