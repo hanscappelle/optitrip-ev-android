@@ -46,6 +46,12 @@ class HomeFragment : Fragment() {
 
         // Get input text
         totalDistance.doOnTextChanged { text, _, _, _ -> viewModel.totalDistance.value = text.toString() }
+        chargePower.doOnTextChanged { text, _, _, _ -> viewModel.chargePower.value = text.toString() }
+        chargeTarget.doOnTextChanged { text, _, _, _ -> viewModel.chargeTarget.value = text.toString() }
+        chargeDelay.doOnTextChanged { text, _, _, _ -> viewModel.chargeDelay.value = text.toString() }
+        usableEnergy.doOnTextChanged { text, _, _, _ -> viewModel.usableEnergy.value = text.toString() }
+        initialSoc.doOnTextChanged { text, _, _, _ -> viewModel.initialSoc.value = text.toString() }
+        distanceFirstCharger.doOnTextChanged { text, _, _, _ -> viewModel.distanceFirstCharger.value = text.toString() }
 
         // performs calculation
         calculate.setOnClickListener { viewModel.calculate() }

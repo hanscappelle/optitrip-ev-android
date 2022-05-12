@@ -13,6 +13,11 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
     private val context = getApplication<Application>().applicationContext
 
+    val chargeTarget = MutableLiveData<String>()
+    val chargeDelay = MutableLiveData<String>()
+    val usableEnergy = MutableLiveData<String>()
+    val distanceFirstCharger = MutableLiveData<String>()
+    val initialSoc = MutableLiveData<String>()
     val totalDistance = MutableLiveData<String>()
     val chargePower = MutableLiveData<String>()
 
