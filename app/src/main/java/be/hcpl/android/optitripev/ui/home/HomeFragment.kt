@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import be.hcpl.android.optitripev.databinding.FragmentHomeBinding
+import com.google.android.material.textfield.TextInputEditText
 
 class HomeFragment : Fragment() {
 
@@ -22,16 +25,31 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+        val viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        //val textView: TextView = binding.textHome
-        //homeViewModel.text.observe(viewLifecycleOwner) {
-        //    textView.text = it
-        //}
+        // bind view references
+        val totalDistance: TextInputEditText = binding.inputTotalDistance
+        val chargePower: TextInputEditText = binding.inputChargePower
+        val chargeTarget: TextInputEditText = binding.inputChargeTarget
+        val chargeDelay: TextInputEditText = binding.inputChargeDelay
+        val usableEnergy: TextInputEditText = binding.inputUsableEnergy
+        val initialSoc: TextInputEditText = binding.inputInitialSoc
+        val distanceFirstCharger: TextInputEditText = binding.inputFirstChargeStation
+        val calculate: Button = binding.calculate
+        val resultView: TextView = binding.resultSpeed
+
+        // check for changes
+        viewModel.result.observe(viewLifecycleOwner) { resultView.text = it }
+
+        // Get input text
+        totalDistance.doOnTextChanged { text, _, _, _ -> viewModel.totalDistance.value = text.toString() }
+
+        // performs calculation
+        calculate.setOnClickListener { viewModel.calculate() }
+
         return root
     }
 

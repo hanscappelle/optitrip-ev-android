@@ -8,7 +8,7 @@
     <string name="hint_charge_power">Charge power in kW</string>
     <string name="hint_charge_target">Charge target in SOC %</string>
     <string name="hint_charge_delay">Overhead time at charger in min</string>
-    <string name="hint_usable_energy">Usable energy in Kwh</string>
+    <string name="hint_usable_energy">Usable energy in kWh</string>
     <string name="hint_initial_soc">Initial SOC as a %</string>
     <string name="hint_first_charge_station">Distance to 1st charger in km</string>
     <string name="info_input">On first use double check that you have the correct consumption numbers for your EV selected. Next complete below input fields with all the details you have for this trip. Once satisfied hit the calculate button to get the optimal speed to travel.</string>
@@ -30,4 +30,5 @@
     <string name="result_time_per_charge">Time per charge %.2f hours</string>
     <string name="result_total_time_per_charge">Total time per charge %.2f hours</string>
     <string name="result_total_trip_energy">Total trip Energy %.1f kWh</string>
+    <string name="result_optimal_speed">Optimal calculated speed is %d km/h</string>
 </resources>
