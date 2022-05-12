@@ -29,6 +29,11 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     // TODO parse values from text, show errors where needed
 
     fun calculate() {
+        // TODO get user entered values with fallback to some defaults here
+
+        // entered charge delay time is in minutes, calculate that to hours
+        val chargeDelay = (chargeDelay.value?.toDouble()?:0.0) * 0.0166667
+
         // calculate total trip time for all speeds
         val totalTimeBySpeed = speedByConsumption.mapValues {
             // using:
@@ -47,7 +52,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
             // formula:
             // driving time + total charge time + ( # charges * charge delay )
-            drivingTime + totalChargeTime // TODO take charge delay into account here + ( numberOfCharges * chargeDelay.value?.toDouble()?:0.03)
+            drivingTime + totalChargeTime + ( numberOfCharges * chargeDelay)
         }
 
         // and from that new collection get the lowest value to display
