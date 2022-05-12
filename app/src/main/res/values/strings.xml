@@ -13,4 +13,8 @@
     <string name="hint_first_charge_station">Distance to 1st charger in km</string>
     <string name="info_input">On first use double check that you have the correct consumption numbers for your EV selected. Next complete below input fields with all the details you have for this trip. Once satisfied hit the calculate button to get the optimal speed to travel.</string>
     <string name="action_calculate">Calculate Speed</string>
+    <string name="header_config">Configuration</string>
+    <string name="info_config">Update these consumption numbers to match your own EV and get better results.</string>
+    <string name="header_info_output">Info Output</string>
+    <string name="info_output">This is the optimal speed to ride at given the consumption numbers from your configuration.</string>
 </resources>

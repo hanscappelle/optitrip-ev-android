@@ -7,16 +7,37 @@
     tools:context=".ui.notifications.NotificationsFragment">
 
     <TextView
-        android:id="@+id/text_notifications"
+        android:id="@+id/header_config"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/header_config"
+        android:textSize="@dimen/text_size_extra_large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/info_config"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/info_config"
+        android:layout_marginBottom="@dimen/padding_default"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/header_config" />
+
+    <!-- TODO create consumption per speed config here -->
+    <TextView
+        android:id="@+id/todo_config"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TODO create consumption per speed config here, also allow for model selection with prefill of typical numbers. And a deviation option in % to apply to result."
+        android:layout_marginBottom="@dimen/padding_default"
+        android:textColor="#f00"
+        android:padding="@dimen/padding_double"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

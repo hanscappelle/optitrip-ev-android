@@ -18,6 +18,13 @@ OPTITRIP EV v1.4 spreadsheet created by Stephane Melançon aka DOCTORBASS 2018
 * create some donation option
 * create app icon
 * update navigation icons
+* remember last input values
+
+## Version History
+
+### 0.1
+
+initial app release
 
 ### What is this repository for? ###
 
