@@ -36,15 +36,9 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 
 ## Version History
 
-### 0.1
+### 0.4
 
-* initial app release as an internal test with basic functionality
-
-### 0.2
-
-* provided app icon and update theme colors
-* remember last used input values
-* show detailed output on second tab (wip)
+* remove obfuscation from release app
 
 ### 0.3
 
@@ -54,9 +48,15 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 * add about info (wip)
 * fixed small screen support
 
-### 0.4
+### 0.2
 
-* remove obfuscation from release app
+* provided app icon and update theme colors
+* remember last used input values
+* show detailed output on second tab (wip)
+
+### 0.1
+
+* initial app release as an internal test with basic functionality
 
 ## References
 
