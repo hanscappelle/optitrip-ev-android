@@ -22,7 +22,7 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 
 * OK - There are INPUT value and OUTPUT values, very simple
 * OK - have dark and light theme in app (test, should be provided by theme)
-* One of the input that could be on a seperate page is the efficiency ( consumption in Wh vs speed. People could test  and input value for 10kmh, 20kmh 30kmh etc up to 120kmh and get a graph and the calculation of the optimum speed would be based on it.
+* One of the input that could be on a seperate page is the efficiency ( consumption in Wh vs speed)
 * I like the fact that there are colours approaching green above and below the optimum speed so people can see how it compare to the speed below and above
 * I also thought about a correction factor based on a % of the best average speed to use vs the real speed average that the trip was so if there is a difference of value vs what people really had they could just adjust the correction factor the value for the next trips for the best average speed to use.
 * allow for imperial units also from app settings
@@ -34,7 +34,7 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 * update navigation icons
 * have input masks and input validation
 * remove obfuscation from release app
-* calculate on resume if possible, maybe completely remove calculate button and just update on changes?
+* remove calculate button completely and instead monitor changes?
 
 ## Version History
 
@@ -51,6 +51,7 @@ show detailed output on second tab (wip)
 ### 0.3
 
 show detailed output on second tab (continued)
+calculate on resume of input view
 
 ## References
 
