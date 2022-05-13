@@ -17,10 +17,12 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
     private val prefs = context.getSharedPreferences(Constants.APP_PREFERENCES, Context.MODE_PRIVATE)
 
     val optimalSpeed = MutableLiveData<Int>()
+    val totalTripEnergy = MutableLiveData<Float>()
 
     override fun onResume(owner: LifecycleOwner) {
         // TODO get stored calculation results here
         optimalSpeed.value = prefs.getInt(Constants.RESULT_OPTIMAL_SPEED, 0)
+        totalTripEnergy.value = prefs.getFloat(Constants.RESULT_TOTAL_ENERGY, 0f)
     }
 
     override fun onPause(owner: LifecycleOwner) {

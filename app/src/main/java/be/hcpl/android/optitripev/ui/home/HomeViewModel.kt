@@ -2,16 +2,12 @@ package be.hcpl.android.optitripev.ui.home
 
 import android.app.Application
 import android.content.Context
-import android.content.SharedPreferences
-import android.provider.Settings.Global.getString
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import be.hcpl.android.optitripev.R
+import be.hcpl.android.optitripev.model.OptiTripResult
 import be.hcpl.android.optitripev.util.Constants
 import kotlin.math.abs
 import kotlin.math.ceil
@@ -39,6 +35,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application),
     val lastChargePower = MutableLiveData<String>()
 
     val result = MutableLiveData<String>()
+    private val resultsBySpeed = emptyMap<Int, OptiTripResult>().toMutableMap()
 
     // TODO parse values from text, show errors where needed
 
@@ -68,6 +65,16 @@ class HomeViewModel(application: Application) : AndroidViewModel(application),
             // # charges = ceil ( required extra energy / ( charge power * time per charge ) )
             val numberOfCharges = ceil(extraEnergy / (chargePowerValue * timePerCharge))
 
+            val result = OptiTripResult(
+                drivingTime = drivingTime,
+                totalEnergy = totalEnergy,
+                extraEnergy = extraEnergy,
+                totalChargeTime = totalChargeTime,
+                timePerCharge = timePerCharge,
+                numberOfCharges = numberOfCharges.toInt(),
+            )
+            resultsBySpeed[it.key] = result
+
             // formula:
             // driving time + total charge time + ( # charges * charge delay )
             drivingTime + totalChargeTime + (numberOfCharges * chargeDelayValue)
@@ -76,14 +83,16 @@ class HomeViewModel(application: Application) : AndroidViewModel(application),
         // and from that new collection get the lowest value to display
         val optimalSpeedMap = totalTimeBySpeed.minByOrNull { it.value } ?: 0.0
         val optimalSpeed = (optimalSpeedMap as Map.Entry<*, *>).key
+        val optimalSpeedInt = Integer.parseInt(optimalSpeed.toString())
         result.value = String.format(
             context.getString(R.string.result_optimal_speed),
-            optimalSpeed
+            optimalSpeedInt
         )
 
         // store for use elsewhere
         prefs.edit()
-            .putInt(Constants.RESULT_OPTIMAL_SPEED, Integer.parseInt(optimalSpeed.toString()))
+            .putInt(Constants.RESULT_OPTIMAL_SPEED, optimalSpeedInt)
+            .putFloat(Constants.RESULT_TOTAL_ENERGY, resultsBySpeed.get(optimalSpeedInt)?.totalEnergy?.toFloat()?: 0f)
             .apply()
     }
 

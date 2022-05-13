@@ -37,9 +37,11 @@ class DashboardFragment : Fragment() {
 
         // TODO get all results here
         val optimalSpeedView = binding.resultBestSpeed
+        val totalEnergyView = binding.resultTotalTripEnergy
 
         // TODO show all results here
         viewModel.optimalSpeed.observe(viewLifecycleOwner) { optimalSpeedView.text = getString(R.string.result_best_speed, it)}
+        viewModel.totalTripEnergy.observe(viewLifecycleOwner) { totalEnergyView.text = getString(R.string.result_total_trip_energy, it)}
 
         return root
     }
