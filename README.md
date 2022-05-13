@@ -46,7 +46,7 @@ initial app release as an internal test with basic functionality
 
 provided app icon and update theme colors
 remember last used input values
-show detailed output on second tab
+show detailed output on second tab (wip)
 
 ## References
 
