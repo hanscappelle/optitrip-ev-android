@@ -38,25 +38,25 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 
 ### 0.1
 
-initial app release as an internal test with basic functionality
+* initial app release as an internal test with basic functionality
 
 ### 0.2
 
-provided app icon and update theme colors
-remember last used input values
-show detailed output on second tab (wip)
+* provided app icon and update theme colors
+* remember last used input values
+* show detailed output on second tab (wip)
 
 ### 0.3
 
-show detailed output on second tab (continued)
-calculate on resume of input view
-update navigation icons
-add about info (wip)
-fixed small screen support
+* show detailed output on second tab (continued)
+* calculate on resume of input view
+* update navigation icons
+* add about info (wip)
+* fixed small screen support
 
 ### 0.4
 
-remove obfuscation from release app
+* remove obfuscation from release app
 
 ## References
 
