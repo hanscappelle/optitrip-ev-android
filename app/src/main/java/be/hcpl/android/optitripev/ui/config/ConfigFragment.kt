@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import be.hcpl.android.optitripev.databinding.FragmentConfigBinding
-import be.hcpl.android.optitripev.databinding.FragmentNotificationsBinding
 
 class ConfigFragment : Fragment() {
 
