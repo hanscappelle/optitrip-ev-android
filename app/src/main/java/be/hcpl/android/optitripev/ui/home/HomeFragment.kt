@@ -8,9 +8,11 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import be.hcpl.android.optitripev.databinding.FragmentHomeBinding
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 
 class HomeFragment : Fragment() {
 
@@ -20,12 +22,19 @@ class HomeFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    private lateinit var viewModel: HomeViewModel
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        lifecycle.addObserver(viewModel)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
+
+        viewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -33,7 +42,7 @@ class HomeFragment : Fragment() {
         // bind view references
         val totalDistance: TextInputEditText = binding.inputTotalDistance
         val chargePower: TextInputEditText = binding.inputChargePower
-        val chargeTarget: TextInputEditText = binding.inputChargeTarget
+        val chargeTarget: TextInputLayout = binding.chargeTarget
         val chargeDelay: TextInputEditText = binding.inputChargeDelay
         val usableEnergy: TextInputEditText = binding.inputUsableEnergy
         val initialSoc: TextInputEditText = binding.inputInitialSoc
@@ -42,12 +51,22 @@ class HomeFragment : Fragment() {
         val resultView: TextView = binding.resultSpeed
 
         // check for changes
+        viewModel.lastTotalDistance.observe(viewLifecycleOwner) { totalDistance.setText(it) }
+        viewModel.lastChargePower.observe(viewLifecycleOwner) { chargePower.setText(it) }
+        viewModel.lastChargeTarget.observe(viewLifecycleOwner) {
+            chargeTarget.editText?.setText(it) // TODO should we target TextInputLayout like this instead?
+        }
+        viewModel.lastChargeDelay.observe(viewLifecycleOwner) { chargeDelay.setText(it) }
+        viewModel.lastUsableEnergy.observe(viewLifecycleOwner) { usableEnergy.setText(it) }
+        viewModel.lastInitialSoc.observe(viewLifecycleOwner) { initialSoc.setText(it) }
+        viewModel.lastDistanceFirstCharger.observe(viewLifecycleOwner) { distanceFirstCharger.setText(it) }
+
         viewModel.result.observe(viewLifecycleOwner) { resultView.text = it }
 
         // Get input text
         totalDistance.doOnTextChanged { text, _, _, _ -> viewModel.totalDistance.value = text.toString() }
         chargePower.doOnTextChanged { text, _, _, _ -> viewModel.chargePower.value = text.toString() }
-        chargeTarget.doOnTextChanged { text, _, _, _ -> viewModel.chargeTarget.value = text.toString() }
+        chargeTarget.editText?.doOnTextChanged { text, _, _, _ -> viewModel.chargeTarget.value = text.toString() }
         chargeDelay.doOnTextChanged { text, _, _, _ -> viewModel.chargeDelay.value = text.toString() }
         usableEnergy.doOnTextChanged { text, _, _, _ -> viewModel.usableEnergy.value = text.toString() }
         initialSoc.doOnTextChanged { text, _, _, _ -> viewModel.initialSoc.value = text.toString() }

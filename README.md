@@ -7,6 +7,17 @@ OPTITRIP EV v1.4 spreadsheet created by Stephane Melançon aka DOCTORBASS 2018
 
 ![Play store art for this App](https://i.ibb.co/f25dYPQ/functieafbeelding.jpg)
 
+## Where to get the app
+
+For stable release version see Google play store on your device or use link below
+
+TODO link to app store
+
+If you like you can become a beta tester. That way you get the app release a bit sooner (and often
+more frequently) so that you can evaluate the latest changes and provide feedback on discoverd issues.
+
+TODO link to test version of app
+
 ## Coming features
 
 * OK - There are INPUT value and OUTPUT values, very simple
@@ -18,11 +29,11 @@ OPTITRIP EV v1.4 spreadsheet created by Stephane Melançon aka DOCTORBASS 2018
 
 ## TODO
 
-* add about info
-* create some donation option
+* release iOS version of this app
+* add about info + create some donation option
 * update navigation icons
-* remember last input values
-* have input masks
+* have input masks and input validation
+* remove obfuscation from release app
 
 ## Version History
 
@@ -33,6 +44,7 @@ initial app release as an internal test with basic functionality
 ### 0.2
 
 provided app icon and update theme colors
+remember last used input values
 
 ## References
 

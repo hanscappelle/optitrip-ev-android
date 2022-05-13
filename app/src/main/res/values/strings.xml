@@ -7,7 +7,7 @@
     <string name="hint_total_distance">Total trip distance in km</string>
     <string name="hint_charge_power">Charge power in kW</string>
     <string name="hint_charge_target">Charge target in SOC %</string>
-    <string name="hint_charge_delay">Overhead time at charger in min</string>
+    <string name="hint_charge_delay">Overhead time at charger in minutes</string>
     <string name="hint_usable_energy">Usable energy in kWh</string>
     <string name="hint_initial_soc">Initial SOC as a %</string>
     <string name="hint_first_charge_station">Distance to 1st charger in km</string>
