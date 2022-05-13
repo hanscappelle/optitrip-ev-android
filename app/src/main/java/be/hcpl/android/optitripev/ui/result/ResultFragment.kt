@@ -8,10 +8,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import be.hcpl.android.optitripev.R
 import be.hcpl.android.optitripev.databinding.FragmentDashboardBinding
+import be.hcpl.android.optitripev.databinding.FragmentResultBinding
 
 class ResultFragment : Fragment() {
 
-    private var _binding: FragmentDashboardBinding? = null
+    private var _binding: FragmentResultBinding? = null
 
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
@@ -30,7 +31,7 @@ class ResultFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(ResultViewModel::class.java)
 
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        _binding = FragmentResultBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         // get all results here

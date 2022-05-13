@@ -6,11 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import be.hcpl.android.optitripev.databinding.FragmentConfigBinding
 import be.hcpl.android.optitripev.databinding.FragmentNotificationsBinding
 
 class ConfigFragment : Fragment() {
 
-    private var _binding: FragmentNotificationsBinding? = null
+    private var _binding: FragmentConfigBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -24,7 +25,7 @@ class ConfigFragment : Fragment() {
         val notificationsViewModel =
             ViewModelProvider(this).get(ConfigViewModel::class.java)
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentConfigBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         //val textView: TextView = binding.textNotifications
