@@ -32,7 +32,7 @@ initial app release as an internal test with basic functionality
 
 ### 0.2
 
-provided app icon
+provided app icon and update theme colors
 
 ## References
 
