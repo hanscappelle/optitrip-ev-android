@@ -1,24 +1,22 @@
-package be.hcpl.android.optitripev.ui.dashboard
+package be.hcpl.android.optitripev.ui.result
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import be.hcpl.android.optitripev.R
 import be.hcpl.android.optitripev.databinding.FragmentDashboardBinding
-import be.hcpl.android.optitripev.ui.home.HomeViewModel
 
-class DashboardFragment : Fragment() {
+class ResultFragment : Fragment() {
 
     private var _binding: FragmentDashboardBinding? = null
 
     // This property is only valid between onCreateView and onDestroyView.
     private val binding get() = _binding!!
 
-    private lateinit var viewModel: DashboardViewModel
+    private lateinit var viewModel: ResultViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         lifecycle.addObserver(viewModel)
@@ -30,7 +28,7 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        viewModel = ViewModelProvider(this).get(DashboardViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(ResultViewModel::class.java)
 
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root

@@ -13,13 +13,13 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="be.hcpl.android.optitripev.ui.dashboard.DashboardFragment"
+        android:name="be.hcpl.android.optitripev.ui.result.ResultFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="be.hcpl.android.optitripev.ui.notifications.NotificationsFragment"
+        android:name="be.hcpl.android.optitripev.ui.config.ConfigFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
 

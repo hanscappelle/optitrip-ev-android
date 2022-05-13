@@ -1,16 +1,14 @@
-package be.hcpl.android.optitripev.ui.dashboard
+package be.hcpl.android.optitripev.ui.result
 
 import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import be.hcpl.android.optitripev.util.Constants
 
-class DashboardViewModel(application: Application) : AndroidViewModel(application),
+class ResultViewModel(application: Application) : AndroidViewModel(application),
     DefaultLifecycleObserver {
 
     private val context by lazy { getApplication<Application>().applicationContext }

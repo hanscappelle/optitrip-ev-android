@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:padding="@dimen/padding_default"
     android:orientation="vertical"
-    tools:context=".ui.dashboard.DashboardFragment">
+    tools:context=".ui.result.ResultFragment">
 
     <TextView
         android:id="@+id/header_info_output"
