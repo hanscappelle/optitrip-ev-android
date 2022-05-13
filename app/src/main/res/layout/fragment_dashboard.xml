@@ -59,6 +59,7 @@
         android:layout_height="wrap_content"
         android:background="#ccc"
         android:textSize="@dimen/text_size_large"
+        android:textColor="#f00"
         android:text="@string/result_charge_equiv_speed" />
 
     <TextView
