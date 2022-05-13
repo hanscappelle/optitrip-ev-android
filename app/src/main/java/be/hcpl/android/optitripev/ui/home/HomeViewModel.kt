@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData
 import be.hcpl.android.optitripev.R
 import be.hcpl.android.optitripev.model.OptiTripResult
 import be.hcpl.android.optitripev.util.Constants
+import java.lang.Exception
 import kotlin.math.abs
 import kotlin.math.ceil
 
@@ -36,18 +37,20 @@ class HomeViewModel(application: Application) : AndroidViewModel(application),
 
     val result = MutableLiveData<String>()
     private val resultsBySpeed = emptyMap<Int, OptiTripResult>().toMutableMap()
-
-    // TODO parse values from text, show errors where needed
+    val errorMessage = MutableLiveData<String>()
 
     fun calculate() {
-        // get user entered values with fallback to some defaults here
-        val totalDistanceValue = totalDistance.value?.toDouble() ?: 1000.0
-        val usableEnergyValue = usableEnergy.value?.toDouble() ?: 13.0
-        val initialSocValue = initialSoc.value?.toDouble() ?: 100.0
-        val chargePowerValue = chargePower.value?.toDouble() ?: 13.0
-        val chargeTargetValue = chargeTarget.value?.toDouble() ?: 100.0
-        // entered charge delay time is in minutes, calculate that to hours
-        val chargeDelayValue = (chargeDelay.value?.toDouble() ?: 0.0) * Constants.MINUTES_TO_HOUR
+        // TODO parse values from text, show errors where needed
+        try {
+            // get user entered values with fallback to some defaults here
+            val totalDistanceValue = totalDistance.value?.toDouble() ?: 1000.0
+            val usableEnergyValue = usableEnergy.value?.toDouble() ?: 13.0
+            val initialSocValue = initialSoc.value?.toDouble() ?: 100.0
+            val chargePowerValue = chargePower.value?.toDouble() ?: 13.0
+            val chargeTargetValue = chargeTarget.value?.toDouble() ?: 100.0
+            // entered charge delay time is in minutes, calculate that to hours
+            val chargeDelayValue =
+                (chargeDelay.value?.toDouble() ?: 0.0) * Constants.MINUTES_TO_HOUR
 
         // calculate total trip time for all speeds
         val totalTimeBySpeed = speedByConsumption.mapValues {
@@ -98,6 +101,10 @@ class HomeViewModel(application: Application) : AndroidViewModel(application),
             .putFloat(Constants.RESULT_TOTAL_CHARGE_TIME, resultsBySpeed[optimalSpeedInt]?.totalChargeTime?.toFloat()?: 0f)
             .putFloat(Constants.RESULT_CALCULATED_EFFICIENCY, speedByConsumption[optimalSpeedInt]?.toFloat()?: 0f)
             .apply()
+
+        }catch (e: Exception){
+            errorMessage.value = context.getString(R.string.err_calculating_result)
+        }
     }
 
     // region store user input values in preferences and recover on resume
@@ -110,6 +117,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application),
         lastInitialSoc.value = prefs.getString(Constants.PREF_KEY_INITIAL_SOC, "")
         lastTotalDistance.value = prefs.getString(Constants.PREF_KEY_TOTAL_DISTANCE, "")
         lastDistanceFirstCharger.value = prefs.getString(Constants.PREF_KEY_DISTANCE_FIRST_CHARGER, "")
+        calculate() // calculate directly on resume also
     }
 
     override fun onPause(owner: LifecycleOwner) {

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
@@ -61,6 +62,10 @@ class HomeFragment : Fragment() {
         viewModel.lastDistanceFirstCharger.observe(viewLifecycleOwner) { distanceFirstCharger.setText(it) }
 
         viewModel.result.observe(viewLifecycleOwner) { resultView.text = it }
+        viewModel.errorMessage.observe(viewLifecycleOwner) {
+            // show some error here for now
+            Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+        }
 
         // Get input text
         totalDistance.doOnTextChanged { text, _, _, _ -> viewModel.totalDistance.value = text.toString() }

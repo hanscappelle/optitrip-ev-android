@@ -31,4 +31,5 @@
     <string name="result_total_time_per_charge">Total time per charge %.2f hours</string>
     <string name="result_total_trip_energy">Total trip Energy %.1f kWh</string>
     <string name="result_optimal_speed">Optimal speed is %d km/h</string>
+    <string name="err_calculating_result">Problem calculating result, check input</string>
 </resources>
