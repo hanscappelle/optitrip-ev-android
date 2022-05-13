@@ -102,7 +102,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application),
             .putFloat(Constants.RESULT_CALCULATED_EFFICIENCY, speedByConsumption[optimalSpeedInt]?.toFloat()?: 0f)
             .apply()
 
-        }catch (e: Exception){
+        } catch (e: Exception) {
             errorMessage.value = context.getString(R.string.err_calculating_result)
         }
     }

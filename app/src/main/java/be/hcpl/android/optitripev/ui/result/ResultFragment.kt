@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import be.hcpl.android.optitripev.R
@@ -61,6 +62,11 @@ class ResultFragment : Fragment() {
         viewModel.distanceFirstCharger.observe(viewLifecycleOwner) { distanceFirstCharger.text = getString(R.string.result_distance_charge_1, it)}
         viewModel.distanceSecondCharger.observe(viewLifecycleOwner) { distanceSecondCharger.text = getString(R.string.result_distance_charge_2, it)}
         viewModel.distanceThirdCharger.observe(viewLifecycleOwner) { distanceThirdCharger.text = getString(R.string.result_distance_charge_3, it)}
+
+        // check for errors
+        viewModel.errorMessage.observe(viewLifecycleOwner){
+            Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+        }
 
         return root
     }

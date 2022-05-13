@@ -6,7 +6,9 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
+import be.hcpl.android.optitripev.R
 import be.hcpl.android.optitripev.util.Constants
+import java.lang.Exception
 
 class ResultViewModel(application: Application) : AndroidViewModel(application),
     DefaultLifecycleObserver {
@@ -27,41 +29,53 @@ class ResultViewModel(application: Application) : AndroidViewModel(application),
     val distanceSecondCharger = MutableLiveData<Int>()
     val distanceThirdCharger = MutableLiveData<Int>()
 
+    val errorMessage = MutableLiveData<String>()
+
     override fun onResume(owner: LifecycleOwner) {
-        // get stored calculation results here
-        optimalSpeed.value = prefs.getInt(Constants.RESULT_OPTIMAL_SPEED, 0)
-        totalTripEnergy.value = prefs.getFloat(Constants.RESULT_TOTAL_ENERGY, 0f)
-        numberOfCharges.value = prefs.getInt(Constants.RESULT_NUMBER_OF_CHARGES, 0)
-        val totalDriveTimeValue = prefs.getFloat(Constants.RESULT_TOTAL_DRIVE_TIME, 0f)
-        val totalChargeTimeValue = prefs.getFloat(Constants.RESULT_TOTAL_CHARGE_TIME, 0f)
-        val totalTripTimeValue = totalDriveTimeValue + totalChargeTimeValue
-        totalChargeTime.value = totalChargeTimeValue
-        totalDriveTime.value = totalDriveTimeValue
-        totalTripTime.value = totalTripTimeValue
-        val totalDistanceValue = prefs.getString(Constants.PREF_KEY_TOTAL_DISTANCE, "0")?.toInt() ?: 0 // from user input
-        val equivalentSpeedValue = totalDistanceValue / totalTripTimeValue
-        // FIXME charging equiv speed formula broken on mac
-        equivalentSpeed.value = equivalentSpeedValue.toInt()
-        // charge time
-        val chargeTargetValue = prefs.getString(Constants.PREF_KEY_CHARGE_TARGET, "0")?.toInt() ?: 0
-        val usableEnergyValue = prefs.getString(Constants.PREF_KEY_USABLE_ENERGY, "0.0")?.toDouble() ?: 0.0
-        val chargePowerValue = prefs.getString(Constants.PREF_KEY_CHARGE_POWER, "0.0")?.toDouble() ?: 0.0
-        val timePerChargeValue = (chargeTargetValue / 100)*(usableEnergyValue / chargePowerValue)
-        timePerCharge.value = timePerChargeValue.toFloat()
-        val overheadPerChargeValueInMin = prefs.getString(Constants.PREF_KEY_CHARGE_DELAY, "0.0")?.toDouble() ?: 0.0
-        val overheadPerChargeValue = overheadPerChargeValueInMin * Constants.MINUTES_TO_HOUR
-        val totalTimePerChargeValue = timePerChargeValue + overheadPerChargeValue
-        totalTimePerCharge.value = totalTimePerChargeValue.toFloat()
-        // distance to chargers
-        val initialSocValue = prefs.getString(Constants.PREF_KEY_INITIAL_SOC, "0")?.toInt() ?: 0
-        val calculatedEfficiencyValue = prefs.getFloat(Constants.RESULT_CALCULATED_EFFICIENCY, 0f)
-        val distanceFirstChargerValue = (0.01 * initialSocValue * usableEnergyValue) / calculatedEfficiencyValue
-        distanceFirstCharger.value = distanceFirstChargerValue.toInt()
-        distanceSecondCharger.value = distanceFirstChargerValue.toInt() * 2
-        distanceThirdCharger.value = distanceFirstChargerValue.toInt() * 3
-
-
-
+        try {
+            // get stored calculation results here
+            optimalSpeed.value = prefs.getInt(Constants.RESULT_OPTIMAL_SPEED, 0)
+            totalTripEnergy.value = prefs.getFloat(Constants.RESULT_TOTAL_ENERGY, 0f)
+            numberOfCharges.value = prefs.getInt(Constants.RESULT_NUMBER_OF_CHARGES, 0)
+            val totalDriveTimeValue = prefs.getFloat(Constants.RESULT_TOTAL_DRIVE_TIME, 0f)
+            val totalChargeTimeValue = prefs.getFloat(Constants.RESULT_TOTAL_CHARGE_TIME, 0f)
+            val totalTripTimeValue = totalDriveTimeValue + totalChargeTimeValue
+            totalChargeTime.value = totalChargeTimeValue
+            totalDriveTime.value = totalDriveTimeValue
+            totalTripTime.value = totalTripTimeValue
+            val totalDistanceValue =
+                prefs.getString(Constants.PREF_KEY_TOTAL_DISTANCE, "0")?.toInt()
+                    ?: 0 // from user input
+            val equivalentSpeedValue = totalDistanceValue / totalTripTimeValue
+            // FIXME charging equiv speed formula broken on mac
+            equivalentSpeed.value = equivalentSpeedValue.toInt()
+            // charge time
+            val chargeTargetValue =
+                prefs.getString(Constants.PREF_KEY_CHARGE_TARGET, "0")?.toInt() ?: 0
+            val usableEnergyValue =
+                prefs.getString(Constants.PREF_KEY_USABLE_ENERGY, "0.0")?.toDouble() ?: 0.0
+            val chargePowerValue =
+                prefs.getString(Constants.PREF_KEY_CHARGE_POWER, "0.0")?.toDouble() ?: 0.0
+            val timePerChargeValue =
+                (chargeTargetValue / 100) * (usableEnergyValue / chargePowerValue)
+            timePerCharge.value = timePerChargeValue.toFloat()
+            val overheadPerChargeValueInMin =
+                prefs.getString(Constants.PREF_KEY_CHARGE_DELAY, "0.0")?.toDouble() ?: 0.0
+            val overheadPerChargeValue = overheadPerChargeValueInMin * Constants.MINUTES_TO_HOUR
+            val totalTimePerChargeValue = timePerChargeValue + overheadPerChargeValue
+            totalTimePerCharge.value = totalTimePerChargeValue.toFloat()
+            // distance to chargers
+            val initialSocValue = prefs.getString(Constants.PREF_KEY_INITIAL_SOC, "0")?.toInt() ?: 0
+            val calculatedEfficiencyValue =
+                prefs.getFloat(Constants.RESULT_CALCULATED_EFFICIENCY, 0f)
+            val distanceFirstChargerValue =
+                (0.01 * initialSocValue * usableEnergyValue) / calculatedEfficiencyValue
+            distanceFirstCharger.value = distanceFirstChargerValue.toInt()
+            distanceSecondCharger.value = distanceFirstChargerValue.toInt() * 2
+            distanceThirdCharger.value = distanceFirstChargerValue.toInt() * 3
+        } catch (e: Exception) {
+            errorMessage.value = context.getString(R.string.err_calculating_result)
+        }
     }
 
     override fun onPause(owner: LifecycleOwner) {
