@@ -38,10 +38,18 @@ class DashboardFragment : Fragment() {
         // TODO get all results here
         val optimalSpeedView = binding.resultBestSpeed
         val totalEnergyView = binding.resultTotalTripEnergy
+        val numberOfChargesView = binding.resultNumberOfCharges
+        val totalTripTimeView = binding.resultTotalTripTime
+        val totalDriveTimeView = binding.resultDrivingTime
+        val totalChargeTimeView = binding.resultTotalChargeTime
 
         // TODO show all results here
         viewModel.optimalSpeed.observe(viewLifecycleOwner) { optimalSpeedView.text = getString(R.string.result_best_speed, it)}
         viewModel.totalTripEnergy.observe(viewLifecycleOwner) { totalEnergyView.text = getString(R.string.result_total_trip_energy, it)}
+        viewModel.numberOfCharges.observe(viewLifecycleOwner) { numberOfChargesView.text = getString(R.string.result_number_of_charges, it)}
+        viewModel.totalTripTime.observe(viewLifecycleOwner) { totalTripTimeView.text = getString(R.string.result_total_trip_time, it)}
+        viewModel.totalChargeTime.observe(viewLifecycleOwner) { totalChargeTimeView.text = getString(R.string.result_total_charge_time, it)}
+        viewModel.totalDriveTime.observe(viewLifecycleOwner) { totalDriveTimeView.text = getString(R.string.result_total_driving_time, it)}
 
         return root
     }

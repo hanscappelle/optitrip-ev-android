@@ -22,7 +22,7 @@
     <string name="result_number_of_charges">Total number of charges required %d charge(s)</string>
     <string name="result_total_trip_time">Total trip time %.2f hours</string>
     <string name="result_charge_equiv_speed">Charging equivalent speed %d km/h</string>
-    <string name="result_total_charge_time">Total additional charge time %.2f hours</string>
+    <string name="result_total_charge_time">Total charge time %.2f hours</string>
     <string name="result_total_driving_time">Total riding/driving time %.2f hours</string>
     <string name="result_distance_charge_1">Distance to 1st charger %d km</string>
     <string name="result_distance_charge_2">Distance to 2nd charger %d km</string>

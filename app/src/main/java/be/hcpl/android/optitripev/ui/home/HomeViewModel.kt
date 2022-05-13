@@ -92,7 +92,10 @@ class HomeViewModel(application: Application) : AndroidViewModel(application),
         // store for use elsewhere
         prefs.edit()
             .putInt(Constants.RESULT_OPTIMAL_SPEED, optimalSpeedInt)
-            .putFloat(Constants.RESULT_TOTAL_ENERGY, resultsBySpeed.get(optimalSpeedInt)?.totalEnergy?.toFloat()?: 0f)
+            .putFloat(Constants.RESULT_TOTAL_ENERGY, resultsBySpeed[optimalSpeedInt]?.totalEnergy?.toFloat()?: 0f)
+            .putInt(Constants.RESULT_NUMBER_OF_CHARGES, resultsBySpeed[optimalSpeedInt]?.numberOfCharges?: 0)
+            .putFloat(Constants.RESULT_TOTAL_DRIVE_TIME, resultsBySpeed[optimalSpeedInt]?.drivingTime?.toFloat()?: 0f)
+            .putFloat(Constants.RESULT_TOTAL_CHARGE_TIME, resultsBySpeed[optimalSpeedInt]?.totalChargeTime?.toFloat()?: 0f)
             .apply()
     }
 

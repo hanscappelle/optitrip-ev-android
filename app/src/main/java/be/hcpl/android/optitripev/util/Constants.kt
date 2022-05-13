@@ -4,6 +4,9 @@ class Constants {
 
     companion object {
 
+        const val RESULT_TOTAL_DRIVE_TIME = "resultTotalDriveTime"
+        const val RESULT_TOTAL_CHARGE_TIME = "resultTotalChargeTime"
+        const val RESULT_NUMBER_OF_CHARGES = "resultNumberOfCharges"
         const val RESULT_TOTAL_ENERGY = "resultTotalEnergy"
         const val RESULT_OPTIMAL_SPEED = "resultOptimalSpeed"
         const val PREF_KEY_CHARGE_DELAY = "chargeDelay"
