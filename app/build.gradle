@@ -10,16 +10,27 @@ android {
         applicationId "be.hcpl.android.optitripev"
         minSdk 21
         targetSdk 32
-        versionCode 3
-        versionName "0.3"
+        versionCode 4
+        versionName "0.4"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            postprocessing {
+                removeUnusedCode true
+                obfuscate false // see if we can get more info from release crash logs this way
+                optimizeCode true
+            }
+            zipAlignEnabled true
+            //proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            applicationIdSuffix '.debug'
+            minifyEnabled false // don't want minify enabled so that we can still properly debug
+            multiDexEnabled true // but for that to work I need to enable multidex... for real
+            zipAlignEnabled false // just slows down builds right?
         }
     }
     compileOptions {

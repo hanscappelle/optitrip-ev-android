@@ -32,7 +32,6 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 * release iOS version of this app
 * create donation option on about screen
 * have input masks and input validation
-* remove obfuscation from release app
 * remove calculate button completely and instead monitor changes?
 
 ## Version History
@@ -54,6 +53,10 @@ calculate on resume of input view
 update navigation icons
 add about info (wip)
 fixed small screen support
+
+### 0.4
+
+remove obfuscation from release app
 
 ## References
 
