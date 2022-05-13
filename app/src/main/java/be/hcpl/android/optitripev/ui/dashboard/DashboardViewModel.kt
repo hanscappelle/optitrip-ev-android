@@ -1,13 +1,29 @@
 package be.hcpl.android.optitripev.ui.dashboard
 
+import android.app.Application
+import android.content.Context
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import be.hcpl.android.optitripev.util.Constants
 
-class DashboardViewModel : ViewModel() {
+class DashboardViewModel(application: Application) : AndroidViewModel(application),
+    DefaultLifecycleObserver {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is dashboard Fragment"
+    private val context by lazy { getApplication<Application>().applicationContext }
+    private val prefs = context.getSharedPreferences(Constants.APP_PREFERENCES, Context.MODE_PRIVATE)
+
+    val optimalSpeed = MutableLiveData<Int>()
+
+    override fun onResume(owner: LifecycleOwner) {
+        // TODO get stored calculation results here
+        optimalSpeed.value = prefs.getInt(Constants.RESULT_OPTIMAL_SPEED, 0)
     }
-    val text: LiveData<String> = _text
+
+    override fun onPause(owner: LifecycleOwner) {
+        // no actions needed so far
+    }
 }

@@ -4,6 +4,7 @@ class Constants {
 
     companion object {
 
+        const val RESULT_OPTIMAL_SPEED = "resultOptimalSpeed"
         const val PREF_KEY_CHARGE_DELAY = "chargeDelay"
         const val PREF_KEY_USABLE_ENERGY = "usableEnergy"
         const val PREF_KEY_DISTANCE_FIRST_CHARGER = "distanceFirstCharger"

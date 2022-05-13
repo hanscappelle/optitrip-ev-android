@@ -19,7 +19,7 @@ import kotlin.math.ceil
 class HomeViewModel(application: Application) : AndroidViewModel(application),
     DefaultLifecycleObserver {
 
-    private val context = getApplication<Application>().applicationContext
+    private val context by lazy { getApplication<Application>().applicationContext }
     private val prefs = context.getSharedPreferences(Constants.APP_PREFERENCES, Context.MODE_PRIVATE)
 
     val chargeTarget = MutableLiveData<String>()
@@ -74,11 +74,17 @@ class HomeViewModel(application: Application) : AndroidViewModel(application),
         }
 
         // and from that new collection get the lowest value to display
-        val optimalSpeed = totalTimeBySpeed.minByOrNull { it.value } ?: 0.0
+        val optimalSpeedMap = totalTimeBySpeed.minByOrNull { it.value } ?: 0.0
+        val optimalSpeed = (optimalSpeedMap as Map.Entry<*, *>).key
         result.value = String.format(
             context.getString(R.string.result_optimal_speed),
-            (optimalSpeed as Map.Entry<*, *>).key
+            optimalSpeed
         )
+
+        // store for use elsewhere
+        prefs.edit()
+            .putInt(Constants.RESULT_OPTIMAL_SPEED, Integer.parseInt(optimalSpeed.toString()))
+            .apply()
     }
 
     // region store user input values in preferences and recover on resume

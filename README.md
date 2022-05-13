@@ -34,6 +34,7 @@ TODO link to test version of app
 * update navigation icons
 * have input masks and input validation
 * remove obfuscation from release app
+* calculate on resume if possible, maybe completely remove calculate button and just update on changes?
 
 ## Version History
 
@@ -45,6 +46,7 @@ initial app release as an internal test with basic functionality
 
 provided app icon and update theme colors
 remember last used input values
+show detailed output on second tab
 
 ## References
 
