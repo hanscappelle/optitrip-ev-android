@@ -32,15 +32,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/header_config" />
 
-        <!-- TODO create consumption per speed config here -->
-        <TextView
-            android:id="@+id/todo_config"
+        <!-- TODO use recycler instead? -->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/config_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/padding_default"
-            android:padding="@dimen/padding_double"
-            android:text="TODO create consumption per speed config here, also allow for model selection with prefill of typical numbers. And a deviation option in % to apply to result."
-            android:textColor="#f00"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
