@@ -11,12 +11,12 @@ OPTITRIP EV v1.4 spreadsheet created by Stephane Melançon aka DOCTORBASS 2018
 
 For stable release version see Google play store on your device or use link below
 
-TODO link to app store
+[play store link](https://play.google.com/store/apps/details?id=be.hcpl.android.optitripev)
 
 If you like you can become a beta tester. That way you get the app release a bit sooner (and often
 more frequently) so that you can evaluate the latest changes and provide feedback on discoverd issues.
 
-TODO link to test version of app
+[beta test link](https://play.google.com/apps/testing/be.hcpl.android.optitripev)
 
 ## Coming features
 
