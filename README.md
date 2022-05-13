@@ -48,6 +48,10 @@ provided app icon and update theme colors
 remember last used input values
 show detailed output on second tab (wip)
 
+### 0.3
+
+show detailed output on second tab (continued)
+
 ## References
 
 App icon created with https://icon.kitchen using colors CDDC39 and 4CAF50 resulting in

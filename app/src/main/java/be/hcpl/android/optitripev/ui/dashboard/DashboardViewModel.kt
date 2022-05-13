@@ -22,6 +22,9 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
     val totalTripTime = MutableLiveData<Float>()
     val totalDriveTime = MutableLiveData<Float>()
     val totalChargeTime = MutableLiveData<Float>()
+    val equivalentSpeed = MutableLiveData<Int>()
+    val timePerCharge = MutableLiveData<Float>()
+    val totalTimePerCharge = MutableLiveData<Float>()
 
     override fun onResume(owner: LifecycleOwner) {
         // TODO get stored calculation results here
@@ -30,9 +33,26 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
         numberOfCharges.value = prefs.getInt(Constants.RESULT_NUMBER_OF_CHARGES, 0)
         val totalDriveTimeValue = prefs.getFloat(Constants.RESULT_TOTAL_DRIVE_TIME, 0f)
         val totalChargeTimeValue = prefs.getFloat(Constants.RESULT_TOTAL_CHARGE_TIME, 0f)
+        val totalTripTimeValue = totalDriveTimeValue + totalChargeTimeValue
         totalChargeTime.value = totalChargeTimeValue
         totalDriveTime.value = totalDriveTimeValue
-        totalTripTime.value = totalDriveTimeValue + totalChargeTimeValue
+        totalTripTime.value = totalTripTimeValue
+        val totalDistanceValue = prefs.getString(Constants.PREF_KEY_TOTAL_DISTANCE, "0")?.toInt() ?: 0 // from user input
+        val equivalentSpeedValue = totalDistanceValue / totalTripTimeValue
+        equivalentSpeed.value = equivalentSpeedValue.toInt()
+        // FIXME charging equiv speed formula broken on mac
+        val distanceFirstChargerValue = 0
+        val distanceSecondChargerValue = 0
+        val distanceThirdChargerValue = 0
+        val chargeTargetValue = prefs.getString(Constants.PREF_KEY_CHARGE_TARGET, "0")?.toInt() ?: 0
+        val usableEnergyValue = prefs.getString(Constants.PREF_KEY_USABLE_ENERGY, "0.0")?.toDouble() ?: 0.0
+        val chargePowerValue = prefs.getString(Constants.PREF_KEY_CHARGE_POWER, "0.0")?.toDouble() ?: 0.0
+        val timePerChargeValue = (chargeTargetValue / 100)*(usableEnergyValue / chargePowerValue)
+        timePerCharge.value = timePerChargeValue.toFloat()
+        val overheadPerChargeValueInMin = prefs.getString(Constants.PREF_KEY_CHARGE_DELAY, "0.0")?.toDouble() ?: 0.0
+        val overheadPerChargeValue = overheadPerChargeValueInMin * Constants.MINUTES_TO_HOUR
+        val totalTimePerChargeValue = timePerChargeValue + overheadPerChargeValue
+        totalTimePerCharge.value = totalTimePerChargeValue.toFloat()
     }
 
     override fun onPause(owner: LifecycleOwner) {

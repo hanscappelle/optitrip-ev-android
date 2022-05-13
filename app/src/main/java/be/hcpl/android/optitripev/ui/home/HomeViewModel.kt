@@ -47,7 +47,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application),
         val chargePowerValue = chargePower.value?.toDouble() ?: 13.0
         val chargeTargetValue = chargeTarget.value?.toDouble() ?: 100.0
         // entered charge delay time is in minutes, calculate that to hours
-        val chargeDelayValue = (chargeDelay.value?.toDouble() ?: 0.0) * 0.0166667
+        val chargeDelayValue = (chargeDelay.value?.toDouble() ?: 0.0) * Constants.MINUTES_TO_HOUR
 
         // calculate total trip time for all speeds
         val totalTimeBySpeed = speedByConsumption.mapValues {
