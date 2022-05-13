@@ -4,6 +4,7 @@ class Constants {
 
     companion object {
 
+        const val RESULT_CALCULATED_EFFICIENCY = "resultCalculateEfficiency"
         const val MINUTES_TO_HOUR = 0.0166667
         const val RESULT_TOTAL_DRIVE_TIME = "resultTotalDriveTime"
         const val RESULT_TOTAL_CHARGE_TIME = "resultTotalChargeTime"

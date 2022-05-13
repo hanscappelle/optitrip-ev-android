@@ -96,6 +96,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application),
             .putInt(Constants.RESULT_NUMBER_OF_CHARGES, resultsBySpeed[optimalSpeedInt]?.numberOfCharges?: 0)
             .putFloat(Constants.RESULT_TOTAL_DRIVE_TIME, resultsBySpeed[optimalSpeedInt]?.drivingTime?.toFloat()?: 0f)
             .putFloat(Constants.RESULT_TOTAL_CHARGE_TIME, resultsBySpeed[optimalSpeedInt]?.totalChargeTime?.toFloat()?: 0f)
+            .putFloat(Constants.RESULT_CALCULATED_EFFICIENCY, speedByConsumption[optimalSpeedInt]?.toFloat()?: 0f)
             .apply()
     }
 

@@ -35,7 +35,7 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        // TODO get all results here
+        // get all results here
         val optimalSpeedView = binding.resultBestSpeed
         val totalEnergyView = binding.resultTotalTripEnergy
         val numberOfChargesView = binding.resultNumberOfCharges
@@ -43,11 +43,14 @@ class DashboardFragment : Fragment() {
         val totalDriveTimeView = binding.resultDrivingTime
         val totalChargeTimeView = binding.resultTotalChargeTime
         val equivalentSpeedView = binding.resultFinalSpeed
-        //val equivalentSpeedView = binding.resultChargeEquivSpeed
+        // FIXME this one is missing val equivalentSpeedView = binding.resultChargeEquivSpeed
         val timePerChargeView = binding.resultTimePerCharge
         val totalTimePerChargeView = binding.resultTotalTimePerCharge
+        val distanceFirstCharger = binding.resultDistanceCharge1
+        val distanceSecondCharger = binding.resultDistanceCharge2
+        val distanceThirdCharger = binding.resultDistanceCharge3
 
-        // TODO show all results here
+        // show all results here
         viewModel.optimalSpeed.observe(viewLifecycleOwner) { optimalSpeedView.text = getString(R.string.result_best_speed, it)}
         viewModel.totalTripEnergy.observe(viewLifecycleOwner) { totalEnergyView.text = getString(R.string.result_total_trip_energy, it)}
         viewModel.numberOfCharges.observe(viewLifecycleOwner) { numberOfChargesView.text = getString(R.string.result_number_of_charges, it)}
@@ -57,6 +60,9 @@ class DashboardFragment : Fragment() {
         viewModel.equivalentSpeed.observe(viewLifecycleOwner) { equivalentSpeedView.text = getString(R.string.result_final_speed, it)}
         viewModel.timePerCharge.observe(viewLifecycleOwner) { timePerChargeView.text = getString(R.string.result_time_per_charge, it)}
         viewModel.totalTimePerCharge.observe(viewLifecycleOwner) { totalTimePerChargeView.text = getString(R.string.result_total_time_per_charge, it)}
+        viewModel.distanceFirstCharger.observe(viewLifecycleOwner) { distanceFirstCharger.text = getString(R.string.result_distance_charge_1, it)}
+        viewModel.distanceSecondCharger.observe(viewLifecycleOwner) { distanceSecondCharger.text = getString(R.string.result_distance_charge_2, it)}
+        viewModel.distanceThirdCharger.observe(viewLifecycleOwner) { distanceThirdCharger.text = getString(R.string.result_distance_charge_3, it)}
 
         return root
     }
