@@ -1,44 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="@dimen/padding_default"
     tools:context=".ui.about.AboutFragment">
 
     <TextView
-        android:id="@+id/header_config"
+        android:id="@+id/header_about"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/header_about"
-        android:textSize="@dimen/text_size_extra_large"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="@dimen/text_size_extra_large" />
 
     <TextView
-        android:id="@+id/info_config"
+        android:id="@+id/about_app_version"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/info_config"
+        android:text="@string/info_about_app_version"
         android:layout_marginBottom="@dimen/padding_default"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header_config" />
+        android:layout_marginTop="@dimen/padding_default" />
 
-    <!-- TODO create consumption per speed config here -->
     <TextView
-        android:id="@+id/todo_config"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TODO create consumption per speed config here, also allow for model selection with prefill of typical numbers. And a deviation option in % to apply to result."
+        android:text="@string/info_about_app"
         android:layout_marginBottom="@dimen/padding_default"
-        android:textColor="#f00"
-        android:padding="@dimen/padding_double"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        android:layout_marginTop="@dimen/padding_default" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/info_about_people"
+        android:layout_marginBottom="@dimen/padding_default"
+        android:layout_marginTop="@dimen/padding_default"
+        android:autoLink="all"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/info_about_testing"
+        android:layout_marginBottom="@dimen/padding_default"
+        android:layout_marginTop="@dimen/padding_default"
+        android:autoLink="all"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/info_about_future"
+        android:layout_marginBottom="@dimen/padding_default"
+        android:layout_marginTop="@dimen/padding_default"
+        android:autoLink="all"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
