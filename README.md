@@ -5,6 +5,8 @@
 This app calcualtes the optimal ride speed for EV given known consumption vales. Based on
 OPTITRIP EV v1.4 spreadsheet created by Stephane Melançon aka DOCTORBASS 2018
 
+(https://i.ibb.co/f25dYPQ/functieafbeelding.jpg)
+
 ## Coming features
 
 * OK - There are INPUT value and OUTPUT values, very simple

@@ -11,7 +11,7 @@
     <string name="hint_usable_energy">Usable energy in kWh</string>
     <string name="hint_initial_soc">Initial SOC as a %</string>
     <string name="hint_first_charge_station">Distance to 1st charger in km</string>
-    <string name="info_input">On first use double check that you have the correct consumption numbers for your EV selected. Next complete below input fields with all the details you have for this trip. Once satisfied hit the calculate button to get the optimal speed to travel.</string>
+    <string name="info_input">On first use check consumption numbers for your EV. Next complete below input with all details for this trip. Once satisfied hit calculate button to get optimal speed to travel.</string>
     <string name="action_calculate">Calculate Speed</string>
     <string name="header_config">Configuration</string>
     <string name="info_config">Update these consumption numbers to match your own EV and get better results.</string>
