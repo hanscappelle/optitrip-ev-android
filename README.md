@@ -34,7 +34,6 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 * have input masks and input validation
 * remove obfuscation from release app
 * remove calculate button completely and instead monitor changes?
-* fix small screen support
 
 ## Version History
 
@@ -54,6 +53,7 @@ show detailed output on second tab (continued)
 calculate on resume of input view
 update navigation icons
 add about info (wip)
+fixed small screen support
 
 ## References
 
