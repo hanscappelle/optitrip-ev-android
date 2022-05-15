@@ -96,7 +96,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application),
             String.format(context.getString(R.string.result_optimal_speed), optimalSpeedInt, Constants.UNIT_KPH)
         } else {
             String.format(context.getString(R.string.result_optimal_speed),
-                optimalSpeedInt.toDouble().toImperial().toInt(), Constants.UNIT_MI)
+                optimalSpeedInt.toDouble().toImperial().toInt(), Constants.UNIT_MPH)
         }
 
         // store for use elsewhere
