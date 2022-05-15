@@ -13,7 +13,6 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import be.hcpl.android.optitripev.databinding.FragmentConfigBinding
-import be.hcpl.android.optitripev.ui.result.ResultViewModel
 
 class ConfigFragment : Fragment() {
 
@@ -49,11 +48,16 @@ class ConfigFragment : Fragment() {
             // then reconstruct
             it.forEachIndexed { index, key ->
                 val value = viewModel.consumptionValues.value?.get(index)
-                configContainerView.addView(createEditableRow(key.toString(), (value?.times(1000)).toString() ))
+                configContainerView.addView(createEditableRow(key, (value?.times(1000)).toString() ))
             }
         }
+        val updateView = binding.update
+        viewModel.updateEnabled.observe(viewLifecycleOwner) { updateView.isEnabled = it }
 
         // TODO add update button to get all values and store as json in preferences
+        updateView.setOnClickListener {
+            viewModel.storeNewValues()
+        }
         // add recover option to get default values back
         binding.recover.setOnClickListener {
             viewModel.recoverDefaults()
@@ -62,29 +66,31 @@ class ConfigFragment : Fragment() {
         return root
     }
 
-    private fun createEditableRow(label1: String, input1: String) : ViewGroup {
+    private fun createEditableRow(speed: Int, input: String) : ViewGroup {
         val viewGroup = LinearLayout(context)
         viewGroup.orientation = LinearLayout.HORIZONTAL
         val tv1 = TextView(context)
         val tv3 = TextView(context)
         val edit2 = EditText(context)
-        tv1.text = label1
+        tv1.text = speed.toString()
         tv1.layoutParams = params
         tv1.gravity = Gravity.CENTER
         viewGroup.addView(tv1)
-        edit2.setText(input1)
+        edit2.setText(input)
         edit2.layoutParams = params
         edit2.gravity = Gravity.END
         edit2.inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
-        edit2.tag = label1 // set speed value as tag to be used on storing these values TODO improve
+        edit2.tag = speed // set speed value as tag to be used on storing these values TODO improve
         // on change this value also update value of next view
         edit2.doOnTextChanged{ text, _, _, _ ->
             try {
-                tv3.text = (text.toString().toDouble() / 1000).toString()
+                val calculatedValue = (text.toString().toDouble() / 1000)
+                tv3.text = calculatedValue.toString()
+                viewModel.updateValue(speed, calculatedValue)
             } catch (e: Exception) { /* ignore here */ }
         }
         viewGroup.addView(edit2)
-        tv3.text = (input1.toDouble() / 1000).toString()
+        tv3.text = (input.toDouble() / 1000).toString()
         tv3.layoutParams = params
         tv3.gravity = Gravity.CENTER
         viewGroup.addView(tv3)
@@ -118,4 +124,5 @@ class ConfigFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }
