@@ -50,7 +50,10 @@ class HomeFragment : Fragment() {
         val resultView: TextView = binding.resultSpeed
 
         // check for changes
-        viewModel.lastTotalDistance.observe(viewLifecycleOwner) { totalDistance.setText(it) }
+        viewModel.lastTotalDistance.observe(viewLifecycleOwner) {
+            //if( viewModel.)
+            totalDistance.setText(it)
+        }
         viewModel.lastChargePower.observe(viewLifecycleOwner) { chargePower.setText(it) }
         viewModel.lastChargeTarget.observe(viewLifecycleOwner) {
             chargeTarget.editText?.setText(it) // TODO should we target TextInputLayout like this instead?

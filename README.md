@@ -39,7 +39,7 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 
 ### 0.5
 
-* allow for imperial units also from app settings
+* allow for imperial units from app settings
 
 ### 0.4
 

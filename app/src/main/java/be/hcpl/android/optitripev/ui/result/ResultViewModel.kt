@@ -29,10 +29,13 @@ class ResultViewModel(application: Application) : AndroidViewModel(application),
     val distanceSecondCharger = MutableLiveData<Int>()
     val distanceThirdCharger = MutableLiveData<Int>()
 
+    var useMetric = prefs.getBoolean(Constants.PREF_USE_METRIC, true)
     val errorMessage = MutableLiveData<String>()
 
     override fun onResume(owner: LifecycleOwner) {
         try {
+            // update metric preference
+            useMetric = prefs.getBoolean(Constants.PREF_USE_METRIC, true)
             // get stored calculation results here
             optimalSpeed.value = prefs.getInt(Constants.RESULT_OPTIMAL_SPEED, 0)
             totalTripEnergy.value = prefs.getFloat(Constants.RESULT_TOTAL_ENERGY, 0f)

@@ -1,8 +1,8 @@
 package be.hcpl.android.optitripev.util
 
-fun Double.toImperial() = (this * Constants.KPH_TO_MPH)
+fun Double.toImperial() = (this * Constants.KM_TO_MI)
 
-fun Double.toMetric() = this * Constants.MPH_TO_KPH
+fun Double.toMetric() = this * Constants.MI_TO_KM
 
 fun Double.formatInt() = this.toInt().toString()
 
