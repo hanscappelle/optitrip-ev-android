@@ -99,7 +99,7 @@ class ResultFragment : Fragment() {
 
         // check for errors
         viewModel.errorMessage.observe(viewLifecycleOwner){
-            Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+            if(it.isNotEmpty()) Toast.makeText(context, it, Toast.LENGTH_LONG).show()
         }
 
         return root

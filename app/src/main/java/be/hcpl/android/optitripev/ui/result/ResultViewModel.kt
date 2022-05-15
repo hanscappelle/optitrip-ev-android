@@ -47,8 +47,8 @@ class ResultViewModel(application: Application) : AndroidViewModel(application),
             totalDriveTime.value = totalDriveTimeValue
             totalTripTime.value = totalTripTimeValue
             val totalDistanceValue =
-                prefs.getString(Constants.PREF_KEY_TOTAL_DISTANCE, "0")?.toInt()
-                    ?: 0 // from user input
+                prefs.getString(Constants.PREF_KEY_TOTAL_DISTANCE, "0")?.toDouble()
+                    ?: 0.0 // from user input
             // equivalent speeds
             val equivalentSpeedValue = totalDistanceValue / totalTripTimeValue
             equivalentSpeed.value = equivalentSpeedValue.toInt()
@@ -78,6 +78,9 @@ class ResultViewModel(application: Application) : AndroidViewModel(application),
             distanceFirstCharger.value = distanceFirstChargerValue.toInt()
             distanceSecondCharger.value = distanceFirstChargerValue.toInt() * 2
             distanceThirdCharger.value = distanceFirstChargerValue.toInt() * 3
+
+            errorMessage.value = "" // clear errors
+
         } catch (e: Exception) {
             errorMessage.value = context.getString(R.string.err_calculating_result)
         }
