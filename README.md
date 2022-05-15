@@ -43,6 +43,8 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 * fixed input types (numeric) and added hints in field
 * layout bug fixes
 * replace "charge" power.....  by Charger  power in kW
+* format time in hours and minutes for result
+* fixed charge time calculation bug
 
 ### 0.3
 

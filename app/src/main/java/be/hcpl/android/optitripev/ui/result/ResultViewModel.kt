@@ -8,7 +8,6 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import be.hcpl.android.optitripev.R
 import be.hcpl.android.optitripev.util.Constants
-import java.lang.Exception
 
 class ResultViewModel(application: Application) : AndroidViewModel(application),
     DefaultLifecycleObserver {
@@ -57,7 +56,7 @@ class ResultViewModel(application: Application) : AndroidViewModel(application),
             val chargePowerValue =
                 prefs.getString(Constants.PREF_KEY_CHARGE_POWER, "0.0")?.toDouble() ?: 0.0
             val timePerChargeValue =
-                (chargeTargetValue / 100) * (usableEnergyValue / chargePowerValue)
+                (chargeTargetValue.toDouble() / 100) * (usableEnergyValue / chargePowerValue)
             timePerCharge.value = timePerChargeValue.toFloat()
             val overheadPerChargeValueInMin =
                 prefs.getString(Constants.PREF_KEY_CHARGE_DELAY, "0.0")?.toDouble() ?: 0.0
@@ -81,4 +80,5 @@ class ResultViewModel(application: Application) : AndroidViewModel(application),
     override fun onPause(owner: LifecycleOwner) {
         // no actions needed so far
     }
+
 }

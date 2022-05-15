@@ -53,12 +53,12 @@ class ResultFragment : Fragment() {
         viewModel.optimalSpeed.observe(viewLifecycleOwner) { optimalSpeedView.text = getString(R.string.result_best_speed, it)}
         viewModel.totalTripEnergy.observe(viewLifecycleOwner) { totalEnergyView.text = getString(R.string.result_total_trip_energy, it)}
         viewModel.numberOfCharges.observe(viewLifecycleOwner) { numberOfChargesView.text = getString(R.string.result_number_of_charges, it)}
-        viewModel.totalTripTime.observe(viewLifecycleOwner) { totalTripTimeView.text = getString(R.string.result_total_trip_time, it)}
-        viewModel.totalChargeTime.observe(viewLifecycleOwner) { totalChargeTimeView.text = getString(R.string.result_total_charge_time, it)}
-        viewModel.totalDriveTime.observe(viewLifecycleOwner) { totalDriveTimeView.text = getString(R.string.result_total_driving_time, it)}
+        viewModel.totalTripTime.observe(viewLifecycleOwner) { totalTripTimeView.text = getString(R.string.result_total_trip_time, formatHours(it))}
+        viewModel.totalChargeTime.observe(viewLifecycleOwner) { totalChargeTimeView.text = getString(R.string.result_total_charge_time, formatHours(it))}
+        viewModel.totalDriveTime.observe(viewLifecycleOwner) { totalDriveTimeView.text = getString(R.string.result_total_driving_time, formatHours(it))}
         viewModel.equivalentSpeed.observe(viewLifecycleOwner) { equivalentSpeedView.text = getString(R.string.result_final_speed, it)}
-        viewModel.timePerCharge.observe(viewLifecycleOwner) { timePerChargeView.text = getString(R.string.result_time_per_charge, it)}
-        viewModel.totalTimePerCharge.observe(viewLifecycleOwner) { totalTimePerChargeView.text = getString(R.string.result_total_time_per_charge, it)}
+        viewModel.timePerCharge.observe(viewLifecycleOwner) { timePerChargeView.text = getString(R.string.result_time_per_charge, formatHours(it))}
+        viewModel.totalTimePerCharge.observe(viewLifecycleOwner) { totalTimePerChargeView.text = getString(R.string.result_total_time_per_charge, formatHours(it))}
         viewModel.distanceFirstCharger.observe(viewLifecycleOwner) { distanceFirstCharger.text = getString(R.string.result_distance_charge_1, it)}
         viewModel.distanceSecondCharger.observe(viewLifecycleOwner) { distanceSecondCharger.text = getString(R.string.result_distance_charge_2, it)}
         viewModel.distanceThirdCharger.observe(viewLifecycleOwner) { distanceThirdCharger.text = getString(R.string.result_distance_charge_3, it)}
@@ -75,4 +75,16 @@ class ResultFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    // TODO move
+    fun formatHours(hoursDecimal: Float) : String {
+        val hours = hoursDecimal.toInt()
+        val minutes = ((hoursDecimal - hours) * 60).toInt()
+
+        val timeString = "${hours}h ${minutes}m"
+        return timeString
+        //val date: Date = SimpleDateFormat("HH:mm").parse(TimeString)
+        //val newTimeString: String = SimpleDateFormat("H:mm").format(date)
+    }
+
 }
