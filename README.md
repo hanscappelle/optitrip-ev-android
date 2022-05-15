@@ -45,6 +45,7 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 * replace "charge" power.....  by Charger  power in kW
 * format time in hours and minutes for result
 * fixed charge time calculation bug
+* fixed charging equivalent speed value in result
 
 ### 0.3
 

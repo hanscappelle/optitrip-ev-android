@@ -22,6 +22,7 @@ class ResultViewModel(application: Application) : AndroidViewModel(application),
     val totalDriveTime = MutableLiveData<Float>()
     val totalChargeTime = MutableLiveData<Float>()
     val equivalentSpeed = MutableLiveData<Int>()
+    val equivalentChargeSpeed = MutableLiveData<Int>()
     val timePerCharge = MutableLiveData<Float>()
     val totalTimePerCharge = MutableLiveData<Float>()
     val distanceFirstCharger = MutableLiveData<Int>()
@@ -45,14 +46,18 @@ class ResultViewModel(application: Application) : AndroidViewModel(application),
             val totalDistanceValue =
                 prefs.getString(Constants.PREF_KEY_TOTAL_DISTANCE, "0")?.toInt()
                     ?: 0 // from user input
+            // equivalent speeds
             val equivalentSpeedValue = totalDistanceValue / totalTripTimeValue
-            // FIXME charging equiv speed formula broken on mac
             equivalentSpeed.value = equivalentSpeedValue.toInt()
+            // usableEnergy/calculated efficiency
+            val usableEnergyValue =
+                prefs.getString(Constants.PREF_KEY_USABLE_ENERGY, "0.0")?.toDouble() ?: 0.0
+            val calculatedEfficiencyValue = prefs.getFloat(Constants.RESULT_CALCULATED_EFFICIENCY, 0f)
+            val equivalentChargeSpeedValue = usableEnergyValue / calculatedEfficiencyValue
+            equivalentChargeSpeed.value = equivalentChargeSpeedValue.toInt()
             // charge time
             val chargeTargetValue =
                 prefs.getString(Constants.PREF_KEY_CHARGE_TARGET, "0")?.toInt() ?: 0
-            val usableEnergyValue =
-                prefs.getString(Constants.PREF_KEY_USABLE_ENERGY, "0.0")?.toDouble() ?: 0.0
             val chargePowerValue =
                 prefs.getString(Constants.PREF_KEY_CHARGE_POWER, "0.0")?.toDouble() ?: 0.0
             val timePerChargeValue =
@@ -65,8 +70,6 @@ class ResultViewModel(application: Application) : AndroidViewModel(application),
             totalTimePerCharge.value = totalTimePerChargeValue.toFloat()
             // distance to chargers
             val initialSocValue = prefs.getString(Constants.PREF_KEY_INITIAL_SOC, "0")?.toInt() ?: 0
-            val calculatedEfficiencyValue =
-                prefs.getFloat(Constants.RESULT_CALCULATED_EFFICIENCY, 0f)
             val distanceFirstChargerValue =
                 (0.01 * initialSocValue * usableEnergyValue) / calculatedEfficiencyValue
             distanceFirstCharger.value = distanceFirstChargerValue.toInt()

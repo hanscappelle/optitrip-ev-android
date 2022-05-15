@@ -65,7 +65,6 @@
             android:paddingTop="@dimen/padding_half"
             android:paddingBottom="@dimen/padding_half"
             android:text="@string/result_charge_equiv_speed"
-            android:textColor="#f00"
             android:textSize="@dimen/text_size_large" />
 
         <TextView

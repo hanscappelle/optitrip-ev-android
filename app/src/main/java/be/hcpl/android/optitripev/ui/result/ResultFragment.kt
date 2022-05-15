@@ -41,8 +41,8 @@ class ResultFragment : Fragment() {
         val totalTripTimeView = binding.resultTotalTripTime
         val totalDriveTimeView = binding.resultDrivingTime
         val totalChargeTimeView = binding.resultTotalChargeTime
-        val equivalentSpeedView = binding.resultFinalSpeed
-        // FIXME this one is missing val equivalentSpeedView = binding.resultChargeEquivSpeed
+        val finalSpeedView = binding.resultFinalSpeed
+        val equivalenChargeSpeedView = binding.resultChargeEquivSpeed
         val timePerChargeView = binding.resultTimePerCharge
         val totalTimePerChargeView = binding.resultTotalTimePerCharge
         val distanceFirstCharger = binding.resultDistanceCharge1
@@ -56,7 +56,8 @@ class ResultFragment : Fragment() {
         viewModel.totalTripTime.observe(viewLifecycleOwner) { totalTripTimeView.text = getString(R.string.result_total_trip_time, formatHours(it))}
         viewModel.totalChargeTime.observe(viewLifecycleOwner) { totalChargeTimeView.text = getString(R.string.result_total_charge_time, formatHours(it))}
         viewModel.totalDriveTime.observe(viewLifecycleOwner) { totalDriveTimeView.text = getString(R.string.result_total_driving_time, formatHours(it))}
-        viewModel.equivalentSpeed.observe(viewLifecycleOwner) { equivalentSpeedView.text = getString(R.string.result_final_speed, it)}
+        viewModel.equivalentSpeed.observe(viewLifecycleOwner) { finalSpeedView.text = getString(R.string.result_final_speed, it)}
+        viewModel.equivalentChargeSpeed.observe(viewLifecycleOwner) { equivalenChargeSpeedView.text = getString(R.string.result_charge_equiv_speed, it)}
         viewModel.timePerCharge.observe(viewLifecycleOwner) { timePerChargeView.text = getString(R.string.result_time_per_charge, formatHours(it))}
         viewModel.totalTimePerCharge.observe(viewLifecycleOwner) { totalTimePerChargeView.text = getString(R.string.result_total_time_per_charge, formatHours(it))}
         viewModel.distanceFirstCharger.observe(viewLifecycleOwner) { distanceFirstCharger.text = getString(R.string.result_distance_charge_1, it)}
@@ -76,13 +77,11 @@ class ResultFragment : Fragment() {
         _binding = null
     }
 
-    // TODO move
-    fun formatHours(hoursDecimal: Float) : String {
+    // TODO move to utility or extension instead
+    private fun formatHours(hoursDecimal: Float) : String {
         val hours = hoursDecimal.toInt()
         val minutes = ((hoursDecimal - hours) * 60).toInt()
-
-        val timeString = "${hours}h ${minutes}m"
-        return timeString
+        return "${hours}h ${minutes}m"
         //val date: Date = SimpleDateFormat("HH:mm").parse(TimeString)
         //val newTimeString: String = SimpleDateFormat("H:mm").format(date)
     }

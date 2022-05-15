@@ -18,10 +18,10 @@
     <string name="header_info_output">Info Output</string>
     <string name="info_output">This is the optimal speed to ride at given the consumption numbers from your configuration.</string>
     <string name="result_best_speed">Best average speed to use %d km/h</string>
-    <string name="result_final_speed">Final speed equivalent (charge + ride) %d km/h</string>
+    <string name="result_final_speed">Final speed equiv. (charge + ride) %d km/h</string>
     <string name="result_number_of_charges">Total number of charges required %d charge(s)</string>
     <string name="result_total_trip_time">Total trip time %s</string>
-    <string name="result_charge_equiv_speed">Charging equivalent speed %d km/h</string>
+    <string name="result_charge_equiv_speed">Charging speed equiv. %d km/h</string>
     <string name="result_total_charge_time">Total charge time %s</string>
     <string name="result_total_driving_time">Total riding/driving time %s</string>
     <string name="result_distance_charge_1">Distance to 1st charger %d km</string>
