@@ -8,25 +8,25 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="be.hcpl.android.optitripev.ui.home.HomeFragment"
-        android:label="@string/title_home"
+        android:label="@string/header_input"
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_output"
         android:name="be.hcpl.android.optitripev.ui.result.ResultFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/header_info_output"
         tools:layout="@layout/fragment_result" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_config"
         android:name="be.hcpl.android.optitripev.ui.config.ConfigFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/header_config"
         tools:layout="@layout/fragment_config" />
 
     <fragment
         android:id="@+id/navigation_about"
         android:name="be.hcpl.android.optitripev.ui.about.AboutFragment"
-        android:label="@string/title_about"
+        android:label="@string/header_about"
         tools:layout="@layout/fragment_about" />
 
 </navigation>

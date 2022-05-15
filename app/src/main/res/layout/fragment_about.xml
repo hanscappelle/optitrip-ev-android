@@ -13,13 +13,6 @@
         android:padding="@dimen/padding_default">
 
     <TextView
-        android:id="@+id/header_about"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/header_about"
-        android:textSize="@dimen/text_size_extra_large" />
-
-    <TextView
         android:id="@+id/about_app_version"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

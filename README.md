@@ -41,6 +41,8 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 * remove obfuscation from release app
 * first implementation for custom config
 * fixed input types (numeric) and added hints in field
+* layout bug fixes
+* replace "charge" power.....  by Charger  power in kW
 
 ### 0.3
 

@@ -13,16 +13,6 @@
         android:padding="@dimen/padding_default">
 
         <TextView
-            android:id="@+id/header_config"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/header_config"
-            android:textSize="@dimen/text_size_extra_large"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
             android:id="@+id/info_config"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -30,7 +20,7 @@
             android:text="@string/info_config"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/header_config" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"

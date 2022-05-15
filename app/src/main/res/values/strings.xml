@@ -5,7 +5,7 @@
     <string name="title_notifications">Config</string>
     <string name="header_input">Info Input</string>
     <string name="hint_total_distance">Total trip distance in km</string>
-    <string name="hint_charge_power">Charge power in kW</string>
+    <string name="hint_charge_power">Charger power in kW</string>
     <string name="hint_charge_target">Charge target in SOC %</string>
     <string name="hint_charge_delay">Overhead time at charger in minutes</string>
     <string name="hint_usable_energy">Usable energy in kWh</string>
