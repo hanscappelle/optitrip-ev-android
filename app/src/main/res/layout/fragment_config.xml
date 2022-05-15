@@ -13,6 +13,30 @@
         android:padding="@dimen/padding_default">
 
         <TextView
+            android:id="@+id/info_config_units"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/padding_default"
+            android:text="@string/info_config_units"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/use_metric"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/option_use_metric" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/use_imperial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="@string/option_use_imperial" />
+
+        <TextView
             android:id="@+id/info_config"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

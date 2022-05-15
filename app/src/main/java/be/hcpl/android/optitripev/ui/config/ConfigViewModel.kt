@@ -24,6 +24,7 @@ class ConfigViewModel(application: Application) : AndroidViewModel(application),
     val speedValues = MutableLiveData<List<Int>>()
     val consumptionValues = MutableLiveData<List<Double>>()
     val updateEnabled = MutableLiveData(false)
+    val useMetricSystem = MutableLiveData(true)
 
     private val currentValues = emptyMap<Int, Double>().toMutableMap()
 
@@ -33,6 +34,8 @@ class ConfigViewModel(application: Application) : AndroidViewModel(application),
 
     override fun onResume(lifecycleOwner: LifecycleOwner){
         // try to get config
+        // what measurement system does user prefer?
+        useMetricSystem.value = prefs.getBoolean(Constants.PREF_USE_METRIC, true)
         // get these from config (as json) instead to keep user prefs
         val storedConfig = gson.fromJson<Map<Int, Double>>(prefs.getString(Constants.STORED_CONSUMPTION_CONFIG, "[]"), type)
         if(storedConfig?.isNotEmpty() == true){
@@ -64,6 +67,13 @@ class ConfigViewModel(application: Application) : AndroidViewModel(application),
         val newConfig = gson.toJson(currentValues)
         prefs.edit().putString(Constants.STORED_CONSUMPTION_CONFIG, newConfig).apply()
         updateEnabled.value = false
+    }
+
+    fun useMetricSystem(checked: Boolean){
+        prefs.edit()
+            .putBoolean(Constants.PREF_USE_METRIC, checked)
+            .apply()
+        useMetricSystem.value = checked
     }
 
 }

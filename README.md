@@ -23,9 +23,10 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 * OK - There are INPUT value and OUTPUT values, very simple
 * OK - have dark and light theme in app (test, should be provided by theme)
 * OK - One of the input that could be on a seperate page is the efficiency ( consumption in Wh vs speed)
-* I like the fact that there are colours approaching green above and below the optimum speed so people can see how it compare to the speed below and above
-* I also thought about a correction factor based on a % of the best average speed to use vs the real speed average that the trip was so if there is a difference of value vs what people really had they could just adjust the correction factor the value for the next trips for the best average speed to use.
-* allow for imperial units also from app settings
+* I like the fact that there are colours approaching green above and below the optimum speed (see spreadsheet)
+* I also thought about a correction factor based on a % of the best average speed to use vs the real
+  speed average that the trip was so if there is a difference of value vs what people really had they
+  could just adjust the correction factor the value for the next trips for the best average speed to use.
 * allow calculation of consumption numbers from coefficient
 
 ## TODO
@@ -35,6 +36,10 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 * input validation with error message per field
 
 ## Version History
+
+### 0.5
+
+* allow for imperial units also from app settings
 
 ### 0.4
 

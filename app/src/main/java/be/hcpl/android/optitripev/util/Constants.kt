@@ -8,6 +8,7 @@ class Constants {
 
     companion object {
 
+        const val PREF_USE_METRIC = "useMetric"
         const val STORED_CONSUMPTION_CONFIG = "userConsumptionConfig"
         const val RESULT_CALCULATED_EFFICIENCY = "resultCalculateEfficiency"
         const val MINUTES_TO_HOUR = 0.0166667

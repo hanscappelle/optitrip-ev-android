@@ -54,13 +54,21 @@ class ConfigFragment : Fragment() {
         val updateView = binding.update
         viewModel.updateEnabled.observe(viewLifecycleOwner) { updateView.isEnabled = it }
 
-        // TODO add update button to get all values and store as json in preferences
+        // add update button to get all values and store as json in preferences
         updateView.setOnClickListener {
             viewModel.storeNewValues()
         }
         // add recover option to get default values back
         binding.recover.setOnClickListener {
             viewModel.recoverDefaults()
+        }
+        val useMetricView = binding.useMetric
+        val useImperialView = binding.useImperial
+        useMetricView.setOnCheckedChangeListener{ _, checked -> viewModel.useMetricSystem(checked)}
+        useImperialView.setOnCheckedChangeListener{ _, checked -> viewModel.useMetricSystem(!checked)}
+        viewModel.useMetricSystem.observe(viewLifecycleOwner){
+            useMetricView.isChecked = it
+            useImperialView.isChecked = !it
         }
 
         return root
