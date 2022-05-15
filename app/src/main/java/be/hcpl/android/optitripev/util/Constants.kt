@@ -8,6 +8,9 @@ class Constants {
 
     companion object {
 
+        const val MPH_TO_KPH = 1.60934
+        const val WH_KM_TO_WH_MI = 1.60934
+        const val KPH_TO_MPH = 0.621371
         const val PREF_USE_METRIC = "useMetric"
         const val STORED_CONSUMPTION_CONFIG = "userConsumptionConfig"
         const val RESULT_CALCULATED_EFFICIENCY = "resultCalculateEfficiency"

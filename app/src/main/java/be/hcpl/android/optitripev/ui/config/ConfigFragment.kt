@@ -13,6 +13,11 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import be.hcpl.android.optitripev.databinding.FragmentConfigBinding
+import be.hcpl.android.optitripev.util.Constants
+import be.hcpl.android.optitripev.util.formatDouble1
+import be.hcpl.android.optitripev.util.formatDouble3
+import be.hcpl.android.optitripev.util.formatInt
+import be.hcpl.android.optitripev.util.toImperial
 
 class ConfigFragment : Fragment() {
 
@@ -44,11 +49,15 @@ class ConfigFragment : Fragment() {
         viewModel.speedValues.observe(viewLifecycleOwner){
             // clear container first
             configContainerView.removeAllViews()
-            configContainerView.addView(createRow("Speed (km/h)","Wh/km", "kWh/km" ))
+            val metric = viewModel.useMetricSystem.value?:true
+            if( metric )
+                configContainerView.addView(createRow("Speed (km/h)","Wh/km", "kWh/km" ))
+            else
+                configContainerView.addView(createRow("Speed (mph)","Wh/mi", "kWh/mi" ))
             // then reconstruct
             it.forEachIndexed { index, key ->
                 val value = viewModel.consumptionValues.value?.get(index)
-                configContainerView.addView(createEditableRow(key, (value?.times(1000)).toString() ))
+                configContainerView.addView(createEditableRow(key, metric, (value?.times(1000)).toString() ))
             }
         }
         val updateView = binding.update
@@ -74,17 +83,23 @@ class ConfigFragment : Fragment() {
         return root
     }
 
-    private fun createEditableRow(speed: Int, input: String) : ViewGroup {
+    private fun createEditableRow(speed: Int, metric: Boolean, input: String) : ViewGroup {
         val viewGroup = LinearLayout(context)
         viewGroup.orientation = LinearLayout.HORIZONTAL
         val tv1 = TextView(context)
         val tv3 = TextView(context)
         val edit2 = EditText(context)
-        tv1.text = speed.toString()
+        // converted value for speed goes here
+        tv1.text = if( metric ) speed.toString() else speed.toDouble().toImperial().formatInt()
+        // tag is used for key
+        tv1.tag = speed
         tv1.layoutParams = params
         tv1.gravity = Gravity.CENTER
         viewGroup.addView(tv1)
-        edit2.setText(input)
+        if( metric )
+            edit2.setText(input.toDouble().formatDouble1())
+        else
+            edit2.setText(input.toDouble().toImperial().formatDouble1())
         edit2.layoutParams = params
         edit2.gravity = Gravity.END
         edit2.inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
@@ -93,12 +108,13 @@ class ConfigFragment : Fragment() {
         edit2.doOnTextChanged{ text, _, _, _ ->
             try {
                 val calculatedValue = (text.toString().toDouble() / 1000)
-                tv3.text = calculatedValue.toString()
-                viewModel.updateValue(speed, calculatedValue)
+                tv3.text = if( metric ) calculatedValue.formatDouble3() else calculatedValue.toImperial().formatDouble3()
+                viewModel.updateValue(speed, metric, calculatedValue)
             } catch (e: Exception) { /* ignore here */ }
         }
         viewGroup.addView(edit2)
-        tv3.text = (input.toDouble() / 1000).toString()
+        val kWhValue = (input.toDouble() / 1000)
+        tv3.text = if( metric ) kWhValue.formatDouble3() else kWhValue.toImperial().formatDouble3()
         tv3.layoutParams = params
         tv3.gravity = Gravity.CENTER
         viewGroup.addView(tv3)

@@ -5,10 +5,9 @@ import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import be.hcpl.android.optitripev.util.Constants
+import be.hcpl.android.optitripev.util.toMetric
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 
@@ -36,6 +35,10 @@ class ConfigViewModel(application: Application) : AndroidViewModel(application),
         // try to get config
         // what measurement system does user prefer?
         useMetricSystem.value = prefs.getBoolean(Constants.PREF_USE_METRIC, true)
+        showCurrentValues()
+    }
+
+    private fun showCurrentValues() {
         // get these from config (as json) instead to keep user prefs
         val storedConfig = gson.fromJson<Map<Int, Double>>(prefs.getString(Constants.STORED_CONSUMPTION_CONFIG, "[]"), type)
         if(storedConfig?.isNotEmpty() == true){
@@ -58,8 +61,8 @@ class ConfigViewModel(application: Application) : AndroidViewModel(application),
         updateEnabled.value = true
     }
 
-    fun updateValue(speed: Int, value: Double) {
-        currentValues[speed] = value
+    fun updateValue(speed: Int, metric: Boolean, value: Double) {
+        currentValues[speed] = if( metric ) value else value.toMetric()
         updateEnabled.value = true
     }
 
@@ -74,6 +77,7 @@ class ConfigViewModel(application: Application) : AndroidViewModel(application),
             .putBoolean(Constants.PREF_USE_METRIC, checked)
             .apply()
         useMetricSystem.value = checked
+        showCurrentValues()
     }
 
 }
