@@ -25,7 +25,7 @@ class ConfigViewModel(application: Application) : AndroidViewModel(application),
     }
 
     override fun onResume(lifecycleOwner: LifecycleOwner){
-        // TODO move this table to a configurable view so users can have their own
+        // TODO get these from config (as json) instead to keep user prefs
         consumptionValues.value = Constants.defaultSpeedByConsumption.values.toList()
         speedValues.value = Constants.defaultSpeedByConsumption.keys.toList()
 
