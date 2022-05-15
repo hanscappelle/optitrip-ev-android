@@ -9,6 +9,8 @@ import androidx.lifecycle.MutableLiveData
 import be.hcpl.android.optitripev.R
 import be.hcpl.android.optitripev.model.OptiTripResult
 import be.hcpl.android.optitripev.util.Constants
+import be.hcpl.android.optitripev.util.formatInt
+import be.hcpl.android.optitripev.util.toImperial
 import java.lang.Exception
 import kotlin.math.abs
 import kotlin.math.ceil
@@ -18,6 +20,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application),
 
     private val context by lazy { getApplication<Application>().applicationContext }
     private val prefs = context.getSharedPreferences(Constants.APP_PREFERENCES, Context.MODE_PRIVATE)
+    var useMetric = prefs.getBoolean(Constants.PREF_USE_METRIC, true)
 
     val chargeTarget = MutableLiveData<String>()
     val chargeDelay = MutableLiveData<String>()
@@ -41,6 +44,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application),
     private var speedByConsumption = Constants.getValidConfig(prefs)
 
     fun calculate() {
+        useMetric = prefs.getBoolean(Constants.PREF_USE_METRIC, true)
         // TODO parse values from text, show errors where needed
         try {
             // get user entered values with fallback to some defaults here
@@ -88,10 +92,12 @@ class HomeViewModel(application: Application) : AndroidViewModel(application),
         val optimalSpeedMap = totalTimeBySpeed.minByOrNull { it.value } ?: 0.0
         val optimalSpeed = (optimalSpeedMap as Map.Entry<*, *>).key
         val optimalSpeedInt = Integer.parseInt(optimalSpeed.toString())
-        result.value = String.format(
-            context.getString(R.string.result_optimal_speed),
-            optimalSpeedInt
-        )
+        result.value = if( useMetric ) {
+            String.format(context.getString(R.string.result_optimal_speed), optimalSpeedInt, Constants.UNIT_KPH)
+        } else {
+            String.format(context.getString(R.string.result_optimal_speed),
+                optimalSpeedInt.toDouble().toImperial().toInt(), Constants.UNIT_MI)
+        }
 
         // store for use elsewhere
         prefs.edit()

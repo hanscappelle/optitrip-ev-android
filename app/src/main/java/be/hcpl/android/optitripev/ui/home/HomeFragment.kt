@@ -11,7 +11,12 @@ import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import be.hcpl.android.optitripev.R
 import be.hcpl.android.optitripev.databinding.FragmentHomeBinding
+import be.hcpl.android.optitripev.util.Constants
+import be.hcpl.android.optitripev.util.formatInt
+import be.hcpl.android.optitripev.util.toImperial
+import be.hcpl.android.optitripev.util.toMetric
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 
@@ -40,28 +45,43 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         // bind view references
-        val totalDistance: TextInputEditText = binding.inputTotalDistance
-        val chargePower: TextInputEditText = binding.inputChargePower
+        val totalDistance: TextInputLayout = binding.totalDistance
+        val chargePower: TextInputLayout = binding.chargePower
         val chargeTarget: TextInputLayout = binding.chargeTarget
-        val chargeDelay: TextInputEditText = binding.inputChargeDelay
-        val usableEnergy: TextInputEditText = binding.inputUsableEnergy
-        val initialSoc: TextInputEditText = binding.inputInitialSoc
-        val distanceFirstCharger: TextInputEditText = binding.inputFirstChargeStation
+        val chargeDelay: TextInputLayout = binding.chargeDelay
+        val usableEnergy: TextInputLayout = binding.usableEnergy
+        val initialSoc: TextInputLayout = binding.initialSoc
+        val distanceFirstCharger: TextInputLayout = binding.firstChargeStation
         val resultView: TextView = binding.resultSpeed
 
         // check for changes
         viewModel.lastTotalDistance.observe(viewLifecycleOwner) {
-            //if( viewModel.)
-            totalDistance.setText(it)
+            if( viewModel.useMetric ) {
+                totalDistance.editText?.setText(it.toDouble().formatInt())
+                totalDistance.hint = getString(R.string.hint_total_distance)
+                totalDistance.suffixText = Constants.UNIT_KM
+            } else {
+                totalDistance.editText?.setText(it.toDouble().toImperial().formatInt())
+                totalDistance.setHint(R.string.hint_total_distance_mi)
+                totalDistance.suffixText = Constants.UNIT_MI
+            }
         }
-        viewModel.lastChargePower.observe(viewLifecycleOwner) { chargePower.setText(it) }
-        viewModel.lastChargeTarget.observe(viewLifecycleOwner) {
-            chargeTarget.editText?.setText(it) // TODO should we target TextInputLayout like this instead?
+        viewModel.lastDistanceFirstCharger.observe(viewLifecycleOwner) {
+            if( viewModel.useMetric ) {
+                distanceFirstCharger.editText?.setText(it.toDouble().formatInt())
+                distanceFirstCharger.hint = getString(R.string.hint_first_charge_station)
+                distanceFirstCharger.suffixText = Constants.UNIT_KM
+            } else {
+                distanceFirstCharger.editText?.setText(it.toDouble().toImperial().formatInt())
+                distanceFirstCharger.hint = getString(R.string.hint_first_charge_station_mi)
+                distanceFirstCharger.suffixText = Constants.UNIT_MI
+            }
         }
-        viewModel.lastChargeDelay.observe(viewLifecycleOwner) { chargeDelay.setText(it) }
-        viewModel.lastUsableEnergy.observe(viewLifecycleOwner) { usableEnergy.setText(it) }
-        viewModel.lastInitialSoc.observe(viewLifecycleOwner) { initialSoc.setText(it) }
-        viewModel.lastDistanceFirstCharger.observe(viewLifecycleOwner) { distanceFirstCharger.setText(it) }
+        viewModel.lastChargePower.observe(viewLifecycleOwner) { chargePower.editText?.setText(it) }
+        viewModel.lastChargeTarget.observe(viewLifecycleOwner) { chargeTarget.editText?.setText(it) }
+        viewModel.lastChargeDelay.observe(viewLifecycleOwner) { chargeDelay.editText?.setText(it) }
+        viewModel.lastUsableEnergy.observe(viewLifecycleOwner) { usableEnergy.editText?.setText(it) }
+        viewModel.lastInitialSoc.observe(viewLifecycleOwner) { initialSoc.editText?.setText(it) }
 
         viewModel.result.observe(viewLifecycleOwner) { resultView.text = it }
         viewModel.errorMessage.observe(viewLifecycleOwner) {
@@ -70,11 +90,31 @@ class HomeFragment : Fragment() {
         }
 
         // Get input text
-        totalDistance.doOnTextChanged { text, _, _, _ ->
-            viewModel.totalDistance.value = text.toString()
+        totalDistance.editText?.doOnTextChanged { text, _, _, _ ->
+            viewModel.totalDistance.value = if (viewModel.useMetric) {
+                text.toString()
+            } else {
+                try {
+                    text.toString().toDouble().toMetric().toString()
+                } catch (e: Exception) {
+                    "0"
+                }
+            }
             viewModel.calculate()
         }
-        chargePower.doOnTextChanged { text, _, _, _ ->
+        distanceFirstCharger.editText?.doOnTextChanged { text, _, _, _ ->
+            viewModel.distanceFirstCharger.value = if (viewModel.useMetric) {
+                text.toString()
+            } else {
+                try {
+                    text.toString().toDouble().toMetric().toString()
+                } catch (e: Exception) {
+                    "0"
+                }
+            }
+            viewModel.calculate()
+        }
+        chargePower.editText?.doOnTextChanged { text, _, _, _ ->
             viewModel.chargePower.value = text.toString()
             viewModel.calculate()
         }
@@ -82,20 +122,16 @@ class HomeFragment : Fragment() {
             viewModel.chargeTarget.value = text.toString()
             viewModel.calculate()
         }
-        chargeDelay.doOnTextChanged { text, _, _, _ ->
+        chargeDelay.editText?.doOnTextChanged { text, _, _, _ ->
             viewModel.chargeDelay.value = text.toString()
             viewModel.calculate()
         }
-        usableEnergy.doOnTextChanged { text, _, _, _ ->
+        usableEnergy.editText?.doOnTextChanged { text, _, _, _ ->
             viewModel.usableEnergy.value = text.toString()
             viewModel.calculate()
         }
-        initialSoc.doOnTextChanged { text, _, _, _ ->
+        initialSoc.editText?.doOnTextChanged { text, _, _, _ ->
             viewModel.initialSoc.value = text.toString()
-            viewModel.calculate()
-        }
-        distanceFirstCharger.doOnTextChanged { text, _, _, _ ->
-            viewModel.distanceFirstCharger.value = text.toString()
             viewModel.calculate()
         }
 

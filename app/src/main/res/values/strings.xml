@@ -5,12 +5,14 @@
     <string name="title_notifications">Config</string>
     <string name="header_input">Info Input</string>
     <string name="hint_total_distance">Total trip distance in km</string>
+    <string name="hint_total_distance_mi">Total trip distance in mi</string>
     <string name="hint_charge_power">Charger power in kW</string>
     <string name="hint_charge_target">Charge target in SOC %</string>
     <string name="hint_charge_delay">Overhead time at charger in minutes</string>
     <string name="hint_usable_energy">Usable energy in kWh</string>
     <string name="hint_initial_soc">Initial SOC as a %</string>
     <string name="hint_first_charge_station">Distance to 1st charger in km</string>
+    <string name="hint_first_charge_station_mi">Distance to 1st charger in mi</string>
     <string name="info_input">On first use check consumption numbers for your EV. Next complete below input with all details for this trip. While changing input optimal speed to travel will be calculated.</string>
     <string name="action_calculate">Calculate Speed</string>
     <string name="header_config">Configuration</string>
@@ -30,7 +32,7 @@
     <string name="result_time_per_charge">Time per charge %s</string>
     <string name="result_total_time_per_charge">Total time per charge %s</string>
     <string name="result_total_trip_energy">Total trip Energy %.1f kWh</string>
-    <string name="result_optimal_speed">Optimal speed is %d km/h</string>
+    <string name="result_optimal_speed">Optimal speed is %d %s</string>
     <string name="err_calculating_result">Problem calculating result, check input</string>
     <string name="title_about">About</string>
     <string name="header_about">OptiTripEV</string>
