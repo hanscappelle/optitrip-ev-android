@@ -33,7 +33,6 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 * release iOS version of this app
 * create donation option on about screen
 * input validation with error message per field
-* remove calculate button completely and instead monitor changes?
 
 ## Version History
 
@@ -47,6 +46,7 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 * format time in hours and minutes for result
 * fixed charge time calculation bug
 * fixed charging equivalent speed value in result
+* remove calculate button completely and instead monitor changes?
 
 ### 0.3
 

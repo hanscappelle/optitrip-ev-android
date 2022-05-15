@@ -103,6 +103,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application),
             .putFloat(Constants.RESULT_CALCULATED_EFFICIENCY, speedByConsumption[optimalSpeedInt]?.toFloat()?: 0f)
             .apply()
 
+            errorMessage.value = ""
+
         } catch (e: Exception) {
             errorMessage.value = context.getString(R.string.err_calculating_result)
         }
@@ -112,13 +114,13 @@ class HomeViewModel(application: Application) : AndroidViewModel(application),
 
     override fun onResume(owner: LifecycleOwner) {
         speedByConsumption = Constants.getValidConfig(prefs)
-        lastChargeTarget.value = prefs.getString(Constants.PREF_KEY_CHARGE_TARGET, "")
-        lastChargeDelay.value = prefs.getString(Constants.PREF_KEY_CHARGE_DELAY, "")
-        lastChargePower.value = prefs.getString(Constants.PREF_KEY_CHARGE_POWER, "")
-        lastUsableEnergy.value = prefs.getString(Constants.PREF_KEY_USABLE_ENERGY, "")
-        lastInitialSoc.value = prefs.getString(Constants.PREF_KEY_INITIAL_SOC, "")
-        lastTotalDistance.value = prefs.getString(Constants.PREF_KEY_TOTAL_DISTANCE, "")
-        lastDistanceFirstCharger.value = prefs.getString(Constants.PREF_KEY_DISTANCE_FIRST_CHARGER, "")
+        lastChargeTarget.value = prefs.getString(Constants.PREF_KEY_CHARGE_TARGET, "90")
+        lastChargeDelay.value = prefs.getString(Constants.PREF_KEY_CHARGE_DELAY, "2")
+        lastChargePower.value = prefs.getString(Constants.PREF_KEY_CHARGE_POWER, "11.7")
+        lastUsableEnergy.value = prefs.getString(Constants.PREF_KEY_USABLE_ENERGY, "12.6")
+        lastInitialSoc.value = prefs.getString(Constants.PREF_KEY_INITIAL_SOC, "100")
+        lastTotalDistance.value = prefs.getString(Constants.PREF_KEY_TOTAL_DISTANCE, "1000")
+        lastDistanceFirstCharger.value = prefs.getString(Constants.PREF_KEY_DISTANCE_FIRST_CHARGER, "100")
         calculate() // calculate directly on resume also
     }
 

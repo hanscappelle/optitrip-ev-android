@@ -47,7 +47,6 @@ class HomeFragment : Fragment() {
         val usableEnergy: TextInputEditText = binding.inputUsableEnergy
         val initialSoc: TextInputEditText = binding.inputInitialSoc
         val distanceFirstCharger: TextInputEditText = binding.inputFirstChargeStation
-        val calculate: Button = binding.calculate
         val resultView: TextView = binding.resultSpeed
 
         // check for changes
@@ -64,20 +63,38 @@ class HomeFragment : Fragment() {
         viewModel.result.observe(viewLifecycleOwner) { resultView.text = it }
         viewModel.errorMessage.observe(viewLifecycleOwner) {
             // show some error here for now
-            Toast.makeText(context, it, Toast.LENGTH_LONG).show()
+            if(it.isNotEmpty()) Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
         }
 
         // Get input text
-        totalDistance.doOnTextChanged { text, _, _, _ -> viewModel.totalDistance.value = text.toString() }
-        chargePower.doOnTextChanged { text, _, _, _ -> viewModel.chargePower.value = text.toString() }
-        chargeTarget.editText?.doOnTextChanged { text, _, _, _ -> viewModel.chargeTarget.value = text.toString() }
-        chargeDelay.doOnTextChanged { text, _, _, _ -> viewModel.chargeDelay.value = text.toString() }
-        usableEnergy.doOnTextChanged { text, _, _, _ -> viewModel.usableEnergy.value = text.toString() }
-        initialSoc.doOnTextChanged { text, _, _, _ -> viewModel.initialSoc.value = text.toString() }
-        distanceFirstCharger.doOnTextChanged { text, _, _, _ -> viewModel.distanceFirstCharger.value = text.toString() }
-
-        // performs calculation
-        calculate.setOnClickListener { viewModel.calculate() }
+        totalDistance.doOnTextChanged { text, _, _, _ ->
+            viewModel.totalDistance.value = text.toString()
+            viewModel.calculate()
+        }
+        chargePower.doOnTextChanged { text, _, _, _ ->
+            viewModel.chargePower.value = text.toString()
+            viewModel.calculate()
+        }
+        chargeTarget.editText?.doOnTextChanged { text, _, _, _ ->
+            viewModel.chargeTarget.value = text.toString()
+            viewModel.calculate()
+        }
+        chargeDelay.doOnTextChanged { text, _, _, _ ->
+            viewModel.chargeDelay.value = text.toString()
+            viewModel.calculate()
+        }
+        usableEnergy.doOnTextChanged { text, _, _, _ ->
+            viewModel.usableEnergy.value = text.toString()
+            viewModel.calculate()
+        }
+        initialSoc.doOnTextChanged { text, _, _, _ ->
+            viewModel.initialSoc.value = text.toString()
+            viewModel.calculate()
+        }
+        distanceFirstCharger.doOnTextChanged { text, _, _, _ ->
+            viewModel.distanceFirstCharger.value = text.toString()
+            viewModel.calculate()
+        }
 
         return root
     }
@@ -86,4 +103,5 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }
