@@ -22,7 +22,7 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 
 * OK - There are INPUT value and OUTPUT values, very simple
 * OK - have dark and light theme in app (test, should be provided by theme)
-* One of the input that could be on a seperate page is the efficiency ( consumption in Wh vs speed)
+* OK - One of the input that could be on a seperate page is the efficiency ( consumption in Wh vs speed)
 * I like the fact that there are colours approaching green above and below the optimum speed so people can see how it compare to the speed below and above
 * I also thought about a correction factor based on a % of the best average speed to use vs the real speed average that the trip was so if there is a difference of value vs what people really had they could just adjust the correction factor the value for the next trips for the best average speed to use.
 * allow for imperial units also from app settings
@@ -31,7 +31,7 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 
 * release iOS version of this app
 * create donation option on about screen
-* have input masks and input validation
+* input validation with error message per field
 * remove calculate button completely and instead monitor changes?
 
 ## Version History
@@ -40,6 +40,7 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 
 * remove obfuscation from release app
 * first implementation for custom config
+* fixed input types (numeric) and added hints in field
 
 ### 0.3
 

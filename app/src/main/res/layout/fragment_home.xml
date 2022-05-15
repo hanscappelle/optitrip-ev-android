@@ -40,12 +40,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/info_input"
+            app:expandedHintEnabled="false"
             app:suffixText="km">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_total_distance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="800"
                 android:lines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -58,12 +61,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/total_distance"
+            app:expandedHintEnabled="false"
             app:suffixText="kW">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_charge_power"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:hint="11.7"
                 android:lines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -76,12 +82,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/charge_power"
+            app:expandedHintEnabled="false"
             app:suffixText="%">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_charge_target"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="90"
                 android:lines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -94,12 +103,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/charge_target"
+            app:expandedHintEnabled="false"
             app:suffixText="min">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_charge_delay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="5"
                 android:lines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -112,12 +124,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/charge_delay"
+            app:expandedHintEnabled="false"
             app:suffixText="kWh">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_usable_energy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:hint="12.6"
                 android:lines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -130,12 +145,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/usable_energy"
+            app:expandedHintEnabled="false"
             app:suffixText="%">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_initial_soc"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="100"
                 android:lines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -149,12 +167,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/initial_soc"
+            app:expandedHintEnabled="false"
             app:suffixText="km">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_first_charge_station"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="150"
                 android:lines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
