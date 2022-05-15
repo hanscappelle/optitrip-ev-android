@@ -37,6 +37,8 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 
 ## Version History
 
+### 0.6
+
 ### 0.5
 
 * allow for imperial units from app settings
