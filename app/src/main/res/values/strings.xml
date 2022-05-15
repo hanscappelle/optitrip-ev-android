@@ -39,4 +39,6 @@
     <string name="info_about_testing">Everyone can contribute on that website. If you want to test early releases as a beta tester you can subscribe at https://play.google.com/apps/testing/be.hcpl.android.optitripev</string>
     <string name="info_about_future">Feel free to contact us with feature requests. iOS version and support for imperial system will follow soon.</string>
     <string name="info_about_app_version">This is app version %s build %d</string>
+    <string name="action_update">Update</string>
+    <string name="action_recover">Recover</string>
 </resources>

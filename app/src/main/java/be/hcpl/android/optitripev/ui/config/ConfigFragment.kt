@@ -46,6 +46,11 @@ class ConfigFragment : Fragment() {
             }
         }
 
+        // TODO add update button to get all values and store as json in preferences
+        // TODO add recover option to get default values back
+
+        // TODO later on get profiles that users can select from
+
         return root
     }
 

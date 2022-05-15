@@ -39,6 +39,7 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 ### 0.4
 
 * remove obfuscation from release app
+* first implementation for custom config
 
 ### 0.3
 
