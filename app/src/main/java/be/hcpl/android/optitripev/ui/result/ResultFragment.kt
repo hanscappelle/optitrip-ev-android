@@ -29,7 +29,7 @@ class ResultFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        viewModel = ViewModelProvider(this).get(ResultViewModel::class.java)
+        viewModel = ViewModelProvider(this)[ResultViewModel::class.java]
 
         _binding = FragmentResultBinding.inflate(inflater, container, false)
         val root: View = binding.root

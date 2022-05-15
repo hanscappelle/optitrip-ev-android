@@ -32,7 +32,7 @@ class ConfigFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-        viewModel = ViewModelProvider(this).get(ConfigViewModel::class.java)
+        viewModel = ViewModelProvider(this)[ConfigViewModel::class.java]
 
         _binding = FragmentConfigBinding.inflate(inflater, container, false)
         val root: View = binding.root

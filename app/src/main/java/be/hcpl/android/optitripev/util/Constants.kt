@@ -1,5 +1,9 @@
 package be.hcpl.android.optitripev.util
 
+import android.content.SharedPreferences
+import com.google.gson.GsonBuilder
+import com.google.gson.reflect.TypeToken
+
 class Constants {
 
     companion object {
@@ -46,6 +50,20 @@ class Constants {
             135 to 0.162,
             140 to 0.176,
         )
+
+        private val gson = GsonBuilder().setLenient().create()
+        private val type = object: TypeToken<Map<Int, Double>>(){}.type
+
+        fun getValidConfig(prefs: SharedPreferences) : Map<Int, Double> {
+            // check if user has custom config
+            val storedConfig = gson.fromJson<Map<Int, Double>>(prefs.getString(STORED_CONSUMPTION_CONFIG, "[]"), type)
+            // always return a valid config for calculation
+            return if(storedConfig?.isNotEmpty() == true){
+                storedConfig
+            } else {
+                defaultSpeedByConsumption
+            }
+        }
 
     }
 }
