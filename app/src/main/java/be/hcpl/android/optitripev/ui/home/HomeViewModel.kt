@@ -120,15 +120,28 @@ class HomeViewModel(application: Application) : AndroidViewModel(application),
 
     override fun onResume(owner: LifecycleOwner) {
         speedByConsumption = Constants.getValidConfig(prefs)
-        lastChargeTarget.value = prefs.getString(Constants.PREF_KEY_CHARGE_TARGET, "90")
-        lastChargeDelay.value = prefs.getString(Constants.PREF_KEY_CHARGE_DELAY, "2")
-        lastChargePower.value = prefs.getString(Constants.PREF_KEY_CHARGE_POWER, "11.7")
-        lastUsableEnergy.value = prefs.getString(Constants.PREF_KEY_USABLE_ENERGY, "12.6")
-        lastInitialSoc.value = prefs.getString(Constants.PREF_KEY_INITIAL_SOC, "100")
-        lastTotalDistance.value = prefs.getString(Constants.PREF_KEY_TOTAL_DISTANCE, "1000")
-        lastDistanceFirstCharger.value = prefs.getString(Constants.PREF_KEY_DISTANCE_FIRST_CHARGER, "100")
+        lastChargeTarget.value = getSafeValue(Constants.PREF_KEY_CHARGE_TARGET, "90")
+        lastChargeDelay.value = getSafeValue(Constants.PREF_KEY_CHARGE_DELAY, "2")
+        lastChargePower.value = getSafeValue(Constants.PREF_KEY_CHARGE_POWER, "11.7")
+        lastUsableEnergy.value = getSafeValue(Constants.PREF_KEY_USABLE_ENERGY, "12.6")
+        lastInitialSoc.value = getSafeValue(Constants.PREF_KEY_INITIAL_SOC, "100")
+        lastTotalDistance.value = getSafeValue(Constants.PREF_KEY_TOTAL_DISTANCE, "1000")
+        lastDistanceFirstCharger.value = getSafeValue(Constants.PREF_KEY_DISTANCE_FIRST_CHARGER, "100")
         calculate() // calculate directly on resume also
     }
+
+    /**
+     * checks if value can be parsed to double
+     */
+    private fun getSafeValue(key: String, default: String): String {
+        val value = prefs.getString(key, default)
+        return try {
+            value?.toDouble()
+            value ?: default
+        } catch (e: Exception) {
+            default
+        }
+    }    
 
     override fun onPause(owner: LifecycleOwner) {
         prefs.edit()

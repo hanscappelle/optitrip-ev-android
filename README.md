@@ -27,7 +27,7 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 * I also thought about a correction factor based on a % of the best average speed to use vs the real
   speed average that the trip was so if there is a difference of value vs what people really had they
   could just adjust the correction factor the value for the next trips for the best average speed to use.
-* allow calculation of consumption numbers from coefficient
+* allow calculation of consumption numbers from coefficient (just 2 inputs needed)
 
 ## TODO
 
@@ -40,6 +40,7 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 ### 0.5
 
 * allow for imperial units from app settings
+* fixed possible deadlock on startup of app with invalid input
 
 ### 0.4
 
