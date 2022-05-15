@@ -1,6 +1,7 @@
 package be.hcpl.android.optitripev.ui.config
 
 import android.os.Bundle
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,6 +41,9 @@ class ConfigFragment : Fragment() {
         // TODO create a screen here with multiple input options + recover option + later on also profiles
         configContainerView.addView(createRow("Speed","Wh/km", "kWh/km" ))
         viewModel.speedValues.observe(viewLifecycleOwner){
+            // clear container first
+            configContainerView.removeAllViews()
+            // then reconstruct
             it.forEachIndexed { index, key ->
                 val value = viewModel.consumptionValues.value?.get(index)
                 configContainerView.addView(createEditableRow(key.toString(), (value?.times(1000)).toString(), value.toString() ))
@@ -47,7 +51,10 @@ class ConfigFragment : Fragment() {
         }
 
         // TODO add update button to get all values and store as json in preferences
-        // TODO add recover option to get default values back
+        // add recover option to get default values back
+        binding.recover.setOnClickListener {
+            viewModel.recoverDefaults()
+        }
 
         // TODO later on get profiles that users can select from
 
@@ -64,13 +71,14 @@ class ConfigFragment : Fragment() {
         val edit2 = EditText(context)
         edit2.setText(input1)
         edit2.layoutParams = params
+        edit2.inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_FLAG_DECIMAL
+        edit2.tag = label1 // set speed value as tag to be used on storing these values TODO improve
         viewGroup.addView(edit2)
         val tv3 = TextView(context)
         tv3.text = label2
         tv3.layoutParams = params
         viewGroup.addView(tv3)
         return viewGroup
-
     }
 
     private fun createRow(label1: String, label2: String, label3: String) : ViewGroup {

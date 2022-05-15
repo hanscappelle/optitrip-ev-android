@@ -31,5 +31,11 @@ class ConfigViewModel(application: Application) : AndroidViewModel(application),
 
     }
 
+    fun recoverDefaults() {
+        // recover defaults from config
+        consumptionValues.value = Constants.defaultSpeedByConsumption.values.toList()
+        speedValues.value = Constants.defaultSpeedByConsumption.keys.toList()
+    }
+
 
 }
