@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider
 import be.hcpl.android.optitripev.R
 import be.hcpl.android.optitripev.databinding.FragmentHomeBinding
 import be.hcpl.android.optitripev.util.Constants
+import be.hcpl.android.optitripev.util.formatDouble1
 import be.hcpl.android.optitripev.util.formatInt
 import be.hcpl.android.optitripev.util.toImperial
 import be.hcpl.android.optitripev.util.toMetric
@@ -61,7 +62,7 @@ class HomeFragment : Fragment() {
                 totalDistance.hint = getString(R.string.hint_total_distance)
                 totalDistance.suffixText = Constants.UNIT_KM
             } else {
-                totalDistance.editText?.setText(it.toDouble().toImperial().formatInt())
+                totalDistance.editText?.setText(it.toDouble().toImperial().formatDouble1()) // use double to prevent rounding errors
                 totalDistance.setHint(R.string.hint_total_distance_mi)
                 totalDistance.suffixText = Constants.UNIT_MI
             }
@@ -72,7 +73,7 @@ class HomeFragment : Fragment() {
                 distanceFirstCharger.hint = getString(R.string.hint_first_charge_station)
                 distanceFirstCharger.suffixText = Constants.UNIT_KM
             } else {
-                distanceFirstCharger.editText?.setText(it.toDouble().toImperial().formatInt())
+                distanceFirstCharger.editText?.setText(it.toDouble().toImperial().formatDouble1())  // use double to prevent rounding errors
                 distanceFirstCharger.hint = getString(R.string.hint_first_charge_station_mi)
                 distanceFirstCharger.suffixText = Constants.UNIT_MI
             }
