@@ -9,3 +9,11 @@ fun Double.formatInt() = this.toInt().toString()
 fun Double.formatDouble1() = String.format("%.1f", this)
 
 fun Double.formatDouble3() = String.format("%.3f", this)
+
+fun formatHours(hoursDecimal: Float) : String {
+    val hours = hoursDecimal.toInt()
+    val minutes = ((hoursDecimal - hours) * 60).toInt()
+    return "${hours}h ${minutes}m"
+    //val date: Date = SimpleDateFormat("HH:mm").parse(TimeString)
+    //val newTimeString: String = SimpleDateFormat("H:mm").format(date)
+}

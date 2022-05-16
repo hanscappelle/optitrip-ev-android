@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData
 import be.hcpl.android.optitripev.R
 import be.hcpl.android.optitripev.model.OptiTripResult
 import be.hcpl.android.optitripev.util.Constants
+import be.hcpl.android.optitripev.util.formatHours
 import be.hcpl.android.optitripev.util.formatInt
 import be.hcpl.android.optitripev.util.toImperial
 import java.lang.Exception
@@ -91,12 +92,13 @@ class HomeViewModel(application: Application) : AndroidViewModel(application),
         // and from that new collection get the lowest value to display
         val optimalSpeedMap = totalTimeBySpeed.minByOrNull { it.value } ?: 0.0
         val optimalSpeed = (optimalSpeedMap as Map.Entry<*, *>).key
+        val totalTime = (optimalSpeedMap as Map.Entry<*, *>).value
         val optimalSpeedInt = Integer.parseInt(optimalSpeed.toString())
         result.value = if( useMetric ) {
-            String.format(context.getString(R.string.result_optimal_speed), optimalSpeedInt, Constants.UNIT_KPH)
+            String.format(context.getString(R.string.result_optimal_speed), optimalSpeedInt, Constants.UNIT_KPH, formatHours(totalTime.toString().toFloat()))
         } else {
             String.format(context.getString(R.string.result_optimal_speed),
-                optimalSpeedInt.toDouble().toImperial().toInt(), Constants.UNIT_MPH)
+                optimalSpeedInt.toDouble().toImperial().toInt(), Constants.UNIT_MPH, formatHours(totalTime.toString().toFloat()))
         }
 
         // store for use elsewhere

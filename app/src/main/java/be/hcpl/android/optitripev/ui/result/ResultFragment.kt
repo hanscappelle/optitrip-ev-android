@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import be.hcpl.android.optitripev.R
 import be.hcpl.android.optitripev.databinding.FragmentResultBinding
 import be.hcpl.android.optitripev.util.Constants
+import be.hcpl.android.optitripev.util.formatHours
 import be.hcpl.android.optitripev.util.formatInt
 import be.hcpl.android.optitripev.util.toImperial
 
@@ -108,15 +109,6 @@ class ResultFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    // TODO move to utility or extension instead
-    private fun formatHours(hoursDecimal: Float) : String {
-        val hours = hoursDecimal.toInt()
-        val minutes = ((hoursDecimal - hours) * 60).toInt()
-        return "${hours}h ${minutes}m"
-        //val date: Date = SimpleDateFormat("HH:mm").parse(TimeString)
-        //val newTimeString: String = SimpleDateFormat("H:mm").format(date)
     }
 
 }

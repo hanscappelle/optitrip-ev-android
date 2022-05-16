@@ -40,6 +40,7 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 ### 0.6
 
 * fixed speed unit for imperial on first (input) view
+* show total ride & charge time on first input view directly
 
 ### 0.5
 
