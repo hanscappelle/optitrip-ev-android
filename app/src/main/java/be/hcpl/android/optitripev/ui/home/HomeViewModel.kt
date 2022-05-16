@@ -40,6 +40,9 @@ class HomeViewModel(application: Application) : AndroidViewModel(application),
     val lastChargePower = MutableLiveData<String>()
 
     val result = MutableLiveData<String>()
+    val resultSlower = MutableLiveData<String>()
+    val resultFaster = MutableLiveData<String>()
+
     private val resultsBySpeed = emptyMap<Int, OptiTripResult>().toMutableMap()
     val errorMessage = MutableLiveData<String>()
     private var speedByConsumption = Constants.getValidConfig(prefs)
@@ -92,13 +95,15 @@ class HomeViewModel(application: Application) : AndroidViewModel(application),
         // and from that new collection get the lowest value to display
         val optimalSpeedMap = totalTimeBySpeed.minByOrNull { it.value } ?: 0.0
         val optimalSpeed = (optimalSpeedMap as Map.Entry<*, *>).key
-        val totalTime = (optimalSpeedMap as Map.Entry<*, *>).value
+        val totalTime = optimalSpeedMap.value
         val optimalSpeedInt = Integer.parseInt(optimalSpeed.toString())
-        result.value = if( useMetric ) {
-            String.format(context.getString(R.string.result_optimal_speed), optimalSpeedInt, Constants.UNIT_KPH, formatHours(totalTime.toString().toFloat()))
-        } else {
-            String.format(context.getString(R.string.result_optimal_speed),
-                optimalSpeedInt.toDouble().toImperial().toInt(), Constants.UNIT_MPH, formatHours(totalTime.toString().toFloat()))
+        result.value = formatResult(R.string.result_optimal_speed, optimalSpeedInt, totalTime.toString().toFloat())
+        // also display 1 value lower and higher
+        totalTimeBySpeed[optimalSpeedInt - 5]?.let{
+            resultSlower.value = formatResult(R.string.result_optimal_speed_alternative, optimalSpeedInt-5, it.toString().toFloat())
+        }
+        totalTimeBySpeed[optimalSpeedInt + 5]?.let{
+            resultFaster.value = formatResult(R.string.result_optimal_speed_alternative, optimalSpeedInt+5, it.toString().toFloat())
         }
 
         // store for use elsewhere
@@ -116,6 +121,22 @@ class HomeViewModel(application: Application) : AndroidViewModel(application),
         } catch (e: Exception) {
             errorMessage.value = context.getString(R.string.err_calculating_result)
         }
+    }
+
+    private fun formatResult(resource: Int, optimalSpeedInt: Int, totalTime: Float) = if (useMetric) {
+        String.format(
+            context.getString(resource),
+            optimalSpeedInt,
+            Constants.UNIT_KPH,
+            formatHours(totalTime)
+        )
+    } else {
+        String.format(
+            context.getString(resource),
+            optimalSpeedInt.toDouble().toImperial().toInt(),
+            Constants.UNIT_MPH,
+            formatHours(totalTime)
+        )
     }
 
     // region store user input values in preferences and recover on resume

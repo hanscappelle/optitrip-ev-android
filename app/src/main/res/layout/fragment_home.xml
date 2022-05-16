@@ -171,15 +171,38 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
+            android:id="@+id/result_speed_slower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/result_optimal_speed_alternative"
+            android:layout_marginTop="@dimen/padding_double"
+            android:textSize="@dimen/text_size_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/first_charge_station" />
+
+        <TextView
             android:id="@+id/result_speed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/result_optimal_speed"
-            android:layout_marginTop="@dimen/padding_double"
             android:textSize="@dimen/text_size_large"
+            android:gravity="center_horizontal"
+            android:background="@color/light_green"
+            android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/first_charge_station" />
+            app:layout_constraintTop_toBottomOf="@id/result_speed_slower" />
+
+        <TextView
+            android:id="@+id/result_speed_faster"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/result_optimal_speed_alternative"
+            android:textSize="@dimen/text_size_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/result_speed" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

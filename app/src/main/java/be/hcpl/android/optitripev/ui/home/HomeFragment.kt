@@ -54,6 +54,8 @@ class HomeFragment : Fragment() {
         val initialSoc: TextInputLayout = binding.initialSoc
         val distanceFirstCharger: TextInputLayout = binding.firstChargeStation
         val resultView: TextView = binding.resultSpeed
+        val resultSlowerView: TextView = binding.resultSpeedSlower
+        val resultFasterView: TextView = binding.resultSpeedFaster
 
         // check for changes
         viewModel.lastTotalDistance.observe(viewLifecycleOwner) {
@@ -85,6 +87,9 @@ class HomeFragment : Fragment() {
         viewModel.lastInitialSoc.observe(viewLifecycleOwner) { initialSoc.editText?.setText(it) }
 
         viewModel.result.observe(viewLifecycleOwner) { resultView.text = it }
+        viewModel.resultSlower.observe(viewLifecycleOwner) { resultSlowerView.text = it }
+        viewModel.resultFaster.observe(viewLifecycleOwner) { resultFasterView.text = it }
+
         viewModel.errorMessage.observe(viewLifecycleOwner) {
             // show some error here for now
             if(it.isNotEmpty()) Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
