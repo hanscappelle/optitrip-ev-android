@@ -37,6 +37,10 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 
 ## Version History
 
+### 0.7
+
+* total time on result view now also includes charge delays
+
 ### 0.6
 
 * show next lower and higher values on first view

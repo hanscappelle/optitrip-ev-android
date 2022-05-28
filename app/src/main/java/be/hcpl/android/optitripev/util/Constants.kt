@@ -21,6 +21,7 @@ class Constants {
         const val MINUTES_TO_HOUR = 0.0166667
         const val RESULT_TOTAL_DRIVE_TIME = "resultTotalDriveTime"
         const val RESULT_TOTAL_CHARGE_TIME = "resultTotalChargeTime"
+        const val RESULT_TOTAL_TRIP_TIME = "resultTotalTripTime"
         const val RESULT_NUMBER_OF_CHARGES = "resultNumberOfCharges"
         const val RESULT_TOTAL_ENERGY = "resultTotalEnergy"
         const val RESULT_OPTIMAL_SPEED = "resultOptimalSpeed"

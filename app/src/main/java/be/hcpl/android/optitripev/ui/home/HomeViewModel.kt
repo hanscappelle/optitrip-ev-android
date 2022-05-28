@@ -96,8 +96,9 @@ class HomeViewModel(application: Application) : AndroidViewModel(application),
         val optimalSpeedMap = totalTimeBySpeed.minByOrNull { it.value } ?: 0.0
         val optimalSpeed = (optimalSpeedMap as Map.Entry<*, *>).key
         val totalTime = optimalSpeedMap.value
+        val totalTimeValue = totalTime.toString().toFloat()
         val optimalSpeedInt = Integer.parseInt(optimalSpeed.toString())
-        result.value = formatResult(R.string.result_optimal_speed, optimalSpeedInt, totalTime.toString().toFloat())
+        result.value = formatResult(R.string.result_optimal_speed, optimalSpeedInt, totalTimeValue)
         // also display 1 value lower and higher
         totalTimeBySpeed[optimalSpeedInt - 5]?.let{
             resultSlower.value = formatResult(R.string.result_optimal_speed_alternative, optimalSpeedInt-5, it.toString().toFloat())
@@ -113,6 +114,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application),
             .putInt(Constants.RESULT_NUMBER_OF_CHARGES, resultsBySpeed[optimalSpeedInt]?.numberOfCharges?: 0)
             .putFloat(Constants.RESULT_TOTAL_DRIVE_TIME, resultsBySpeed[optimalSpeedInt]?.drivingTime?.toFloat()?: 0f)
             .putFloat(Constants.RESULT_TOTAL_CHARGE_TIME, resultsBySpeed[optimalSpeedInt]?.totalChargeTime?.toFloat()?: 0f)
+            .putFloat(Constants.RESULT_TOTAL_TRIP_TIME, totalTimeValue)
             .putFloat(Constants.RESULT_CALCULATED_EFFICIENCY, speedByConsumption[optimalSpeedInt]?.toFloat()?: 0f)
             .apply()
 

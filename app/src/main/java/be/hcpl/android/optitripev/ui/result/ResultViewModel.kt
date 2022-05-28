@@ -42,7 +42,7 @@ class ResultViewModel(application: Application) : AndroidViewModel(application),
             numberOfCharges.value = prefs.getInt(Constants.RESULT_NUMBER_OF_CHARGES, 0)
             val totalDriveTimeValue = prefs.getFloat(Constants.RESULT_TOTAL_DRIVE_TIME, 0f)
             val totalChargeTimeValue = prefs.getFloat(Constants.RESULT_TOTAL_CHARGE_TIME, 0f)
-            val totalTripTimeValue = totalDriveTimeValue + totalChargeTimeValue
+            val totalTripTimeValue = prefs.getFloat(Constants.RESULT_TOTAL_TRIP_TIME, 0f)
             totalChargeTime.value = totalChargeTimeValue
             totalDriveTime.value = totalDriveTimeValue
             totalTripTime.value = totalTripTimeValue
