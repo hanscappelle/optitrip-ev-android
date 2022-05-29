@@ -20,7 +20,7 @@
     <string name="header_info_output">Info Output</string>
     <string name="info_output">This is the optimal speed to ride at given the consumption numbers from your configuration.</string>
     <string name="result_best_speed">Best average speed to use %d %s</string>
-    <string name="result_final_speed">Final speed equiv. (charge + ride) %d %s</string>
+    <string name="result_final_speed">Final speed equivalent %d %s</string>
     <string name="result_number_of_charges">Total number of charges %d charge(s)</string>
     <string name="result_total_trip_time">Total trip time %s</string>
     <string name="result_charge_equiv_speed">Charging speed equiv. %d %s</string>
@@ -37,10 +37,10 @@
     <string name="err_calculating_result">Problem calculating result, check input</string>
     <string name="title_about">About</string>
     <string name="header_about">OptiTripEV</string>
-    <string name="info_about_app">This app calculates the optimal ride speed for EV given known consumption vales. Based on OPTITRIP EV v1.4 spreadsheet created by Stephane MelanÃ§on aka DOCTORBASS 2018</string>
+    <string name="info_about_app">This app calculates the optimal ride speed for EV given known consumption vales. Based on OPTITRIP EV v1.4 spreadsheet created by Stephane Melançon aka DOCTORBASS 2018</string>
     <string name="info_about_people">This App was created based on that spreadsheet by Hans Cappelle made available to the community at bitbucket project website https://bitbucket.org/cappelleh/optitrip-ev-android</string>
     <string name="info_about_testing">Everyone can contribute on that website. If you want to test early releases as a beta tester you can subscribe at https://play.google.com/apps/testing/be.hcpl.android.optitripev</string>
-    <string name="info_about_future">Feel free to contact us with feature requests. iOS version and support for imperial system will follow soon.</string>
+    <string name="info_about_future">Feel free to contact us with issues, remarks or feature requests.</string>
     <string name="info_about_app_version">This is app version %s build %d</string>
     <string name="action_update">Update</string>
     <string name="action_recover">Recover</string>
