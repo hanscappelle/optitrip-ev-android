@@ -3,7 +3,7 @@
 ## About the App
 
 This app calculates the optimal ride speed for EV given known consumption vales. Based on
-OPTITRIP EV v1.4 spreadsheet created by Stephane Melançon aka DOCTORBASS 2018
+OPTITRIP EV v1.4 spreadsheet created by Stephane Melanï¿½on aka DOCTORBASS 2018
 
 ![Play store art for this App](https://i.ibb.co/f25dYPQ/functieafbeelding.jpg)
 
@@ -18,19 +18,11 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 
 [beta test link](https://play.google.com/apps/testing/be.hcpl.android.optitripev)
 
-## Coming features
+## Bugs & Upcoming features
 
-* OK - There are INPUT value and OUTPUT values, very simple
-* OK - have dark and light theme in app (test, should be provided by theme)
-* OK - One of the input that could be on a seperate page is the efficiency ( consumption in Wh vs speed)
-* OK - I like the fact that there are colours approaching green above and below the optimum speed (see spreadsheet)
-* I also thought about a correction factor based on a % of the best average speed to use vs the real
-  speed average that the trip was so if there is a difference of value vs what people really had they
-  could just adjust the correction factor the value for the next trips for the best average speed to use.
+* Add a correction factor (%) of the best average speed to use vs the real speed average a trip was. 
+  So if there is a difference of value vs what people really had they could just adjust that way.
 * allow calculation of consumption numbers from coefficient (just 2 inputs needed)
-
-## TODO
-
 * create donation option on about screen
 * input validation with error message per field
 
