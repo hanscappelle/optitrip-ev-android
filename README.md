@@ -28,6 +28,10 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 
 ## Version History
 
+### 0.8
+
+* update target SDK to 33
+
 ### 0.7
 
 * update about info in app
