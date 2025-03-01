@@ -1,4 +1,4 @@
-package be.hcpl.android.optitripev.ui.config
+package be.hcpl.android.optitripev.ui.screen
 
 import androidx.compose.foundation.layout.Arrangement.Absolute.spacedBy
 import androidx.compose.foundation.layout.Column

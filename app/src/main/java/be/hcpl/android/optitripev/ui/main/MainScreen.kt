@@ -17,13 +17,13 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.createGraph
 import be.hcpl.android.optitripev.R
 import be.hcpl.android.optitripev.ui.about.AboutScreen
-import be.hcpl.android.optitripev.ui.config.ConfigScreen
 import be.hcpl.android.optitripev.ui.home.HomeScreen
 import be.hcpl.android.optitripev.ui.model.Config
 import be.hcpl.android.optitripev.ui.navigation.BottomNavigationBar
 import be.hcpl.android.optitripev.ui.navigation.NavigationItem
 import be.hcpl.android.optitripev.ui.navigation.Screen
 import be.hcpl.android.optitripev.ui.result.ResultScreen
+import be.hcpl.android.optitripev.ui.screen.ConfigScreen
 import be.hcpl.android.optitripev.ui.theme.AppTheme
 import be.hcpl.android.optitripev.ui.theme.customColor2
 import be.hcpl.android.optitripev.ui.theme.onPrimaryDark

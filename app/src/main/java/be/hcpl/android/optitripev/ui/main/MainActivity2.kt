@@ -29,6 +29,11 @@ class MainActivity2 : ComponentActivity() {
         }
     }
 
+    override fun onPause() {
+        viewModel.updateValuesInStorage()
+        super.onPause()
+    }
+
     private fun onConfigChange(config: Config) {
         setContent {
             MainScreen(
