@@ -16,9 +16,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.createGraph
 import be.hcpl.android.optitripev.R
+import be.hcpl.android.optitripev.model.Config
 import be.hcpl.android.optitripev.ui.about.AboutScreen
 import be.hcpl.android.optitripev.ui.home.HomeScreen
-import be.hcpl.android.optitripev.ui.model.Config
 import be.hcpl.android.optitripev.ui.navigation.BottomNavigationBar
 import be.hcpl.android.optitripev.ui.navigation.NavigationItem
 import be.hcpl.android.optitripev.ui.navigation.Screen

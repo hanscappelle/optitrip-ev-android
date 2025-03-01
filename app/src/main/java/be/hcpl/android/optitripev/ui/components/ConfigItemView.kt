@@ -12,9 +12,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import be.hcpl.android.optitripev.ui.model.Config
-import be.hcpl.android.optitripev.ui.model.ConfigUnit
-import be.hcpl.android.optitripev.ui.model.ConfigValue
+import be.hcpl.android.optitripev.model.Config
+import be.hcpl.android.optitripev.model.ConfigUnit
+import be.hcpl.android.optitripev.model.ConfigValue
 import be.hcpl.android.optitripev.ui.theme.AppTheme
 
 @Composable

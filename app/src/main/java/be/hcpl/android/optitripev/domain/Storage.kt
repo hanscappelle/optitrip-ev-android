@@ -3,7 +3,7 @@ package be.hcpl.android.optitripev.domain
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
-import be.hcpl.android.optitripev.ui.model.ConfigValue
+import be.hcpl.android.optitripev.model.ConfigValue
 import be.hcpl.android.optitripev.util.Constants
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken

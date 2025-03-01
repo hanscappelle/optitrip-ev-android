@@ -4,10 +4,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import be.hcpl.android.optitripev.R
 import be.hcpl.android.optitripev.domain.LocalStorage
-import be.hcpl.android.optitripev.ui.model.Config
-import be.hcpl.android.optitripev.ui.model.ConfigUnit
-import be.hcpl.android.optitripev.ui.model.ConfigValue
-import be.hcpl.android.optitripev.ui.model.defaultConfigValues
+import be.hcpl.android.optitripev.model.Config
+import be.hcpl.android.optitripev.model.ConfigUnit
+import be.hcpl.android.optitripev.model.ConfigValue
+import be.hcpl.android.optitripev.model.defaultConfigValues
 import be.hcpl.android.optitripev.ui.navigation.NavigationItem
 import be.hcpl.android.optitripev.ui.navigation.Screen
 import be.hcpl.android.optitripev.util.Constants

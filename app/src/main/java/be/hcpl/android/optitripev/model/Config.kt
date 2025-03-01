@@ -1,4 +1,4 @@
-package be.hcpl.android.optitripev.ui.model
+package be.hcpl.android.optitripev.model
 
 data class Config(
     val unit: ConfigUnit = ConfigUnit.Metric,

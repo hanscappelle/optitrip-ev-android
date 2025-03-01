@@ -1,6 +1,6 @@
 package be.hcpl.android.optitripev.ui.components
 
-import be.hcpl.android.optitripev.ui.model.ConfigUnit
+import be.hcpl.android.optitripev.model.ConfigUnit
 import be.hcpl.android.optitripev.util.Constants.Companion.KM_TO_MI
 import be.hcpl.android.optitripev.util.Constants.Companion.WH_KM_TO_WH_MI
 import kotlin.math.round
