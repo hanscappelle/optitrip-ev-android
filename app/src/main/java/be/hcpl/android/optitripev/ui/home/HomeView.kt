@@ -1,20 +1,8 @@
 package be.hcpl.android.optitripev.ui.home
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import android.widget.Toast
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import be.hcpl.android.optitripev.R
-import be.hcpl.android.optitripev.util.Constants
-import be.hcpl.android.optitripev.util.formatDouble1
-import be.hcpl.android.optitripev.util.formatInt
-import be.hcpl.android.optitripev.util.toImperial
-import be.hcpl.android.optitripev.util.toMetric
 
 class HomeView : Fragment() {
 
@@ -23,18 +11,8 @@ class HomeView : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         lifecycle.addObserver(viewModel)
     }
+
 /*
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-
-        viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
-
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
         // bind view references
         val totalDistance: TextInputLayout = binding.totalDistance
         val chargePower: TextInputLayout = binding.chargePower
@@ -130,9 +108,6 @@ class HomeView : Fragment() {
             viewModel.initialSoc.value = text.toString()
             viewModel.calculate()
         }
-
-        return root
-    }
 */
 
 }

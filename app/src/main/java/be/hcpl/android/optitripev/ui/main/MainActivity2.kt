@@ -6,8 +6,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.lifecycle.Observer
-import be.hcpl.android.optitripev.ui.about.AboutView
-import be.hcpl.android.optitripev.ui.components.AppScaffold
+import be.hcpl.android.optitripev.ui.model.Config
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.getValue
 
@@ -17,11 +16,15 @@ class MainActivity2 : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //viewModel.navigation.observe(this, Observer<Navigation> { event -> onNavigation(event) })
+        viewModel.config.observe(this, Observer<Config> { event -> onConfigChange(event) })
         setContent {
-            //AppScaffold {
-            MainScreen(viewModel.navigationItems, onUrlSelected = { url -> openUrl(url) })
-            //}
+            MainScreen(viewModel.navigationItems, onUrlSelected = { url -> openUrl(url) }, Config(values = emptyList()))
+        }
+    }
+
+    private fun onConfigChange(config: Config){
+        setContent{
+            MainScreen(viewModel.navigationItems, onUrlSelected = ::openUrl, config)
         }
     }
 

@@ -1,6 +1,5 @@
 package be.hcpl.android.optitripev.ui.main
 
-import be.hcpl.android.optitripev.R
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -16,9 +15,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.createGraph
+import be.hcpl.android.optitripev.R
 import be.hcpl.android.optitripev.ui.about.AboutScreen
 import be.hcpl.android.optitripev.ui.config.ConfigScreen
 import be.hcpl.android.optitripev.ui.home.HomeScreen
+import be.hcpl.android.optitripev.ui.model.Config
 import be.hcpl.android.optitripev.ui.navigation.BottomNavigationBar
 import be.hcpl.android.optitripev.ui.navigation.NavigationItem
 import be.hcpl.android.optitripev.ui.navigation.Screen
@@ -32,6 +33,7 @@ import be.hcpl.android.optitripev.ui.theme.onPrimaryDark
 fun MainScreen(
     navigationItems: List<NavigationItem>,
     onUrlSelected: (String) -> Unit,
+    config: Config,
 ) {
     val navController = rememberNavController()
     AppTheme {
@@ -52,21 +54,20 @@ fun MainScreen(
             bottomBar = { BottomNavigationBar(navController, navigationItems) }
         ) { innerPadding ->
 
-            val graph =
-                navController.createGraph(startDestination = Screen.Home.route) {
-                    composable(route = Screen.Home.route) {
-                        HomeScreen()
-                    }
-                    composable(route = Screen.Result.route) {
-                        ResultScreen()
-                    }
-                    composable(route = Screen.Config.route) {
-                        ConfigScreen()
-                    }
-                    composable(route = Screen.About.route) {
-                        AboutScreen(onUrlSelected = onUrlSelected)
-                    }
+            val graph = navController.createGraph(startDestination = Screen.Home.route) {
+                composable(route = Screen.Home.route) {
+                    HomeScreen(config)
                 }
+                composable(route = Screen.Result.route) {
+                    ResultScreen()
+                }
+                composable(route = Screen.Config.route) {
+                    ConfigScreen(config)
+                }
+                composable(route = Screen.About.route) {
+                    AboutScreen(onUrlSelected = onUrlSelected)
+                }
+            }
             NavHost(
                 navController = navController,
                 graph = graph,
@@ -81,6 +82,6 @@ fun MainScreen(
 @Composable
 fun MainScreenPreview() {
     AppTheme {
-        MainScreen(listOf(), {})
+        MainScreen(listOf(), {}, Config(values = emptyList()))
     }
 }
