@@ -7,7 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.lifecycle.Observer
 import be.hcpl.android.optitripev.ui.about.AboutView
 import be.hcpl.android.optitripev.ui.components.AppScaffold
-import be.hcpl.android.optitripev.ui.model.Navigation
+import be.hcpl.android.optitripev.ui.navigation.Navigation
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.getValue
 
@@ -19,9 +19,9 @@ class MainActivity2 : ComponentActivity() {
         super.onCreate(savedInstanceState)
         viewModel.navigation.observe(this, Observer<Navigation> { event -> onNavigation(event) })
         setContent{
-            AppScaffold {
+            //AppScaffold {
                 MainScreen()
-            }
+            //}
         }
     }
 

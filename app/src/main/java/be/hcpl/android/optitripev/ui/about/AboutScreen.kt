@@ -15,7 +15,7 @@ import be.hcpl.android.optitripev.ui.theme.AppTheme
 @Composable
 fun AboutScreen(
     modifier: Modifier = Modifier,
-    onUrlClicked: ((String) -> Unit),
+    //onUrlClicked: ((String) -> Unit),
     ) {
     Column(
         verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -26,11 +26,11 @@ fun AboutScreen(
         )
         TextWithLink(
             text = stringResource(R.string.info_about_people),
-            onUrlClicked = { url -> onUrlClicked(url)},
+            onUrlClicked = {},
         )
         TextWithLink(
             text = stringResource(R.string.info_about_testing),
-            onUrlClicked = onUrlClicked,
+            onUrlClicked = {},
         )
         Text(
             text = stringResource(R.string.info_about_future)
@@ -42,6 +42,6 @@ fun AboutScreen(
 @Composable
 fun AboutScreenPreview() {
     AppTheme {
-        AboutScreen(onUrlClicked = {})
+        AboutScreen()
     }
 }

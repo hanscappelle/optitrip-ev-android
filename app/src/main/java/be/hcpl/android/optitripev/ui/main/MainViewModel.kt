@@ -2,7 +2,7 @@ package be.hcpl.android.optitripev.ui.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import be.hcpl.android.optitripev.ui.model.Navigation
+import be.hcpl.android.optitripev.ui.navigation.Navigation
 
 class MainViewModel(
 ) : ViewModel() {

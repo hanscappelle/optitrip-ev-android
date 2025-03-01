@@ -1,4 +1,4 @@
-package be.hcpl.android.optitripev.ui.model
+package be.hcpl.android.optitripev.ui.navigation
 
 sealed class Navigation {
     data object InputView : Navigation()
