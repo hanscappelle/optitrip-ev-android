@@ -34,8 +34,8 @@ fun ConfigItemView(
         TextField(
             modifier = Modifier.weight(1f),
             value = "${config.consumption.readableValue(unit)}",
-            onValueChange = { value -> onValueChange(config.atSpeed.toString(), value.readableToStored(unit)) },
-            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Decimal),
+            onValueChange = { value -> onValueChange(config.atSpeed.toString(), value.readableToStored()) },
+            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
         )
         Text(
             modifier = Modifier.weight(.25f),
@@ -50,11 +50,22 @@ fun ConfigItemView(
 
 @Preview(showBackground = true)
 @Composable
-fun ConfigItemViewPreview() {
+fun ConfigItemViewPreview1() {
     AppTheme {
         Column {
             ConfigHeaders(Config(values = emptyList()))
             ConfigItemView(ConfigUnit.Imperial, ConfigValue(30, 0.027f), { key, value -> {} })
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ConfigItemViewPreview2() {
+    AppTheme {
+        Column {
+            ConfigHeaders(Config(values = emptyList()))
+            ConfigItemView(ConfigUnit.Metric, ConfigValue(30, 0.027f), { key, value -> {} })
         }
     }
 }
