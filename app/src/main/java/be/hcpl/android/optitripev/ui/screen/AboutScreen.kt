@@ -1,7 +1,6 @@
-package be.hcpl.android.optitripev.ui.about
+package be.hcpl.android.optitripev.ui.screen
 
 import androidx.compose.foundation.layout.Arrangement.Absolute.spacedBy
-import be.hcpl.android.optitripev.R
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -12,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import be.hcpl.android.optitripev.R
 import be.hcpl.android.optitripev.ui.components.TextWithLink
 import be.hcpl.android.optitripev.ui.theme.AppTheme
 

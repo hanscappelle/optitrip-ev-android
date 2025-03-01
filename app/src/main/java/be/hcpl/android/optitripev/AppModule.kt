@@ -1,7 +1,6 @@
 package be.hcpl.android.optitripev
 
 import be.hcpl.android.optitripev.domain.LocalStorage
-import be.hcpl.android.optitripev.ui.about.AboutViewModel
 import be.hcpl.android.optitripev.ui.home.HomeViewModel
 import be.hcpl.android.optitripev.ui.main.MainViewModel
 import be.hcpl.android.optitripev.ui.result.ResultViewModel
@@ -14,7 +13,6 @@ val appModule = module {
     viewModelOf(::MainViewModel)
     viewModelOf(::HomeViewModel)
     viewModelOf(::ResultViewModel)
-    viewModelOf(::AboutViewModel)
 
 //    factoryOf(::Literals)
     factoryOf(::LocalStorage)

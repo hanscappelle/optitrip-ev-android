@@ -35,8 +35,7 @@ Technical improvements
 - bumped min android version from 21 to 24 (needed for linkify-text lib)
 - dark mode colors fixed
 - add another indication of consumption (kWh/100km)
-- Update to JetPack Compose
-- drop view binding
+- Update to JetPack Compose & drop view binding
 - add koin and use MVVM architecture
 - increase target SDK to 35
 
