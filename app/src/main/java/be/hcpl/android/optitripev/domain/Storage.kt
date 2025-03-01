@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import be.hcpl.android.optitripev.model.ConfigValue
-import be.hcpl.android.optitripev.util.Constants
+import be.hcpl.android.optitripev.model.OptiTripInput
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 
@@ -20,6 +20,8 @@ interface Storage {
     fun clearAll()
     fun getCurrentConfig(): List<ConfigValue>
     fun storeConfig(config: List<ConfigValue>)
+    fun lastInput(): OptiTripInput
+    fun storeInput(input: OptiTripInput)
 }
 
 class LocalStorage(
@@ -29,7 +31,6 @@ class LocalStorage(
     private var prefs: SharedPreferences = context.getSharedPreferences(Constants.APP_PREFERENCES, MODE_PRIVATE)
     private val gson = GsonBuilder().setLenient().create()
     private val type = object : TypeToken<Map<Int, Double>>() {}.type
-
 
     override fun get(key: String) = getString(key)
 
@@ -46,6 +47,27 @@ class LocalStorage(
     override fun store(key: String, value: Int) = prefs.edit().putInt(key, value).apply()
 
     override fun clearAll() = prefs.edit().clear().apply()
+
+    override fun lastInput() = OptiTripInput(
+        totalDistance = prefs.getInt(Constants.PREF_KEY_TOTAL_DISTANCE, 1000),
+        chargePower = prefs.getInt(Constants.PREF_KEY_CHARGE_POWER, 13),
+        chargeTarget = prefs.getInt(Constants.PREF_KEY_CHARGE_TARGET, 100),
+        chargeDelay = prefs.getInt(Constants.PREF_KEY_CHARGE_DELAY, 0),
+        usableEnergy = prefs.getInt(Constants.PREF_KEY_USABLE_ENERGY, 13),
+        initialSoc = prefs.getInt(Constants.PREF_KEY_INITIAL_SOC, 100),
+        distFirstCharger = prefs.getInt(Constants.PREF_KEY_DISTANCE_FIRST_CHARGER, 100),
+    )
+
+    override fun storeInput(input: OptiTripInput) = with(input) {
+        prefs.edit()
+            .putInt(Constants.PREF_KEY_TOTAL_DISTANCE, totalDistance)
+            .putInt(Constants.PREF_KEY_CHARGE_POWER, chargePower)
+            .putInt(Constants.PREF_KEY_CHARGE_TARGET, chargeTarget)
+            .putInt(Constants.PREF_KEY_CHARGE_DELAY, chargeDelay)
+            .putInt(Constants.PREF_KEY_USABLE_ENERGY, usableEnergy)
+            .putInt(Constants.PREF_KEY_INITIAL_SOC, initialSoc)
+            .putInt(Constants.PREF_KEY_DISTANCE_FIRST_CHARGER, distFirstCharger).apply()
+    }
 
     override fun getCurrentConfig(): List<ConfigValue> {
         val currentConfigValues: Map<Int, Double> = gson.fromJson<Map<Int, Double>>(prefs.getString(Constants.STORED_CONSUMPTION_CONFIG, "[]"), type)

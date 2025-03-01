@@ -1,6 +1,9 @@
 package be.hcpl.android.optitripev.model
 
 data class OptiTripResult(
+    // speed for this result
+    val speed: Double,
+    val speedEquiv: Double,
     // driving time = total distance / speed
     val drivingTime: Double,
     // total energy = speedByConsumption * total trip distance

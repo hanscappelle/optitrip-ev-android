@@ -23,7 +23,7 @@ import be.hcpl.android.optitripev.ui.components.ConfigItemView
 
 @Composable
 fun ConfigScreen(
-    config: Config,
+    config: Config?,
     onUnitChanged: (Boolean) -> Unit,
     onValueChanged: (String, String) -> Unit,
     resetValues: () -> Unit,
@@ -55,7 +55,7 @@ fun ConfigScreen(
                 text = stringResource(R.string.option_use_metric)
             )
             Switch(
-                checked = config.unit == ConfigUnit.Imperial,
+                checked = config?.unit == ConfigUnit.Imperial,
                 onCheckedChange = onUnitChanged,
             )
             Text(
@@ -64,32 +64,33 @@ fun ConfigScreen(
             )
         }
 
-        ConfigHeaders(config)
-        LazyColumn {
-            config.values.forEach { v ->
-                item {
-                    ConfigItemView(
-                        unit = config.unit,
-                        config = v,
-                        onValueChange = onValueChanged,
-                    )
-                }
-            }
-            item {
-                Row(verticalAlignment = CenterVertically) {
-                    Text(
-                        modifier = Modifier.weight(1f),
-                        text = stringResource(R.string.option_reset)
-                    )
-                    Button(
-                        onClick = resetValues
-                    ) {
-                        Text(text = stringResource(R.string.label_reset))
+        config?.let {
+            ConfigHeaders(config)
+            LazyColumn {
+                config.values.forEach { v ->
+                    item {
+                        ConfigItemView(
+                            unit = config.unit,
+                            config = v,
+                            onValueChange = onValueChanged,
+                        )
                     }
                 }
+                item {
+                    Row(verticalAlignment = CenterVertically) {
+                        Text(
+                            modifier = Modifier.weight(1f),
+                            text = stringResource(R.string.option_reset)
+                        )
+                        Button(
+                            onClick = resetValues
+                        ) {
+                            Text(text = stringResource(R.string.label_reset))
+                        }
+                    }
+                }
+
             }
-
         }
-
     }
 }

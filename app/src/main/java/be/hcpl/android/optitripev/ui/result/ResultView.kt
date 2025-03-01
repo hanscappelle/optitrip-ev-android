@@ -12,22 +12,6 @@ class ResultView : Fragment() {
         lifecycle.addObserver(viewModel)
     }
     /*
-
-            // get all results here
-            val optimalSpeedView = binding.resultBestSpeed
-            val totalEnergyView = binding.resultTotalTripEnergy
-            val numberOfChargesView = binding.resultNumberOfCharges
-            val totalTripTimeView = binding.resultTotalTripTime
-            val totalDriveTimeView = binding.resultDrivingTime
-            val totalChargeTimeView = binding.resultTotalChargeTime
-            val finalSpeedView = binding.resultFinalSpeed
-            val equivalenChargeSpeedView = binding.resultChargeEquivSpeed
-            val timePerChargeView = binding.resultTimePerCharge
-            val totalTimePerChargeView = binding.resultTotalTimePerCharge
-            val distanceFirstCharger = binding.resultDistanceCharge1
-            val distanceSecondCharger = binding.resultDistanceCharge2
-            val distanceThirdCharger = binding.resultDistanceCharge3
-
             // show all results here
              viewModel.optimalSpeed.observe(viewLifecycleOwner) {
                  optimalSpeedView.text = if (viewModel.useMetric)

@@ -4,15 +4,13 @@
     <string name="title_dashboard">Result</string>
     <string name="title_notifications">Config</string>
     <string name="header_input">Info Input</string>
-    <string name="hint_total_distance">Total trip distance in km</string>
-    <string name="hint_total_distance_mi">Total trip distance in mi</string>
+    <string name="hint_total_distance">Total trip distance in %s</string>
     <string name="hint_charge_power">Charger power in kW</string>
     <string name="hint_charge_target">Charge target in SOC %</string>
     <string name="hint_charge_delay">Overhead time at charger in minutes</string>
     <string name="hint_usable_energy">Usable energy in kWh</string>
-    <string name="hint_initial_soc">Initial SOC as a %</string>
-    <string name="hint_first_charge_station">Distance to 1st charger in km</string>
-    <string name="hint_first_charge_station_mi">Distance to 1st charger in mi</string>
+    <string name="hint_initial_soc">Initial SOC %</string>
+    <string name="hint_distance_first_charger">Distance to 1st charger in %s</string>
     <string name="info_input">On first use check consumption numbers for your EV. Next complete below input with all details for this trip. While changing input optimal speed to travel will be calculated.</string>
     <string name="action_calculate">Calculate Speed</string>
     <string name="header_config">Configuration</string>
@@ -20,7 +18,7 @@
     <string name="header_info_output">Info Output</string>
     <string name="info_output">This is the optimal speed to ride at given the consumption numbers from your configuration.</string>
     <string name="result_best_speed">Best average speed to use %d %s</string>
-    <string name="result_final_speed">Final speed equivalent %d %s</string>
+    <string name="result_final_speed_equiv">Final speed equivalent %d %s</string>
     <string name="result_number_of_charges">Total number of charges %d charge(s)</string>
     <string name="result_total_trip_time">Total trip time %s</string>
     <string name="result_charge_equiv_speed">Charging speed equiv. %d %s</string>
@@ -49,4 +47,5 @@
     <string name="description_navigate_back">Navigate Back</string>
     <string name="option_reset">Reset all values here to defaults</string>
     <string name="label_reset">Reset</string>
+    <string name="header_optimal_result">Optimal Ride Speed</string>
 </resources>
