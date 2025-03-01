@@ -47,6 +47,7 @@ class MainViewModel(
         config.value?.let {
             config.value = it.copy(unit = if (checked) ConfigUnit.Imperial else ConfigUnit.Metric)
         }
+        storage.store(Constants.PREF_USE_METRIC, !checked)
     }
 
     fun onValueChanged(key: String, value: String) {
