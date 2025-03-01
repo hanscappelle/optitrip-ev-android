@@ -47,4 +47,6 @@
     <string name="option_use_metric">Metric (km, km/h)</string>
     <string name="option_use_imperial">Imperial (mi, mph)</string>
     <string name="description_navigate_back">Navigate Back</string>
+    <string name="option_reset">Reset all values here to defaults</string>
+    <string name="label_reset">Reset</string>
 </resources>

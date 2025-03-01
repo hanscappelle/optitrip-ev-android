@@ -23,23 +23,29 @@ class MainActivity2 : ComponentActivity() {
                 onUrlSelected = { url -> openUrl(url) },
                 config = Config(values = emptyList()),
                 onUnitChanged = {},
-                )
+                resetValues = {},
+            )
         }
     }
 
-    private fun onConfigChange(config: Config){
-        setContent{
+    private fun onConfigChange(config: Config) {
+        setContent {
             MainScreen(
                 navigationItems = viewModel.navigationItems,
                 onUrlSelected = ::openUrl,
                 config = config,
                 onUnitChanged = ::onUnitChanged,
-                )
+                resetValues = ::resetValues,
+            )
         }
     }
 
-    private fun onUnitChanged(checked: Boolean){
+    private fun onUnitChanged(checked: Boolean) {
         viewModel.onUnitChanged(checked)
+    }
+
+    private fun resetValues() {
+        viewModel.resetValues()
     }
 
     private fun openUrl(url: String) {

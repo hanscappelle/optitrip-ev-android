@@ -25,6 +25,7 @@ import be.hcpl.android.optitripev.ui.model.ConfigUnit
 fun ConfigScreen(
     config: Config,
     onUnitChanged: ((Boolean) -> Unit),
+    resetValues: () -> Unit,
 ) {
     Column(
         verticalArrangement = spacedBy(8.dp),
@@ -65,13 +66,17 @@ fun ConfigScreen(
         ConfigHeaders(config)
         LazyColumn {
             config.values.forEach { v -> item { ConfigItemView(config.unit, v, {}) } }
-
-            // TODO reset option needed here
             item {
-                Button(
-                    onClick = {}
-                ) {
-                    Text(text = "reset option")
+                Row(verticalAlignment = CenterVertically) {
+                    Text(
+                        modifier = Modifier.weight(1f),
+                        text = stringResource(R.string.option_reset)
+                    )
+                    Button(
+                        onClick = resetValues
+                    ) {
+                        Text(text = stringResource(R.string.label_reset))
+                    }
                 }
             }
 

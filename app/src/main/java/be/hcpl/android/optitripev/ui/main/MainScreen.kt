@@ -35,6 +35,7 @@ fun MainScreen(
     onUrlSelected: (String) -> Unit,
     config: Config,
     onUnitChanged: ((Boolean) -> Unit),
+    resetValues: () -> Unit,
 ) {
     val navController = rememberNavController()
     AppTheme {
@@ -63,7 +64,11 @@ fun MainScreen(
                     ResultScreen()
                 }
                 composable(route = Screen.Config.route) {
-                    ConfigScreen(config, onUnitChanged = onUnitChanged)
+                    ConfigScreen(
+                        config = config,
+                        onUnitChanged = onUnitChanged,
+                        resetValues = resetValues,
+                    )
                 }
                 composable(route = Screen.About.route) {
                     AboutScreen(onUrlSelected = onUrlSelected)
@@ -83,6 +88,6 @@ fun MainScreen(
 @Composable
 fun MainScreenPreview() {
     AppTheme {
-        MainScreen(listOf(), {}, Config(values = emptyList()), {})
+        MainScreen(listOf(), {}, Config(values = emptyList()), {}, {})
     }
 }

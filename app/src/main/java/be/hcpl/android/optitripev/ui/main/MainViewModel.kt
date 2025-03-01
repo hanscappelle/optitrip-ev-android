@@ -40,5 +40,9 @@ class MainViewModel(
 
     }
 
+    fun resetValues() {
+        config.value = defaultConfig
+    }
+
 
 }
