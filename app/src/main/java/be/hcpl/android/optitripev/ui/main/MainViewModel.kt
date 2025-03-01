@@ -2,13 +2,12 @@ package be.hcpl.android.optitripev.ui.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import be.hcpl.android.optitripev.ui.navigation.Navigation
 
 class MainViewModel(
 ) : ViewModel() {
 
     //val uiState: MutableLiveData<OverviewUiModel> = MutableLiveData<OverviewUiModel>()
-    val navigation: MutableLiveData<Navigation> = MutableLiveData()
+    //val navigation: MutableLiveData<Navigation> = MutableLiveData()
 
     init {
         getInitialData()
