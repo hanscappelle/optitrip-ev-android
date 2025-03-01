@@ -1,8 +1,10 @@
 package be.hcpl.android.optitripev.ui.about
 
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Arrangement.Absolute.spacedBy
 import be.hcpl.android.optitripev.R
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -14,23 +16,24 @@ import be.hcpl.android.optitripev.ui.theme.AppTheme
 
 @Composable
 fun AboutScreen(
-    modifier: Modifier = Modifier,
-    //onUrlClicked: ((String) -> Unit),
-    ) {
+    onUrlSelected: ((String) -> Unit),
+) {
     Column(
-        verticalArrangement = Arrangement.spacedBy(16.dp),
-        modifier = modifier
+        verticalArrangement = spacedBy(8.dp),
+        modifier = Modifier
+            .padding(16.dp)
+            .fillMaxSize(),
     ) {
         Text(
             text = stringResource(R.string.info_about_app)
         )
         TextWithLink(
             text = stringResource(R.string.info_about_people),
-            onUrlClicked = {},
+            onUrlClicked = onUrlSelected,
         )
         TextWithLink(
             text = stringResource(R.string.info_about_testing),
-            onUrlClicked = {},
+            onUrlClicked = onUrlSelected,
         )
         Text(
             text = stringResource(R.string.info_about_future)
@@ -42,6 +45,6 @@ fun AboutScreen(
 @Composable
 fun AboutScreenPreview() {
     AppTheme {
-        AboutScreen()
+        AboutScreen(onUrlSelected = {})
     }
 }

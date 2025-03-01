@@ -13,10 +13,10 @@ val customColor8 = Color(0xff4d4dff)
 val customColor9 = Color(0xff4dff4d)
 
 //val primaryLight = Color(0xFF006879)
-val primaryLight = customColor3
+val primaryLight = customColor2
 val onPrimaryLight = Color(0xFFFFFFFF)
 //val primaryContainerLight = Color(0xFFAAEDFF)
-val primaryContainerLight = customColor3
+val primaryContainerLight = customColor2
 val onPrimaryContainerLight = Color(0xFF004E5C)
 val secondaryLight = Color(0xFF4B6269)
 val onSecondaryLight = Color(0xFFFFFFFF)

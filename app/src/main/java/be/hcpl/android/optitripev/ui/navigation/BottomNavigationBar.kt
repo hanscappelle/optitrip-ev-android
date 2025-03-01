@@ -22,8 +22,9 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
-import be.hcpl.android.optitripev.R
-import be.hcpl.android.optitripev.ui.components.NavItem
+import be.hcpl.android.optitripev.ui.theme.customColor1
+import be.hcpl.android.optitripev.ui.theme.customColor2
+import be.hcpl.android.optitripev.ui.theme.primaryLight
 
 /**
  * Author: Santosh Yadav
@@ -33,17 +34,11 @@ import be.hcpl.android.optitripev.ui.components.NavItem
 @Composable
 fun BottomNavigationBar(
     navController: NavController,
+    navigationItems: List<NavigationItem>,
 ) {
     val selectedNavigationIndex = rememberSaveable {
         mutableIntStateOf(0)
     }
-
-    val navigationItems = listOf(
-        NavigationItem(R.drawable.ic_input, R.string.title_home, Screen.Home),
-        NavigationItem(R.drawable.ic_result, R.string.title_dashboard, Screen.Result),
-        NavigationItem(R.drawable.ic_settings, R.string.title_notifications, Screen.Config),
-        NavigationItem(R.drawable.ic_about, R.string.title_about, Screen.About),
-    )
 
     NavigationBar(
         containerColor = Color.White
@@ -56,7 +51,11 @@ fun BottomNavigationBar(
                     navController.navigate(item.route.route)
                 },
                 icon = {
-                    Icon(painter = painterResource(item.icon), contentDescription = stringResource(item.title))
+                    Icon(
+                        painter = painterResource(item.icon),
+                        contentDescription = stringResource(item.title),
+                        tint = Color.Black,
+                    )
                 },
                 label = {
                     Text(

@@ -2,6 +2,9 @@ package be.hcpl.android.optitripev.ui.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import be.hcpl.android.optitripev.R
+import be.hcpl.android.optitripev.ui.navigation.NavigationItem
+import be.hcpl.android.optitripev.ui.navigation.Screen
 
 class MainViewModel(
 ) : ViewModel() {
@@ -9,12 +12,15 @@ class MainViewModel(
     //val uiState: MutableLiveData<OverviewUiModel> = MutableLiveData<OverviewUiModel>()
     //val navigation: MutableLiveData<Navigation> = MutableLiveData()
 
-    init {
-        getInitialData()
-    }
+    val navigationItems = listOf(
+        NavigationItem(R.drawable.ic_input, R.string.title_home, Screen.Home),
+        NavigationItem(R.drawable.ic_result, R.string.title_dashboard, Screen.Result),
+        NavigationItem(R.drawable.ic_settings, R.string.title_notifications, Screen.Config),
+        NavigationItem(R.drawable.ic_about, R.string.title_about, Screen.About),
+    )
 
-    private fun getInitialData() {
-        //uiState.postValue()
+    init {
+
     }
 
 

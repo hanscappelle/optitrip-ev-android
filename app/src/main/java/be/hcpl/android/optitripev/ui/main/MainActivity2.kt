@@ -1,6 +1,7 @@
 package be.hcpl.android.optitripev.ui.main
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -19,9 +20,13 @@ class MainActivity2 : ComponentActivity() {
         //viewModel.navigation.observe(this, Observer<Navigation> { event -> onNavigation(event) })
         setContent {
             //AppScaffold {
-            MainScreen()
+            MainScreen(viewModel.navigationItems, onUrlSelected = { url -> openUrl(url) })
             //}
         }
+    }
+
+    private fun openUrl(url: String) {
+        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
     }
 
 }

@@ -5,7 +5,6 @@ import android.net.Uri
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.lifecycle.Observer
 import be.hcpl.android.optitripev.ui.components.AppScaffold
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.getValue
@@ -19,7 +18,7 @@ class AboutView : ComponentActivity() {
         //viewModel.navigation.observe(this, Observer<Navigation> { event -> onNavigation(event) })
         setContent {
             AppScaffold() {
-                AboutScreen(/*onUrlClicked = { url -> openUrl(url) }*/)
+                AboutScreen(onUrlSelected = { url -> openUrl(url) })
             }
         }
     }
