@@ -26,9 +26,9 @@ class AboutFragment : Fragment() {
         _binding = FragmentAboutBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val aboutAppVersion = binding.aboutAppVersion
-        viewModel.appVersion.observe(viewLifecycleOwner) { aboutAppVersion.text = it }
-        viewModel.getAppVersion()
+        //val aboutAppVersion = binding.aboutAppVersion
+        //viewModel.appVersion.observe(viewLifecycleOwner) { aboutAppVersion.text = it }
+        //viewModel.getAppVersion()
 
         return root
     }

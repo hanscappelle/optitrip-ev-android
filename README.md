@@ -28,6 +28,17 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 
 ## Version History
 
+### 0.9
+
+Technical improvements
+
+- dark mode colors fixed
+- add another indication of consumption (kWh/100km)
+- Update to JetPack Compose
+- drop view binding
+- add koin and use MVVM architecture
+- increase target SDK to 35
+
 ### 0.8
 
 * update target SDK to 33

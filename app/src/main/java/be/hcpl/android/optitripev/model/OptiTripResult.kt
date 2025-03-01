@@ -1,8 +1,5 @@
 package be.hcpl.android.optitripev.model
 
-import kotlin.math.abs
-import kotlin.math.ceil
-
 data class OptiTripResult(
     // driving time = total distance / speed
     val drivingTime: Double,
