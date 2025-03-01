@@ -12,25 +12,19 @@ import android.widget.TextView
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import be.hcpl.android.optitripev.databinding.FragmentConfigBinding
-import be.hcpl.android.optitripev.util.Constants
 import be.hcpl.android.optitripev.util.formatDouble1
 import be.hcpl.android.optitripev.util.formatDouble3
 import be.hcpl.android.optitripev.util.formatInt
 import be.hcpl.android.optitripev.util.toImperial
 
-class ConfigFragment : Fragment() {
+class ConfigView : Fragment() {
 
-    private var _binding: FragmentConfigBinding? = null
     private lateinit var viewModel: ConfigViewModel
-
-    // This property is only valid between onCreateView and onDestroyView.
-    private val binding get() = _binding!!
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         lifecycle.addObserver(viewModel)
     }
-
+/*
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -141,12 +135,6 @@ class ConfigFragment : Fragment() {
         viewGroup.addView(tv3)
         return viewGroup
     }
-
-    private val params = LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f)
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+*/
 
 }

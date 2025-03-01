@@ -32,6 +32,7 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 
 Technical improvements
 
+- bumped min android version from 21 to 24 (needed for linkify-text lib)
 - dark mode colors fixed
 - add another indication of consumption (kWh/100km)
 - Update to JetPack Compose
@@ -93,6 +94,9 @@ Technical improvements
 
 App icon created with https://icon.kitchen using colors CDDC39 and 4CAF50 resulting in
 https://icon.kitchen/i/H4sIAAAAAAAAA1WPOQ7CQAxF72JaCpakgDYFB4AOocizZiQzE2YBRVHujicSBY0tP%2Ft%2F2zO8kYpOcJ7B2I7ciDHXImlOoLTBQhm24GTwDATmrOPUywGjdd72phDBsgVhu0Ah8shGKiWPJ9YIe5tGzchGVE776iPs5VfwFlk1%2Bz%2FRig4VNRJNu2OE3hLbNO265zrgappexUXJDabPoArVL%2B48rGJwqp4cEsePFvBYvsq09jLoAAAA
+
+Composable screen navigation setup
+https://medium.com/@santosh_yadav321/bottom-navigation-bar-in-jetpack-compose-5b3c5f2cea9b
 
 ### What is this repository for? ###
 

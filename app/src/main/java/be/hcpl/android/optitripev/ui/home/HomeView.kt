@@ -4,36 +4,26 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import be.hcpl.android.optitripev.R
-import be.hcpl.android.optitripev.databinding.FragmentHomeBinding
 import be.hcpl.android.optitripev.util.Constants
 import be.hcpl.android.optitripev.util.formatDouble1
 import be.hcpl.android.optitripev.util.formatInt
 import be.hcpl.android.optitripev.util.toImperial
 import be.hcpl.android.optitripev.util.toMetric
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 
-class HomeFragment : Fragment() {
-
-    private var _binding: FragmentHomeBinding? = null
-
-    // This property is only valid between onCreateView and onDestroyView.
-    private val binding get() = _binding!!
+class HomeView : Fragment() {
 
     private lateinit var viewModel: HomeViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         lifecycle.addObserver(viewModel)
     }
-
+/*
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -143,10 +133,6 @@ class HomeFragment : Fragment() {
 
         return root
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
+*/
 
 }

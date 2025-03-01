@@ -1,4 +1,4 @@
-package be.hcpl.android.optitripev.ui.view
+package be.hcpl.android.optitripev.ui.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

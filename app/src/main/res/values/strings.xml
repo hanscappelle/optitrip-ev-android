@@ -38,7 +38,7 @@
     <string name="title_about">About</string>
     <string name="header_about">OptiTripEV</string>
     <string name="info_about_app">This app calculates the optimal ride speed for EV given known consumption values. Based on OPTITRIP EV v1.4 spreadsheet created by Stephane Melançon aka DOCTORBASS 2018</string>
-    <string name="info_about_people">This App was created from that spreadsheet by Hans Cappelle and made available to the community at bitbucket project website https://bitbucket.org/cappelleh/optitrip-ev-android</string>
+    <string name="info_about_people">This App was created from that spreadsheet by Hans Cappelle and made available to the community at bitbucket project website https://github.com/hanscappelle/optitrip-ev-android</string>
     <string name="info_about_testing">Everyone can contribute on that website. If you want to test early releases as a beta tester you can subscribe at https://play.google.com/apps/testing/be.hcpl.android.optitripev</string>
     <string name="info_about_future">Feel free to contact us with issues, remarks or feature requests.</string>
     <string name="action_update">Update</string>
@@ -46,4 +46,5 @@
     <string name="info_config_units">Switch from metric to imperial system here</string>
     <string name="option_use_metric">Use metric system (km, km/h, ...)</string>
     <string name="option_use_imperial">Use imperial system (mi, mph, ...)</string>
+    <string name="description_navigate_back">Navigate Back</string>
 </resources>
