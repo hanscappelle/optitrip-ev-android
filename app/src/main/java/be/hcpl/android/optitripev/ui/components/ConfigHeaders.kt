@@ -7,28 +7,29 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import be.hcpl.android.optitripev.ui.model.Config
 
 @Composable
-fun ConfigHeaders() {
+fun ConfigHeaders(config: Config) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = spacedBy(4.dp),
     ) {
         Text(
             modifier = Modifier.weight(.25f),
-            text = "Speed km/h"
+            text = "Speed ${config.unit.speed}"
         )
         Text(
             modifier = Modifier.weight(1f),
-            text = "Wh/km",
+            text = "Wh/${config.unit.distance}",
         )
         Text(
             modifier = Modifier.weight(.25f),
-            text = "kWh/km"
+            text = "kWh/${config.unit.distance}"
         )
         Text(
             modifier = Modifier.weight(.25f),
-            text = "kWh/100km"
+            text = "kWh/100${config.unit.distance}"
         )
     }
 }

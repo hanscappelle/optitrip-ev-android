@@ -1,21 +1,8 @@
 package be.hcpl.android.optitripev.ui.config
 
 import android.os.Bundle
-import android.text.InputType
-import android.view.Gravity
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import be.hcpl.android.optitripev.util.formatDouble1
-import be.hcpl.android.optitripev.util.formatDouble3
-import be.hcpl.android.optitripev.util.formatInt
-import be.hcpl.android.optitripev.util.toImperial
 
 class ConfigView : Fragment() {
 
@@ -115,26 +102,6 @@ class ConfigView : Fragment() {
         return viewGroup
     }
 
-    private fun createRow(label1: String, label2: String, label3: String) : ViewGroup {
-        val viewGroup = LinearLayout(context)
-        viewGroup.orientation = LinearLayout.HORIZONTAL
-        val tv1 = TextView(context)
-        tv1.text = label1
-        tv1.layoutParams = params
-        //tv1.gravity = Gravity.CENTER
-        viewGroup.addView(tv1)
-        val tv2 = TextView(context)
-        tv2.text = label2
-        tv2.layoutParams = params
-        tv2.gravity = Gravity.CENTER
-        viewGroup.addView(tv2)
-        val tv3 = TextView(context)
-        tv3.text = label3
-        tv3.layoutParams = params
-        tv3.gravity = Gravity.CENTER
-        viewGroup.addView(tv3)
-        return viewGroup
-    }
 */
 
 }

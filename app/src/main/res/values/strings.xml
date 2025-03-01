@@ -44,7 +44,7 @@
     <string name="action_update">Update</string>
     <string name="action_recover">Recover</string>
     <string name="info_config_units">Switch from metric to imperial system here</string>
-    <string name="option_use_metric">Use metric system (km, km/h, ...)</string>
-    <string name="option_use_imperial">Use imperial system (mi, mph, ...)</string>
+    <string name="option_use_metric">Metric (km, km/h)</string>
+    <string name="option_use_imperial">Imperial (mi, mph)</string>
     <string name="description_navigate_back">Navigate Back</string>
 </resources>

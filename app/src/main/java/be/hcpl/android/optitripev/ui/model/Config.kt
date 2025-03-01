@@ -5,9 +5,9 @@ data class Config(
     val values: List<ConfigValue>,
 )
 
-enum class ConfigUnit {
-    Metric,
-    Imperial,
+enum class ConfigUnit(val distance: String, val speed: String) {
+    Metric("km", "km/h"),
+    Imperial("mi", "mph"),
 }
 
 data class ConfigValue(

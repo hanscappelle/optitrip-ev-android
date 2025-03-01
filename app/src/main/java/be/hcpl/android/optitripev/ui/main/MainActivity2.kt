@@ -18,14 +18,28 @@ class MainActivity2 : ComponentActivity() {
         super.onCreate(savedInstanceState)
         viewModel.config.observe(this, Observer<Config> { event -> onConfigChange(event) })
         setContent {
-            MainScreen(viewModel.navigationItems, onUrlSelected = { url -> openUrl(url) }, Config(values = emptyList()))
+            MainScreen(
+                navigationItems = viewModel.navigationItems,
+                onUrlSelected = { url -> openUrl(url) },
+                config = Config(values = emptyList()),
+                onUnitChanged = {},
+                )
         }
     }
 
     private fun onConfigChange(config: Config){
         setContent{
-            MainScreen(viewModel.navigationItems, onUrlSelected = ::openUrl, config)
+            MainScreen(
+                navigationItems = viewModel.navigationItems,
+                onUrlSelected = ::openUrl,
+                config = config,
+                onUnitChanged = ::onUnitChanged,
+                )
         }
+    }
+
+    private fun onUnitChanged(checked: Boolean){
+        viewModel.onUnitChanged(checked)
     }
 
     private fun openUrl(url: String) {

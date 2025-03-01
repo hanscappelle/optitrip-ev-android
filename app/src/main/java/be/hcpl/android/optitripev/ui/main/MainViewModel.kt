@@ -33,5 +33,12 @@ class MainViewModel(
         config.value = defaultConfig // TODO get from preferences instead
     }
 
+    fun onUnitChanged(checked: Boolean) {
+        config.value?.let {
+            config.value = it.copy(unit = if (checked) ConfigUnit.Imperial else ConfigUnit.Metric)
+        }
+
+    }
+
 
 }
