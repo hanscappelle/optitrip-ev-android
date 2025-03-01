@@ -37,7 +37,14 @@ class MainViewModel(
         config.value?.let {
             config.value = it.copy(unit = if (checked) ConfigUnit.Imperial else ConfigUnit.Metric)
         }
+    }
 
+    fun onValueChanged(key: String, value: String) {
+        config.value?.let {
+            config.value = it.copy(
+                values = it.values.map { if (it.atSpeed.toString() == key) it.copy(consumption = value.toFloat()) else it }
+            )
+        }
     }
 
     fun resetValues() {

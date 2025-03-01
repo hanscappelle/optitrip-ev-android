@@ -23,6 +23,7 @@ class MainActivity2 : ComponentActivity() {
                 onUrlSelected = { url -> openUrl(url) },
                 config = Config(values = emptyList()),
                 onUnitChanged = {},
+                onValueChanged = { key, value -> },
                 resetValues = {},
             )
         }
@@ -35,6 +36,7 @@ class MainActivity2 : ComponentActivity() {
                 onUrlSelected = ::openUrl,
                 config = config,
                 onUnitChanged = ::onUnitChanged,
+                onValueChanged = ::onValueChanged,
                 resetValues = ::resetValues,
             )
         }
@@ -42,6 +44,10 @@ class MainActivity2 : ComponentActivity() {
 
     private fun onUnitChanged(checked: Boolean) {
         viewModel.onUnitChanged(checked)
+    }
+
+    private fun onValueChanged(key: String, value: String) {
+        viewModel.onValueChanged(key, value)
     }
 
     private fun resetValues() {

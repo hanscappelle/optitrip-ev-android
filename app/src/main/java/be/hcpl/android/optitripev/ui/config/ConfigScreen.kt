@@ -24,7 +24,8 @@ import be.hcpl.android.optitripev.ui.model.ConfigUnit
 @Composable
 fun ConfigScreen(
     config: Config,
-    onUnitChanged: ((Boolean) -> Unit),
+    onUnitChanged: (Boolean) -> Unit,
+    onValueChanged: (String, String) -> Unit,
     resetValues: () -> Unit,
 ) {
     Column(
@@ -65,7 +66,15 @@ fun ConfigScreen(
 
         ConfigHeaders(config)
         LazyColumn {
-            config.values.forEach { v -> item { ConfigItemView(config.unit, v, {}) } }
+            config.values.forEach { v ->
+                item {
+                    ConfigItemView(
+                        unit = config.unit,
+                        config = v,
+                        onValueChange = onValueChanged,
+                    )
+                }
+            }
             item {
                 Row(verticalAlignment = CenterVertically) {
                     Text(
