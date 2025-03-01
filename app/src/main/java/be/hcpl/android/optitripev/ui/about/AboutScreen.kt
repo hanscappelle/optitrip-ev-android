@@ -5,6 +5,7 @@ import be.hcpl.android.optitripev.R
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -24,6 +25,10 @@ fun AboutScreen(
             .padding(16.dp)
             .fillMaxSize(),
     ) {
+        Text(
+            text = stringResource(R.string.title_about),
+            style = MaterialTheme.typography.titleLarge
+        )
         Text(
             text = stringResource(R.string.info_about_app)
         )

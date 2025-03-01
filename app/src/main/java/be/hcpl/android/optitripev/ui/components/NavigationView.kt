@@ -17,8 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import be.hcpl.android.optitripev.ui.theme.AppTheme
 
-// TODO handle actions
-// TODO mark selection
+// replaced by navigation controller see navigation package
 
 @Composable
 fun NavigationView(modifier: Modifier = Modifier) {

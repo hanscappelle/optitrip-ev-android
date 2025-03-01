@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
+import be.hcpl.android.optitripev.ui.theme.AppTheme
 import be.hcpl.android.optitripev.ui.theme.customColor1
 import be.hcpl.android.optitripev.ui.theme.customColor2
 import be.hcpl.android.optitripev.ui.theme.primaryLight
@@ -41,7 +42,7 @@ fun BottomNavigationBar(
     }
 
     NavigationBar(
-        containerColor = Color.White
+        //containerColor = MaterialTheme.colorScheme.surfaceContainer //Color.White
     ) {
         navigationItems.forEachIndexed { index, item ->
             NavigationBarItem(
@@ -54,15 +55,19 @@ fun BottomNavigationBar(
                     Icon(
                         painter = painterResource(item.icon),
                         contentDescription = stringResource(item.title),
-                        tint = Color.Black,
+                        tint = if( index == selectedNavigationIndex.intValue )
+                            Color.Black
+                        else
+                            MaterialTheme.colorScheme.onSurface,
                     )
                 },
                 label = {
                     Text(
                         stringResource(item.title),
-                        color = if (index == selectedNavigationIndex.intValue)
-                            Color.Black
-                        else Color.Gray
+                        color = MaterialTheme.colorScheme.onSurface,
+                        //if (index == selectedNavigationIndex.intValue)
+                            //Color.Black
+                        //else Color.Gray
                     )
                 },
                 colors = NavigationBarItemDefaults.colors(
