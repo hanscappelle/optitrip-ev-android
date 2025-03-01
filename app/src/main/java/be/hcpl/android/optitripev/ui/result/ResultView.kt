@@ -1,16 +1,8 @@
 package be.hcpl.android.optitripev.ui.result
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import be.hcpl.android.optitripev.R
-import be.hcpl.android.optitripev.util.Constants
-import be.hcpl.android.optitripev.util.formatHours
-import be.hcpl.android.optitripev.util.toImperial
 
 class ResultView : Fragment() {
 
@@ -20,13 +12,6 @@ class ResultView : Fragment() {
         lifecycle.addObserver(viewModel)
     }
     /*
-        override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
-        ): View {
-
-            viewModel = ViewModelProvider(this)[ResultViewModel::class.java]
 
             // get all results here
             val optimalSpeedView = binding.resultBestSpeed
@@ -87,15 +72,5 @@ class ResultView : Fragment() {
                 else
                     getString(R.string.result_distance_charge_3, it.toDouble().toImperial().toInt(), Constants.UNIT_MI)
             }
-
-            // check for errors
-            viewModel.errorMessage.observe(viewLifecycleOwner){
-                if(it.isNotEmpty()) Toast.makeText(context, it, Toast.LENGTH_LONG).show()
-            }
-
-
-        return root
-    }
-     */
-
+*/
 }

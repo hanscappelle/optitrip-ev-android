@@ -86,8 +86,4 @@ class ResultViewModel(application: Application) : AndroidViewModel(application),
         }
     }
 
-    override fun onPause(owner: LifecycleOwner) {
-        // no actions needed so far
-    }
-
 }
