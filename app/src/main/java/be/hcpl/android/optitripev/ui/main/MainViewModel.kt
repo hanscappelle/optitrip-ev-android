@@ -53,6 +53,7 @@ class MainViewModel(
         calculateOptimalResult()?.let { optimalResult.value = it }
     }
 
+    // handle unit configuration changes (metric vs imperial)
     fun onUnitChanged(checked: Boolean) {
         config.value?.let {
             config.value = it.copy(unit = if (checked) ConfigUnit.Imperial else ConfigUnit.Metric)
@@ -60,6 +61,7 @@ class MainViewModel(
         storage.store(Constants.PREF_USE_METRIC, !checked)
     }
 
+    // handle config update changes (speed vs consumption)
     fun onValueChanged(key: String, value: String) {
         config.value?.let {
             config.value = it.copy(
@@ -108,7 +110,6 @@ class MainViewModel(
                 // driving time + total charge time + ( # charges * charge delay )
                 it.totalTime(i.chargeDelay)
             }?.firstOrNull()
-            //.associate { it.speed }.toMap()
 
             // TODO lost next and previous values
             // also display 1 value lower and higher
@@ -121,6 +122,7 @@ class MainViewModel(
         }
     }
 
+    // update input values
     fun updateInput(newValue: OptiTripInput) {
         input.value?.let {
             input.value = newValue
