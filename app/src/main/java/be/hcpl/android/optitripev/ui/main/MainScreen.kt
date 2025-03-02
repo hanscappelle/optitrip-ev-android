@@ -73,7 +73,7 @@ fun MainScreen(
                     )
                 }
                 composable(route = Screen.Result.route) {
-                    ResultScreen(config?.unit ?: ConfigUnit.Metric, optimalResult)
+                    ResultScreen(config?.unit ?: ConfigUnit.Metric, input, optimalResult)
                 }
                 composable(route = Screen.Config.route) {
                     ConfigScreen(

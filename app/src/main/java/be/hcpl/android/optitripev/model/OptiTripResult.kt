@@ -29,4 +29,31 @@ data class OptiTripResult(
         totalDistance: Float, // km
         chargeDelay: Float, // minutes
     ) = totalDistance / totalTime(chargeDelay)
+
+    fun chargeSpeedEquiv(
+        usableEnergy: Float, // kWh
+        chargeDelay: Float, // min
+    ) = usableEnergy / calculatedEfficiency(chargeDelay)
+
+    fun calculatedEfficiency(
+        chargeDelay: Float, // in minutes
+    ) = totalTime(chargeDelay)
+
+    fun totalTimePerCharge(
+        chargeDelay: Float, // minutes
+    ) = timePerCharge + chargeDelay * Constants.MINUTES_TO_HOUR
+
+    // distance to chargers
+    fun distanceToChargers(
+        initialSoc: Float, // in %
+        usableEnergy: Float, // kWh
+        chargeDelay: Float, // min
+    ): Triple<Int, Int, Int> {
+        val distanceFirstCharger = (0.01 * initialSoc * usableEnergy) / calculatedEfficiency(chargeDelay)
+        return Triple(
+            distanceFirstCharger.toInt(),
+            distanceFirstCharger.toInt() * 2,
+            distanceFirstCharger.toInt() * 3,
+        )
+    }
 }
