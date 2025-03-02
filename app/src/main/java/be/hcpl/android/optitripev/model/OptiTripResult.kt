@@ -21,12 +21,12 @@ data class OptiTripResult(
     // formula:
     // driving time + total charge time + ( # charges * charge delay )
     fun totalTime(
-        chargeDelay: Int, // minutes
+        chargeDelay: Float, // minutes
     ) = drivingTime + totalChargeTime + (numberOfCharges * chargeDelay * Constants.MINUTES_TO_HOUR)
 
     // speed equivalent, that is the average speed with the charge time taken into account
     fun speedEquiv(
-        totalDistance: Int, // km
-        chargeDelay: Int, // minutes
+        totalDistance: Float, // km
+        chargeDelay: Float, // minutes
     ) = totalDistance / totalTime(chargeDelay)
 }

@@ -49,24 +49,24 @@ class LocalStorage(
     override fun clearAll() = prefs.edit().clear().apply()
 
     override fun lastInput() = OptiTripInput(
-        totalDistance = prefs.getInt(Constants.PREF_KEY_TOTAL_DISTANCE, 1000),
-        chargePower = prefs.getInt(Constants.PREF_KEY_CHARGE_POWER, 13),
-        chargeTarget = prefs.getInt(Constants.PREF_KEY_CHARGE_TARGET, 100),
-        chargeDelay = prefs.getInt(Constants.PREF_KEY_CHARGE_DELAY, 0),
-        usableEnergy = prefs.getInt(Constants.PREF_KEY_USABLE_ENERGY, 13),
-        initialSoc = prefs.getInt(Constants.PREF_KEY_INITIAL_SOC, 100),
-        distFirstCharger = prefs.getInt(Constants.PREF_KEY_DISTANCE_FIRST_CHARGER, 100),
+        totalDistance = prefs.getFloat(Constants.PREF_KEY_TOTAL_DISTANCE, 1000f),
+        chargePower = prefs.getFloat(Constants.PREF_KEY_CHARGE_POWER, 13f),
+        chargeTarget = prefs.getFloat(Constants.PREF_KEY_CHARGE_TARGET, 100f),
+        chargeDelay = prefs.getFloat(Constants.PREF_KEY_CHARGE_DELAY, 0f),
+        usableEnergy = prefs.getFloat(Constants.PREF_KEY_USABLE_ENERGY, 13f),
+        initialSoc = prefs.getFloat(Constants.PREF_KEY_INITIAL_SOC, 100f),
+        distFirstCharger = prefs.getFloat(Constants.PREF_KEY_DISTANCE_FIRST_CHARGER, 100f),
     )
 
     override fun storeInput(input: OptiTripInput) = with(input) {
         prefs.edit()
-            .putInt(Constants.PREF_KEY_TOTAL_DISTANCE, totalDistance)
-            .putInt(Constants.PREF_KEY_CHARGE_POWER, chargePower)
-            .putInt(Constants.PREF_KEY_CHARGE_TARGET, chargeTarget)
-            .putInt(Constants.PREF_KEY_CHARGE_DELAY, chargeDelay)
-            .putInt(Constants.PREF_KEY_USABLE_ENERGY, usableEnergy)
-            .putInt(Constants.PREF_KEY_INITIAL_SOC, initialSoc)
-            .putInt(Constants.PREF_KEY_DISTANCE_FIRST_CHARGER, distFirstCharger).apply()
+            .putFloat(Constants.PREF_KEY_TOTAL_DISTANCE, totalDistance)
+            .putFloat(Constants.PREF_KEY_CHARGE_POWER, chargePower)
+            .putFloat(Constants.PREF_KEY_CHARGE_TARGET, chargeTarget)
+            .putFloat(Constants.PREF_KEY_CHARGE_DELAY, chargeDelay)
+            .putFloat(Constants.PREF_KEY_USABLE_ENERGY, usableEnergy)
+            .putFloat(Constants.PREF_KEY_INITIAL_SOC, initialSoc)
+            .putFloat(Constants.PREF_KEY_DISTANCE_FIRST_CHARGER, distFirstCharger).apply()
     }
 
     override fun getCurrentConfig(): List<ConfigValue> {

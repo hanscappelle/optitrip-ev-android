@@ -1,11 +1,11 @@
 package be.hcpl.android.optitripev.model
 
 data class OptiTripInput(
-    val totalDistance: Int = 1000, // unit km
-    val chargePower: Int = 13, // unit kW
-    val chargeTarget: Int = 100, // unit %
-    val chargeDelay: Int = 0, // unit minutes
-    val usableEnergy: Int = 13, // unit kWh
-    val initialSoc: Int = 100, // unit %
-    val distFirstCharger: Int = 100, // unit km
+    val totalDistance: Float = 1000f, // unit km
+    val chargePower: Float = 13f, // unit kW
+    val chargeTarget: Float = 100f, // unit %
+    val chargeDelay: Float = 0f, // unit minutes
+    val usableEnergy: Float = 13f, // unit kWh
+    val initialSoc: Float = 100f, // unit %
+    val distFirstCharger: Float = 100f, // unit km
 )

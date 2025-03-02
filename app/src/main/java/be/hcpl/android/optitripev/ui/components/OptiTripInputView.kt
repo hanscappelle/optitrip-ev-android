@@ -29,37 +29,37 @@ fun OptiTripInputView(
         Input(
             value = "${input.totalDistance}",
             hint = stringResource(R.string.hint_total_distance, unit.distance),
-            onValueChange = { value -> updateInput(input.copy(totalDistance = value.toIntOrNull() ?: 0)) },
+            onValueChange = { value -> updateInput(input.copy(totalDistance = value.toFloatOrNull() ?: 0f)) },
         )
         Input(
             value = "${input.chargePower}",
             hint = stringResource(R.string.hint_charge_power),
-            onValueChange = { value -> updateInput(input.copy(chargePower = value.toIntOrNull() ?: 0)) },
+            onValueChange = { value -> updateInput(input.copy(chargePower = value.toFloatOrNull() ?: 0f)) },
         )
         Input(
             value = "${input.chargeTarget}",
             hint = stringResource(R.string.hint_charge_target),
-            onValueChange = { value -> updateInput(input.copy(chargeTarget = value.toIntOrNull() ?: 0)) },
+            onValueChange = { value -> updateInput(input.copy(chargeTarget = value.toFloatOrNull() ?: 0f)) },
         )
         Input(
             value = "${input.chargeDelay}",
             hint = stringResource(R.string.hint_charge_delay),
-            onValueChange = { value -> updateInput(input.copy(chargeDelay = value.toIntOrNull() ?: 0)) },
+            onValueChange = { value -> updateInput(input.copy(chargeDelay = value.toFloatOrNull() ?: 0f)) },
         )
         Input(
             value = "${input.usableEnergy}",
             hint = stringResource(R.string.hint_usable_energy),
-            onValueChange = { value -> updateInput(input.copy(usableEnergy = value.toIntOrNull() ?: 0)) },
+            onValueChange = { value -> updateInput(input.copy(usableEnergy = value.toFloatOrNull() ?: 0f)) },
         )
         Input(
             value = "${input.initialSoc}",
             hint = stringResource(R.string.hint_initial_soc),
-            onValueChange = { value -> updateInput(input.copy(initialSoc = value.toIntOrNull() ?: 0)) },
+            onValueChange = { value -> updateInput(input.copy(initialSoc = value.toFloatOrNull() ?: 0f)) },
         )
         Input(
             value = "${input.distFirstCharger}",
             hint = stringResource(R.string.hint_distance_first_charger, unit.distance),
-            onValueChange = { value -> updateInput(input.copy(distFirstCharger = value.toIntOrNull() ?: 0)) },
+            onValueChange = { value -> updateInput(input.copy(distFirstCharger = value.toFloatOrNull() ?: 0f)) },
         )
     }
 }

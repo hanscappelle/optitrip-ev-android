@@ -66,7 +66,7 @@ fun HomeScreen(
                     R.string.result_optimal_speed,
                     if (unit == ConfigUnit.Imperial) result.speed.toImperial().toInt() else result.speed.toInt(),
                     unit.speed,
-                    result.totalTime(input?.chargeDelay ?: 0).formatHours(),
+                    result.totalTime(input?.chargeDelay ?: 0f).formatHours(),
                     result.numberOfCharges,
                 )
             )
