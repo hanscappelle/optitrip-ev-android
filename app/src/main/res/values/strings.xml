@@ -30,7 +30,7 @@
     <string name="result_time_per_charge">Time per charge %s</string>
     <string name="result_total_time_per_charge">Total time per charge %s</string>
     <string name="result_total_trip_energy">Total trip Energy %.1f kWh</string>
-    <string name="result_optimal_speed">Optimal speed is %d %s with total ride+charge time of %s</string>
+    <string name="result_optimal_speed">Optimal speed is %d %s with total ride+charge time of %s and #%d charge stops.</string>
     <string name="result_optimal_speed_alternative">Speed of %d %s results in time of %s</string>
     <string name="err_calculating_result">Problem calculating result, check input</string>
     <string name="title_about">About</string>
