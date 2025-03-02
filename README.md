@@ -23,8 +23,6 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 * Add a correction factor (%) of the best average speed to use vs the real speed average a trip was. 
   So if there is a difference of value vs what people really had they could just adjust that way.
 * allow calculation of consumption numbers from coefficient (just 2 inputs needed)
-* create donation option on about screen
-* input validation with error message per field
 
 ## Version History
 
