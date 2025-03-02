@@ -96,7 +96,10 @@ so when Imperial is selected the conversion is done both on storing input and di
 
 A default set of speed/consumption values in known in the app to recover to defaults.
 This is the information based on the original excel. Note that these are motorcycle
-numbers. Nothing stops you from changing the defaults to use for cars or anything else. 
+numbers. Nothing stops you from changing the defaults to use for cars or anything else.
+
+Moved repo from bitbucket to github, links in readme changed. 
+Bitbucket was https://bitbucket.org/cappelleh/optitrip-ev-android/
 
 ### References
 

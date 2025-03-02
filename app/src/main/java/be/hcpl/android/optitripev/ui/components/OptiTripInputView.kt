@@ -29,14 +29,7 @@ fun OptiTripInputView(
         Input(
             value = "${input.totalDistance}",
             hint = stringResource(R.string.hint_total_distance, unit.distance),
-            // TODO correct for unit distance here
-            onValueChange = { value ->
-                updateInput(
-                    input.copy(
-                        totalDistance = value.toIntOrNull() ?: 0
-                    )
-                )
-            },
+            onValueChange = { value -> updateInput(input.copy(totalDistance = value.toIntOrNull() ?: 0)) },
         )
         Input(
             value = "${input.chargePower}",
@@ -51,13 +44,7 @@ fun OptiTripInputView(
         Input(
             value = "${input.chargeDelay}",
             hint = stringResource(R.string.hint_charge_delay),
-            onValueChange = { value ->
-                updateInput(
-                    input.copy(
-                        chargeDelay = value.toIntOrNull() ?: 0
-                    )
-                )
-            },
+            onValueChange = { value -> updateInput(input.copy(chargeDelay = value.toIntOrNull() ?: 0)) },
         )
         Input(
             value = "${input.usableEnergy}",
@@ -72,14 +59,7 @@ fun OptiTripInputView(
         Input(
             value = "${input.distFirstCharger}",
             hint = stringResource(R.string.hint_distance_first_charger, unit.distance),
-            // TODO correct for unit distance here
-            onValueChange = { value ->
-                updateInput(
-                    input.copy(
-                        distFirstCharger = value.toIntOrNull() ?: 0
-                    )
-                )
-            },
+            onValueChange = { value -> updateInput(input.copy(distFirstCharger = value.toIntOrNull() ?: 0)) },
         )
     }
 }
