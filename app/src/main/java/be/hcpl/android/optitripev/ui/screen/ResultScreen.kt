@@ -25,7 +25,7 @@ fun ResultScreen(
     unit: ConfigUnit,
     input: OptiTripInput?,
     result: OptiTripResult?,
-    ) {
+) {
     Column(
         verticalArrangement = spacedBy(8.dp),
         modifier = Modifier

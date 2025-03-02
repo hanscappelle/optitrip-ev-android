@@ -23,6 +23,7 @@ class MainViewModel(
     val config: MutableLiveData<Config> = MutableLiveData()
     val input: MutableLiveData<OptiTripInput> = MutableLiveData()
     val optimalResult: MutableLiveData<OptiTripResult> = MutableLiveData()
+    val calculatedEfficiency: MutableLiveData<Float> = MutableLiveData()
 
     // default app navigation configuration
     val navigationItems = listOf(
@@ -104,6 +105,7 @@ class MainViewModel(
                     timePerCharge = timePerCharge.toDouble(),
                     numberOfCharges = numberOfCharges.toInt(),
                     speed = v.atSpeed.toDouble(),
+                    calculatedEfficiency = v.consumption,
                 )
             }?.sortedBy {
                 // formula:

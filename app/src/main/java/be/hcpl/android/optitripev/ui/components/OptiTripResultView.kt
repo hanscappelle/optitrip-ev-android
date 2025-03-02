@@ -17,11 +17,11 @@ import be.hcpl.android.optitripev.ui.theme.AppTheme
 @Composable
 fun OptiTripResultView(unit: ConfigUnit, input: OptiTripInput, result: OptiTripResult) {
 
-    val distanceToChargers = result.distanceToChargers(input.initialSoc, input.usableEnergy, input.chargeDelay)
+    val distanceToChargers = result.distanceToChargers(input.initialSoc, input.usableEnergy, result.calculatedEfficiency)
 
     Column(
         verticalArrangement = spacedBy(8.dp)
-    ){
+    ) {
         Text(text = stringResource(R.string.result_best_speed, result.speed.toInt(), unit.speed))
         HorizontalDivider()
         Text(text = stringResource(R.string.result_final_speed_equiv, result.speedEquiv(input.totalDistance, input.chargeDelay).toInt(), unit.speed))
@@ -30,7 +30,13 @@ fun OptiTripResultView(unit: ConfigUnit, input: OptiTripInput, result: OptiTripR
         HorizontalDivider()
         Text(text = stringResource(R.string.result_total_trip_time, result.totalTime(input.chargeDelay).formatHours()))
         HorizontalDivider()
-        Text(text = stringResource(R.string.result_charge_equiv_speed, result.chargeSpeedEquiv(input.usableEnergy, input.chargeDelay).toInt(), unit.speed))
+        Text(
+            text = stringResource(
+                R.string.result_charge_equiv_speed,
+                result.chargeSpeedEquiv(input.usableEnergy, result.calculatedEfficiency).toInt(),
+                unit.speed
+            )
+        )
         HorizontalDivider()
         Text(text = stringResource(R.string.result_total_charge_time, result.totalChargeTime.formatHours()))
         HorizontalDivider()
@@ -65,8 +71,9 @@ fun OptiTripResultPreview() {
                 extraEnergy = 20.0,
                 totalChargeTime = 30.0,
                 timePerCharge = 10.0,
-                numberOfCharges = 3
-            )
+                numberOfCharges = 3,
+                calculatedEfficiency = 0.27f
+            ),
         )
     }
 }
