@@ -12,6 +12,7 @@ class Constants {
         const val KM_TO_MI = 0.621371f
         const val MINUTES_TO_HOUR = 0.0166667f
         const val PREF_USE_METRIC = "useMetric"
+        const val PREF_USE_IMPERIAL = "useImperial"
         const val STORED_CONSUMPTION_CONFIG = "userConsumptionConfig"
         const val PREF_KEY_CHARGE_DELAY = "chargeDelay"
         const val PREF_KEY_USABLE_ENERGY = "usableEnergy"

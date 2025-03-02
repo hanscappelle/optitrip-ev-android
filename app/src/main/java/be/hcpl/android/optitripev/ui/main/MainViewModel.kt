@@ -40,7 +40,7 @@ class MainViewModel(
 
     init {
         // get unit system from storage
-        val unitFromStorage = if (storage.getBoolean(Constants.PREF_USE_METRIC)) ConfigUnit.Metric else ConfigUnit.Imperial
+        val unitFromStorage = if (storage.getBoolean(Constants.PREF_USE_IMPERIAL)) ConfigUnit.Imperial else ConfigUnit.Metric
         // get current configuration values from storage
         val storedConfig = storage.getCurrentConfig()
         config.value = Config(
@@ -58,7 +58,7 @@ class MainViewModel(
         config.value?.let {
             config.value = it.copy(unit = if (checked) ConfigUnit.Imperial else ConfigUnit.Metric)
         }
-        storage.store(Constants.PREF_USE_METRIC, !checked)
+        storage.store(Constants.PREF_USE_IMPERIAL, checked)
     }
 
     // handle config update changes (speed vs consumption)
