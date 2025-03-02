@@ -13,6 +13,8 @@ import be.hcpl.android.optitripev.model.OptiTripInput
 import be.hcpl.android.optitripev.model.OptiTripResult
 import be.hcpl.android.optitripev.ui.navigation.NavigationItem
 import be.hcpl.android.optitripev.ui.navigation.Screen
+import kotlin.math.abs
+import kotlin.math.ceil
 
 class MainViewModel(
     private val storage: LocalStorage,
@@ -64,6 +66,7 @@ class MainViewModel(
                 values = it.values.map { if (it.atSpeed.toString() == key) it.copy(consumption = value.toFloat()) else it }
             )
         }
+        calculateOptimalResult()?.let { optimalResult.value = it }
     }
 
     fun updateValuesInStorage() {
@@ -72,61 +75,50 @@ class MainViewModel(
 
     fun resetValues() {
         config.value = defaultConfig
+        calculateOptimalResult()?.let { optimalResult.value = it }
     }
 
     fun calculateOptimalResult(): OptiTripResult? {
-        /*
-                    // calculate total trip time for all speeds
-                    val totalTimeBySpeed = speedByConsumption.mapValues {
-                        // using:
-                        // driving time = total distance / speed
-                        val drivingTime = totalDistanceValue / it.key
-                        // total energy = speedByConsumption * total trip distance
-                        val totalEnergy = it.value * totalDistanceValue
-                        // required extra energy = abs ( total energy - ( usable energy * initialSoc ) // also takes initial soc into account
-                        val extraEnergy = abs(totalEnergy - usableEnergyValue * (initialSocValue / 100))
-                        // total charge time = abs ( required extra energy / charge power )
-                        val totalChargeTime = abs(extraEnergy / chargePowerValue)
-                        // time per charge = ( chargeTarget / 100 ) * ( usableEnergy / chargePower )
-                        val timePerCharge = (chargeTargetValue / 100) * (usableEnergyValue / chargePowerValue)
-                        // # charges = ceil ( required extra energy / ( charge power * time per charge ) )
-                        val numberOfCharges = ceil(extraEnergy / (chargePowerValue * timePerCharge))
+        return input.value?.let { i ->
+            // calculate total trip time for all speeds
+            config.value?.values?.map { v ->
+                // driving time = total distance / speed
+                val drivingTime = i.totalDistance / v.atSpeed
+                // total energy = speedByConsumption * total trip distance
+                val totalEnergy = v.consumption * i.totalDistance
+                // required extra energy = abs ( total energy - ( usable energy * initialSoc ) // also takes initial soc into account
+                val extraEnergy = abs(totalEnergy - i.usableEnergy * (i.initialSoc / 100))
+                // total charge time = abs ( required extra energy / charge power )
+                val totalChargeTime = abs(extraEnergy / i.chargePower)
+                // time per charge = ( chargeTarget / 100 ) * ( usableEnergy / chargePower )
+                val timePerCharge = (i.chargeTarget / 100) * (i.usableEnergy / i.chargePower)
+                // # charges = ceil ( required extra energy / ( charge power * time per charge ) )
+                val numberOfCharges = ceil(extraEnergy / (i.chargePower * timePerCharge))
+                OptiTripResult(
+                    drivingTime = drivingTime.toDouble(),
+                    totalEnergy = totalEnergy.toDouble(),
+                    extraEnergy = extraEnergy.toDouble(),
+                    totalChargeTime = totalChargeTime.toDouble(),
+                    timePerCharge = timePerCharge.toDouble(),
+                    numberOfCharges = numberOfCharges.toInt(),
+                    speed = v.atSpeed.toDouble(),
+                )
+            }?.sortedBy {
+                // formula:
+                // driving time + total charge time + ( # charges * charge delay )
+                it.totalTime(i.chargeDelay)
+            }?.firstOrNull()
+            //.associate { it.speed }.toMap()
 
-                        val result = OptiTripResult(
-                            drivingTime = drivingTime,
-                            totalEnergy = totalEnergy,
-                            extraEnergy = extraEnergy,
-                            totalChargeTime = totalChargeTime,
-                            timePerCharge = timePerCharge,
-                            numberOfCharges = numberOfCharges.toInt(),
-                            speed = it.key.toDouble(),
-                            speedEquiv = it.key.toDouble(),
-                        )
-                        resultsBySpeed[it.key] = result
-
-                        // formula:
-                        // driving time + total charge time + ( # charges * charge delay )
-                        drivingTime + totalChargeTime + (numberOfCharges * chargeDelayValue)
-                    }
-
-                    // and from that new collection get the lowest value to display
-                    val optimalSpeedMap = totalTimeBySpeed.minByOrNull { it.value } ?: 0.0
-                    val optimalSpeed = (optimalSpeedMap as Map.Entry<*, *>).key
-                    val totalTime = optimalSpeedMap.value
-                    val totalTimeValue = totalTime.toString().toFloat()
-                    val optimalSpeedInt = Integer.parseInt(optimalSpeed.toString())
-                    result.value = formatResult(R.string.result_optimal_speed, optimalSpeedInt, totalTimeValue)
-                    // also display 1 value lower and higher
-                    totalTimeBySpeed[optimalSpeedInt - 5]?.let{
-                        resultSlower.value = formatResult(R.string.result_optimal_speed_alternative, optimalSpeedInt-5, it.toString().toFloat())
-                    }
-                    totalTimeBySpeed[optimalSpeedInt + 5]?.let{
-                        resultFaster.value = formatResult(R.string.result_optimal_speed_alternative, optimalSpeedInt+5, it.toString().toFloat())
-                    }
-        */
-        // FIXME calculation needed here
-        return null
-
+            // TODO lost next and previous values
+            // also display 1 value lower and higher
+            //totalTimeBySpeed[optimalSpeedInt - 5]?.let{
+            //    resultSlower.value = formatResult(R.string.result_optimal_speed_alternative, optimalSpeedInt-5, it.toString().toFloat())
+            //}
+            //totalTimeBySpeed[optimalSpeedInt + 5]?.let{
+            //    resultFaster.value = formatResult(R.string.result_optimal_speed_alternative, optimalSpeedInt+5, it.toString().toFloat())
+            //}
+        }
     }
 
     fun updateInput(newValue: OptiTripInput) {
@@ -134,7 +126,6 @@ class MainViewModel(
             input.value = newValue
         }
         storage.storeInput(newValue)
+        calculateOptimalResult()?.let { optimalResult.value = it }
     }
-
-
 }

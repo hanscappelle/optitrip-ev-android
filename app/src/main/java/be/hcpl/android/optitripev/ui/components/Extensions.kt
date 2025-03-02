@@ -23,9 +23,9 @@ fun Double.toImperial() = this * KM_TO_MI
 
 fun Double.toMetric() = this * MI_TO_KM
 
-fun formatHours(hoursDecimal: Float): String {
-    val hours = hoursDecimal.toInt()
-    val minutes = ((hoursDecimal - hours) * 60).toInt()
+fun Double.formatHours(): String {
+    val hours = this.toInt()
+    val minutes = ((this - hours) * 60).toInt()
     return "${hours}h ${minutes}m"
     //val date: Date = SimpleDateFormat("HH:mm").parse(TimeString)
     //val newTimeString: String = SimpleDateFormat("H:mm").format(date)

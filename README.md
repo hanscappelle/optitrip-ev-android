@@ -89,36 +89,19 @@ Technical improvements
 
 * initial app release as an internal test with basic functionality
 
-## References
+## Dev Notes
+
+Everything is stored locally in preferences (private to app). Results are all stored in Metric, 
+so when Imperial is selected the conversion is done both on storing input and display of output.
+
+A default set of speed/consumption values in known in the app to recover to defaults.
+This is the information based on the original excel. Note that these are motorcycle
+numbers. Nothing stops you from changing the defaults to use for cars or anything else. 
+
+### References
 
 App icon created with https://icon.kitchen using colors CDDC39 and 4CAF50 resulting in
 https://icon.kitchen/i/H4sIAAAAAAAAA1WPOQ7CQAxF72JaCpakgDYFB4AOocizZiQzE2YBRVHujicSBY0tP%2Ft%2F2zO8kYpOcJ7B2I7ciDHXImlOoLTBQhm24GTwDATmrOPUywGjdd72phDBsgVhu0Ah8shGKiWPJ9YIe5tGzchGVE776iPs5VfwFlk1%2Bz%2FRig4VNRJNu2OE3hLbNO265zrgappexUXJDabPoArVL%2B48rGJwqp4cEsePFvBYvsq09jLoAAAA
 
 Composable screen navigation setup
 https://medium.com/@santosh_yadav321/bottom-navigation-bar-in-jetpack-compose-5b3c5f2cea9b
-
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact

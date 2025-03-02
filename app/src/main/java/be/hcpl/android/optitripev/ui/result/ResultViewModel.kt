@@ -10,8 +10,6 @@ class ResultViewModel(application: Application) : AndroidViewModel(application),
 
     override fun onResume(owner: LifecycleOwner) {
         /*
-        // update metric preference
-        // useMetric = prefs.getBoolean(Constants.PREF_USE_METRIC, true)
         // get stored calculation results here
         optimalSpeed.value = prefs.getInt(Constants.RESULT_OPTIMAL_SPEED, 0)
         totalTripEnergy.value = prefs.getFloat(Constants.RESULT_TOTAL_ENERGY, 0f)

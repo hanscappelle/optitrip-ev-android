@@ -12,12 +12,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import be.hcpl.android.optitripev.R
+import be.hcpl.android.optitripev.model.ConfigUnit
 import be.hcpl.android.optitripev.model.OptiTripResult
 import be.hcpl.android.optitripev.ui.components.OptiTripResultView
 import be.hcpl.android.optitripev.ui.theme.AppTheme
 
 @Composable
-fun ResultScreen(result: OptiTripResult?) {
+fun ResultScreen(unit: ConfigUnit, result: OptiTripResult?) {
     Column(
         verticalArrangement = spacedBy(8.dp),
         modifier = Modifier
@@ -34,7 +35,7 @@ fun ResultScreen(result: OptiTripResult?) {
             style = MaterialTheme.typography.bodyLarge,
         )
         // result
-        result?.let { OptiTripResultView(result) }
+        result?.let { OptiTripResultView(unit, result) }
     }
 }
 
@@ -42,6 +43,6 @@ fun ResultScreen(result: OptiTripResult?) {
 @Composable
 fun ResultScreenPreview() {
     AppTheme {
-        ResultScreen(null)
+        ResultScreen(ConfigUnit.Metric, null)
     }
 }

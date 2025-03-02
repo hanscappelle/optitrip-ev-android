@@ -3,7 +3,6 @@ package be.hcpl.android.optitripev.model
 data class OptiTripResult(
     // speed for this result
     val speed: Double,
-    val speedEquiv: Double,
     // driving time = total distance / speed
     val drivingTime: Double,
     // total energy = speedByConsumption * total trip distance
@@ -16,7 +15,11 @@ data class OptiTripResult(
     val timePerCharge: Double,
     // # charges = ceil ( required extra energy / ( charge power * time per charge ) )
     val numberOfCharges: Int,
-            // formula:
-            // driving time + total charge time + ( # charges * charge delay )
-            //drivingTime + totalChargeTime + (numberOfCharges * chargeDelayValue)
-)
+) {
+    // formula:
+    // driving time + total charge time + ( # charges * charge delay )
+    fun totalTime(chargeDelay: Int) = drivingTime + totalChargeTime + (numberOfCharges * chargeDelay)
+
+    // speed equivalent, that is the average speed with the charge time taken into account
+    fun speedEquiv(totalDistance: Int, chargeDelay: Int) = totalDistance / totalTime(chargeDelay)
+}
