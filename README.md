@@ -28,7 +28,7 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 
 ## Version History
 
-### 0.9
+### 0.10.0
 
 Technical improvements
 
@@ -38,6 +38,10 @@ Technical improvements
 - Update to JetPack Compose & drop view binding
 - add koin and use MVVM architecture
 - increase target SDK to 35
+
+### 0.9
+
+* update to target SDK 34
 
 ### 0.8
 
@@ -100,6 +104,8 @@ numbers. Nothing stops you from changing the defaults to use for cars or anythin
 
 Moved repo from bitbucket to github, links in readme changed. 
 Bitbucket was https://bitbucket.org/cappelleh/optitrip-ev-android/
+
+App Bundle & release key v2 in use for this project
 
 ### References
 
