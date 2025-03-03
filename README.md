@@ -28,6 +28,13 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 
 ## Version History
 
+### 0.10.1
+
+issue with old settings
+Caused by: java.lang.ClassCastException: java.lang.String cannot be cast to java.lang.Float
+
+- fix upgrading existing installs
+
 ### 0.10.0
 
 Technical improvements
