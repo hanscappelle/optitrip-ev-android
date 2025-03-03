@@ -23,7 +23,6 @@ class MainViewModel(
     val config: MutableLiveData<Config> = MutableLiveData()
     val input: MutableLiveData<OptiTripInput> = MutableLiveData()
     val optimalResult: MutableLiveData<OptiTripResult> = MutableLiveData()
-    val calculatedEfficiency: MutableLiveData<Float> = MutableLiveData()
 
     // default app navigation configuration
     val navigationItems = listOf(

@@ -48,15 +48,30 @@ class LocalStorage(
 
     override fun clearAll() = prefs.edit().clear().apply()
 
-    override fun lastInput() = OptiTripInput(
-        totalDistance = prefs.getFloat(Constants.PREF_KEY_TOTAL_DISTANCE, 1000f),
-        chargePower = prefs.getFloat(Constants.PREF_KEY_CHARGE_POWER, 13f),
-        chargeTarget = prefs.getFloat(Constants.PREF_KEY_CHARGE_TARGET, 100f),
-        chargeDelay = prefs.getFloat(Constants.PREF_KEY_CHARGE_DELAY, 0f),
-        usableEnergy = prefs.getFloat(Constants.PREF_KEY_USABLE_ENERGY, 13f),
-        initialSoc = prefs.getFloat(Constants.PREF_KEY_INITIAL_SOC, 100f),
-        distFirstCharger = prefs.getFloat(Constants.PREF_KEY_DISTANCE_FIRST_CHARGER, 100f),
-    )
+    override fun lastInput(): OptiTripInput {
+        return try {
+            OptiTripInput(
+                totalDistance = prefs.getFloat(Constants.PREF_KEY_TOTAL_DISTANCE, 1000f),
+                chargePower = prefs.getFloat(Constants.PREF_KEY_CHARGE_POWER, 13f),
+                chargeTarget = prefs.getFloat(Constants.PREF_KEY_CHARGE_TARGET, 100f),
+                chargeDelay = prefs.getFloat(Constants.PREF_KEY_CHARGE_DELAY, 0f),
+                usableEnergy = prefs.getFloat(Constants.PREF_KEY_USABLE_ENERGY, 13f),
+                initialSoc = prefs.getFloat(Constants.PREF_KEY_INITIAL_SOC, 100f),
+                distFirstCharger = prefs.getFloat(Constants.PREF_KEY_DISTANCE_FIRST_CHARGER, 100f),
+            )
+        } catch (cce: ClassCastException) {
+            // older app version still have data stored as a string value
+            OptiTripInput(
+                totalDistance = prefs.getString(Constants.PREF_KEY_TOTAL_DISTANCE, "1000")?.toFloatOrNull() ?: 1000f,
+                chargePower = prefs.getString(Constants.PREF_KEY_CHARGE_POWER, "13")?.toFloatOrNull() ?: 13f,
+                chargeTarget = prefs.getString(Constants.PREF_KEY_CHARGE_TARGET, "100")?.toFloatOrNull() ?: 100f,
+                chargeDelay = prefs.getString(Constants.PREF_KEY_CHARGE_DELAY, "0")?.toFloatOrNull() ?: 0f,
+                usableEnergy = prefs.getString(Constants.PREF_KEY_USABLE_ENERGY, "13")?.toFloatOrNull() ?: 13f,
+                initialSoc = prefs.getString(Constants.PREF_KEY_INITIAL_SOC, "100")?.toFloatOrNull() ?: 100f,
+                distFirstCharger = prefs.getString(Constants.PREF_KEY_DISTANCE_FIRST_CHARGER, "100")?.toFloatOrNull() ?: 100f,
+            )
+        }
+    }
 
     override fun storeInput(input: OptiTripInput) = with(input) {
         prefs.edit()
