@@ -26,6 +26,11 @@ more frequently) so that you can evaluate the latest changes and provide feedbac
 
 ## Version History
 
+### 0.10.2
+
+obfuscation issue fixed
+Caused by: java.lang.IllegalStateException: TypeToken must be created with a type argument: new TypeToken<...>() {}; When using code shrinkers (ProGuard, R8, ...) make sure that generic signatures are preserved.
+
 ### 0.10.1
 
 issue with old settings
@@ -119,3 +124,6 @@ https://icon.kitchen/i/H4sIAAAAAAAAA1WPOQ7CQAxF72JaCpakgDYFB4AOocizZiQzE2YBRVHuj
 
 Composable screen navigation setup
 https://medium.com/@santosh_yadav321/bottom-navigation-bar-in-jetpack-compose-5b3c5f2cea9b
+
+gson lost typetoken issue resolved by bumping to version 2.11.0 see
+https://stackoverflow.com/questions/76224936/google-gson-preserve-generic-signatures
